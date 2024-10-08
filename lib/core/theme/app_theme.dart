@@ -28,7 +28,9 @@ class AppTheme {
         style: ButtonStyle(
             backgroundColor: WidgetStateProperty.all(AppColors.blue),
             foregroundColor: WidgetStateProperty.all(AppColors.white),
-            shape: WidgetStateProperty.all(const CircleBorder()),
+            shape: WidgetStateProperty.all(RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10000)
+            )),
             elevation: WidgetStateProperty.all(0),
             textStyle: WidgetStateProperty.all(TextStyle(
                 fontWeight: FontWeight.w600,
@@ -81,6 +83,18 @@ class AppTheme {
         fontSize: 20 , fontWeight: FontWeight.w500,
         color: AppColors.black,
       )
+    ),
+    navigationBarTheme: NavigationBarThemeData(
+      elevation: 0,
+      backgroundColor: AppColors.lightBlue,
+      surfaceTintColor: AppColors.blue,
+      labelTextStyle: WidgetStateProperty.all(
+        TextStyle(
+          color: AppColors.blue
+        )
+      ),
+      iconTheme: WidgetStateProperty.all(IconThemeData(color: AppColors.blue)),
+      indicatorColor: AppColors.blue[AppColors.colorCode10],
     )
   );
 }
