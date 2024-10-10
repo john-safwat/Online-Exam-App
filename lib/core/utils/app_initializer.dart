@@ -4,11 +4,10 @@ import 'package:online_exam_app/core/providers/language_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppInitializer {
-
-  Future<void> initialLocal()async{
+  Future<void> initialLocal() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    var local = preferences.getString(Constants.localKey)??Constants.englishLocalKey;
+    var local =
+        preferences.getString(Constants.localKey) ?? Constants.englishLocalKey;
     getIt<LanguageProvider>().changeLocal(local);
   }
-
 }

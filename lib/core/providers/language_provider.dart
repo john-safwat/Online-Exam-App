@@ -4,16 +4,16 @@ import 'package:online_exam_app/core/constants/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @singleton
-class LanguageProvider extends ChangeNotifier{
-
+class LanguageProvider extends ChangeNotifier {
   // set the default local
   String _currentLocal = Constants.englishLocalKey;
 
   // function to change the local with new local and set it in
-  Future<void> changeLocal(String newLocal)async{
-
+  Future<void> changeLocal(String newLocal) async {
     // if the new local is the same this condition will terminate
-    if(newLocal == _currentLocal) {return;}
+    if (newLocal == _currentLocal) {
+      return;
+    }
 
     // reed the shared preferences to read the old value of the theme
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -25,13 +25,12 @@ class LanguageProvider extends ChangeNotifier{
   }
 
   // if the language is english
-  bool isEn(){
+  bool isEn() {
     return _currentLocal == Constants.englishLocalKey;
   }
 
   // function to return the local
-  String getLocal(){
+  String getLocal() {
     return _currentLocal;
   }
-
 }

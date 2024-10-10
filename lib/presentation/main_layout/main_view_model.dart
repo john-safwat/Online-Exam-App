@@ -28,18 +28,16 @@ class MainViewModel extends BaseViewModel<MainViewStates> {
   }
 
   void _updateSelectedIndexWhenPageChange() {
+    if (pageController.page!.toInt() == selectedIndex) {
+      return;
+    }
     selectedIndex = pageController.page!.toInt();
     emit(PageChangedState());
   }
 
   void _updateSelectedIndex(int index) {
     selectedIndex = index;
-    pageController.animateToPage(selectedIndex,
-        duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
-    Future.delayed(const Duration(milliseconds: 500)).then(
-      (value) {
-        emit(PageChangedState());
-      },
-    );
+    pageController.jumpToPage(selectedIndex);
+    emit(PageChangedState());
   }
 }
