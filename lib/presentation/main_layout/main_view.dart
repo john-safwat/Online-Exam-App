@@ -29,14 +29,14 @@ class _MainViewState extends BaseState<MainView, MainViewModel> {
     return BlocProvider(
       create: (context) => viewModel,
       child: BlocConsumer<MainViewModel, MainViewStates>(
-        listener: (context, state) {
-
-        },
-        builder:(context, state) => Scaffold(
+        listener: (context, state) {},
+        builder: (context, state) => Scaffold(
           body: PageView(
             controller: viewModel.pageController,
             children: const [
-              ExploreView() , ProfileView() , ResultView()
+              ExploreView(),
+              ResultView(),
+              ProfileView(),
             ],
           ),
           bottomNavigationBar: NavigationBar(

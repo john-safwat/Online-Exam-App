@@ -1,4 +1,4 @@
-class AnimationsAssets{
+class AnimationsAssets {
   static const String _checkAnimation = "assets/animations/check.json";
   static const String _errorAnimation = "assets/animations/error.json";
   static const String _infoAnimation = "assets/animations/info.json";

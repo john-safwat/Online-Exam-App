@@ -41,7 +41,12 @@ dependencies:
   get_it:
   icons_launcher:
   flutter_native_splash:
-# The following adds the CupertinoIcons font to your application.
+  dio:
+  retrofit: ^4.4.1
+  logger: ^2.4.0  # for logging purpose
+  json_annotation: ^4.9.0
+
+  # The following adds the CupertinoIcons font to your application.
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
@@ -54,10 +59,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  # add the generator to your dev_dependencies
   injectable_generator:
-  # add build runner if not already added
   build_runner:
+  retrofit_generator: '>=8.0.0 <10.0.0' # for Dart 3.3 use ^9.0.0
+  json_serializable: ^6.8.0
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

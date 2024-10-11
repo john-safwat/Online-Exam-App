@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:online_exam_app/core/providers/language_provider.dart';
 import 'package:online_exam_app/core/utils/app_initializer.dart';
 import 'package:online_exam_app/presentation/login/login_view.dart';
 import 'package:online_exam_app/presentation/main_layout/main_view.dart';
+import 'package:online_exam_app/presentation/signup/signup_view.dart';
 import 'package:provider/provider.dart';
+
 import 'core/constants/routes.dart';
 import 'core/di/di.dart';
 import 'core/theme/app_theme.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main (){
+void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   configureDependencies();
   AppInitializer().initialLocal();
   FlutterNativeSplash.remove();
   runApp(ChangeNotifierProvider(
-    create: (context) => getIt<LanguageProvider>(),
-      child: const MyApp())
-  );
+      create: (context) => getIt<LanguageProvider>(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -35,10 +35,11 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(localProvider.getLocal()),
       routes: {
-        Routes.loginRoute : (context) => const LoginView(),
-        Routes.homeRoute : (context) => const MainView(),
+        Routes.loginRoute: (context) => const LoginView(),
+        Routes.homeRoute: (context) => const MainView(),
+        Routes.signupRoute: (context) => const SignupView(),
       },
-      initialRoute: Routes.homeRoute,
+      initialRoute: Routes.signupRoute,
     );
   }
 }

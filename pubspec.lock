@@ -223,6 +223,22 @@ packages:
       url: "https://github.com/john-safwat/Elevate-Online-Exam-App.git"
     source: git
     version: "0.0.1"
+  dio:
+    dependency: "direct main"
+    description:
+      name: dio
+      sha256: "5598aa796bbf4699afd5c67c0f5f6e2ed542afc956884b9cd58c306966efc260"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.7.0"
+  dio_web_adapter:
+    dependency: transitive
+    description:
+      name: dio_web_adapter
+      sha256: "33259a9276d6cea88774a0000cfae0d861003497755969c92faa223108620dc8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -420,13 +436,21 @@ packages:
     source: hosted
     version: "0.7.1"
   json_annotation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: json_annotation
       sha256: "1ce844379ca14835a50d2f019a3099f419082cfdd231cd86a142af94dd5c6bb1"
       url: "https://pub.dev"
     source: hosted
     version: "4.9.0"
+  json_serializable:
+    dependency: "direct dev"
+    description:
+      name: json_serializable
+      sha256: ea1432d167339ea9b5bb153f0571d0039607a873d6e04e0117af043f14a1fd4b
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.8.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -459,6 +483,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
+  logger:
+    dependency: "direct main"
+    description:
+      name: logger
+      sha256: "697d067c60c20999686a0add96cf6aba723b3aa1f83ecf806a8097231529ec32"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
   logging:
     dependency: transitive
     description:
@@ -595,6 +627,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.1"
+  protobuf:
+    dependency: transitive
+    description:
+      name: protobuf
+      sha256: "68645b24e0716782e58948f8467fd42a880f255096a821f9e7d0ec625b00c84d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0"
   provider:
     dependency: "direct main"
     description:
@@ -627,6 +667,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.0"
+  retrofit:
+    dependency: "direct main"
+    description:
+      name: retrofit
+      sha256: "3c9885ef3dbc5dc4b3fb0a40c972ab52e4dad04d52dac9bba24dfa76cf100451"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.4.1"
+  retrofit_generator:
+    dependency: "direct dev"
+    description:
+      name: retrofit_generator
+      sha256: f20982392512587b1cce6cd34e3cf953a01a3fe8f82e4c34e10afe65e70c3556
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.1.2"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -712,6 +768,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.0"
+  source_helper:
+    dependency: transitive
+    description:
+      name: source_helper
+      sha256: "6adebc0006c37dd63fe05bca0a929b99f06402fc95aa35bf36d67f5c06de01fd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.4"
   source_span:
     dependency: transitive
     description:
