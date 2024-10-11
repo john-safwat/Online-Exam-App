@@ -48,13 +48,13 @@ class _MainViewState extends BaseState<MainView, MainViewModel> {
             destinations: [
               NavigationDestination(
                   icon: const Icon(Icons.home_outlined),
-                  label: viewModel.local!.explore),
+                  label: viewModel.locale!.explore),
               NavigationDestination(
                   icon: const Icon(Icons.list_alt_outlined),
-                  label: viewModel.local!.result),
+                  label: viewModel.locale!.result),
               NavigationDestination(
                   icon: const Icon(Icons.person_outline),
-                  label: viewModel.local!.profile),
+                  label: viewModel.locale!.profile),
             ],
           ),
         ),

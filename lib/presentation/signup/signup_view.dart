@@ -7,6 +7,7 @@ import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/core/utils/app_dialogs.dart';
 import 'package:online_exam_app/presentation/signup/signup_contract.dart';
 import 'package:online_exam_app/presentation/signup/signup_view_model.dart';
+import 'package:online_exam_app/presentation/signup/widgets/signup_form.dart';
 
 class SignupView extends StatefulWidget {
   const SignupView({super.key});
@@ -25,44 +26,43 @@ class _SignupViewState extends BaseState<SignupView, SignupViewModel> {
         listener: (context, state) {
           if (state is SignupLoadingState) {
             AppDialogs.showLoading(
-                message: viewModel.local!.loading, context: context);
+                message: viewModel.locale!.loading, context: context);
           }
           if (state is SignupSuccessState) {
             AppDialogs.showSuccessDialog(
-              message: viewModel.local!.accountCreatedSuccessfully,
-              context: context,
-              posActionTitle: viewModel.local!.ok,
-              posAction: () {
-                viewModel.doIntent(SignupConfirmAction());
-              }
-            );
+                message: viewModel.locale!.accountCreatedSuccessfully,
+                context: context,
+                posActionTitle: viewModel.locale!.ok,
+                posAction: () {
+                  viewModel.doIntent(SignupConfirmAction());
+                });
           }
           if (state is SignupFailState) {
             AppDialogs.showFailDialog(
               message: state.message,
               context: context,
-              posActionTitle: viewModel.local!.ok,
+              posActionTitle: viewModel.locale!.ok,
             );
           }
           if (state is EmailAlreadyExistState) {
             AppDialogs.showFailDialog(
-              message: viewModel.local!.emailAlreadyExist,
+              message: viewModel.locale!.emailAlreadyExist,
               context: context,
-              posActionTitle: viewModel.local!.tryAgain,
+              posActionTitle: viewModel.locale!.tryAgain,
             );
           }
           if (state is BadRequestState) {
             AppDialogs.showFailDialog(
-              message: viewModel.local!.dioDefaultMessage,
+              message: viewModel.locale!.dioDefaultMessage,
               context: context,
-              posActionTitle: viewModel.local!.tryAgain,
+              posActionTitle: viewModel.locale!.tryAgain,
             );
           }
           if (state is UserNameAlreadyExistState) {
             AppDialogs.showFailDialog(
-              message: viewModel.local!.userNameAlreadyExist,
+              message: viewModel.locale!.userNameAlreadyExist,
               context: context,
-              posActionTitle: viewModel.local!.tryAgain,
+              posActionTitle: viewModel.locale!.tryAgain,
             );
           }
           if (state is HideLoadingState) {
@@ -74,149 +74,9 @@ class _SignupViewState extends BaseState<SignupView, SignupViewModel> {
         },
         builder: (context, state) => Scaffold(
           appBar: AppBar(
-            title: Text(viewModel.local!.signup),
+            title: Text(viewModel.locale!.signup),
           ),
-          body: Form(
-            onChanged: () => viewModel.doIntent(FormDataChangedAction()),
-            key: viewModel.formKey,
-            child: ListView(
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              padding: const EdgeInsets.all(16),
-              children: [
-                TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) => viewModel.nameValidation(value ?? ""),
-                  keyboardType: TextInputType.name,
-                  controller: viewModel.nameController,
-                  decoration: InputDecoration(
-                    label: Text(viewModel.local!.userName),
-                    hintText: viewModel.local!.enterYouUserName,
-                  ),
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) =>
-                            viewModel.nameValidation(value ?? ""),
-                        keyboardType: TextInputType.name,
-                        controller: viewModel.firstNameController,
-                        decoration: InputDecoration(
-                          label: Text(viewModel.local!.firstName),
-                          hintText: viewModel.local!.enterFirstName,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 24),
-                    Expanded(
-                      child: TextFormField(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) =>
-                            viewModel.nameValidation(value ?? ""),
-                        keyboardType: TextInputType.name,
-                        controller: viewModel.lastNameController,
-                        decoration: InputDecoration(
-                          label: Text(viewModel.local!.lastName),
-                          hintText: viewModel.local!.enterLastName,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) => viewModel.emailValidation(value ?? ""),
-                  keyboardType: TextInputType.emailAddress,
-                  controller: viewModel.emailController,
-                  decoration: InputDecoration(
-                    label: Text(viewModel.local!.email),
-                    hintText: viewModel.local!.enterEmail,
-                  ),
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) =>
-                            viewModel.passwordValidation(value ?? ""),
-                        keyboardType: TextInputType.visiblePassword,
-                        controller: viewModel.passwordController,
-                        obscureText: viewModel.passwordVisible,
-                        decoration: InputDecoration(
-                          suffixIcon: InkWell(
-                            onTap: () => viewModel
-                                .doIntent(ChangePasswordVisibilityAction()),
-                            child: Icon(viewModel.passwordVisible
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                          ),
-                          label: Text(viewModel.local!.password),
-                          hintText: viewModel.local!.enterPassword,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 24),
-                    Expanded(
-                      child: TextFormField(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) => viewModel
-                            .passwordConfirmationValidation(value ?? ""),
-                        keyboardType: TextInputType.visiblePassword,
-                        controller: viewModel.confirmPasswordController,
-                        obscureText: viewModel.passwordConfirmationVisible,
-                        decoration: InputDecoration(
-                          suffixIcon: InkWell(
-                            onTap: () => viewModel.doIntent(
-                                ChangePasswordConfirmationVisibilityAction()),
-                            child: Icon(viewModel.passwordConfirmationVisible
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                          ),
-                          label: Text(viewModel.local!.rePassword),
-                          hintText: viewModel.local!.rePassword,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) => viewModel.phoneValidation(value ?? ""),
-                  keyboardType: TextInputType.phone,
-                  controller: viewModel.phoneController,
-                  decoration: InputDecoration(
-                    label: Text(viewModel.local!.phone),
-                    hintText: viewModel.local!.enterPhone,
-                  ),
-                ),
-                const SizedBox(height: 24),
-                ElevatedButton(
-                    onPressed: () => viewModel.doIntent(SignupAction()),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: viewModel.valid
-                            ? AppColors.blue
-                            : AppColors.black[AppColors.colorCode30]),
-                    child: Text(viewModel.local!.signup)),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(viewModel.local!.alreadyHaveAccount),
-                    TextButton(
-                        onPressed: () {}, child: Text(viewModel.local!.login))
-                  ],
-                )
-              ],
-            ),
-          ),
+          body: const SignupForm(),
         ),
       ),
     );

@@ -60,9 +60,9 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
   // validate on the name if it is not empty and doesn't contain ant spacial characters
   String? nameValidation(String name) {
     if (name.isEmpty) {
-      return local!.nameCantBeEmpty;
+      return locale!.nameCantBeEmpty;
     } else if (RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%-]').hasMatch(name)) {
-      return local!.invalidName;
+      return locale!.invalidName;
     } else {
       return null;
     }
@@ -71,13 +71,13 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
   // validate on the email form
   String? emailValidation(String input) {
     if (input.isEmpty) {
-      return local!.emailCantBeEmpty;
+      return locale!.emailCantBeEmpty;
     } else if (!RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+"
             r"@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
             r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
             r"{0,253}[a-zA-Z0-9])?)*$")
         .hasMatch(input)) {
-      return local!.enterAValidEmail;
+      return locale!.enterAValidEmail;
     }
     return null;
   }
@@ -85,13 +85,13 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
   // validate the password is not less than 8 chars
   String? passwordValidation(String input) {
     if (input.isEmpty) {
-      return local!.passwordCantBeEmpty;
+      return locale!.passwordCantBeEmpty;
     } else if (input.length < 8) {
-      return local!.invalidPasswordLength;
+      return locale!.invalidPasswordLength;
     } else if (!RegExp(
             r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')
         .hasMatch(input)) {
-      return local!.invalidPasswordPattern;
+      return locale!.invalidPasswordPattern;
     }
     return null;
   }
@@ -99,9 +99,9 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
   // validate the password confirmation is not empty and the same as the password
   String? passwordConfirmationValidation(String input) {
     if (input.isEmpty) {
-      return local!.passwordCantBeEmpty;
+      return locale!.passwordCantBeEmpty;
     } else if (input != passwordController.text) {
-      return local!.passwordDoseNotMatch;
+      return locale!.passwordDoseNotMatch;
     }
     return null;
   }
@@ -109,9 +109,9 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
   // mobile validation function to check for the phone number
   String? phoneValidation(String value) {
     if (value.isEmpty) {
-      return local!.enterPhoneNumber;
+      return locale!.enterPhoneNumber;
     } else if (!RegExp(r'^01[0125][0-9]{8}$').hasMatch(value)) {
-      return local!.enterValidMobileNumber;
+      return locale!.enterValidMobileNumber;
     }
     return null;
   }
@@ -165,7 +165,7 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
           }
         case Failure<RegistrationResponse>():
           {
-            emit(SignupFailState(handleExceptions(response.exception)));
+            emit(SignupFailState(mapExceptionToMessage(response.exception)));
           }
       }
     }

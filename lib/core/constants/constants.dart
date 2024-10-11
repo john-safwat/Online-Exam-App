@@ -1,6 +1,6 @@
 class Constants {
-  static const String englishLocalKey = "en";
-  static const String arabicLocalKey = "ar";
-  static const String localKey = "local";
+  static const String englishLocaleKey = "en";
+  static const String arabicLocaleKey = "ar";
+  static const String localeKey = "local";
   static const String tokenKey = "token";
 }

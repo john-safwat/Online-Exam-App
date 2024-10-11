@@ -17,13 +17,13 @@ abstract class BaseState<T extends StatefulWidget, VM extends BaseViewModel>
   @override
   void dispose() {
     super.dispose();
-    viewModel.local = null;
+    viewModel.locale = null;
     viewModel.languageProvider = null;
   }
 
   @override
   Widget build(BuildContext context) {
-    viewModel.local = AppLocalizations.of(context);
+    viewModel.locale = AppLocalizations.of(context);
     viewModel.languageProvider = Provider.of<LanguageProvider>(context);
     return const Placeholder();
   }
