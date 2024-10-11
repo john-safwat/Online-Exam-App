@@ -16,7 +16,7 @@ void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   configureDependencies();
-  AppInitializer().initialLocal();
+  getIt<AppInitializer>().initialLocale();
   FlutterNativeSplash.remove();
   runApp(ChangeNotifierProvider(
       create: (context) => getIt<LanguageProvider>(), child: const MyApp()));

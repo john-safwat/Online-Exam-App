@@ -10,24 +10,24 @@ class BaseViewModel<T> extends Cubit<T> {
   BaseViewModel(super.initialState);
 
   LanguageProvider? languageProvider;
-  AppLocalizations? local;
+  AppLocalizations? locale;
 
 
-  String handleExceptions(Exception exception) {
+  String mapExceptionToMessage(Exception exception) {
     if (exception is SocketException) {
-      return local!.socketExceptionMessage;
+      return locale!.socketExceptionMessage;
     } else if (exception is TimeoutException) {
-      return local!.timeoutExceptionMessage;
+      return locale!.timeoutExceptionMessage;
     }else if (exception is HttpException) {
-      return local!.httpExceptionMessage;
+      return locale!.httpExceptionMessage;
     }else if (exception is DioException) {
-      return local!.dioResponseMessage;
+      return locale!.dioResponseMessage;
     }else if (exception is FormatException) {
-      return local!.formatExceptionMessage;
+      return locale!.formatExceptionMessage;
     }else if (exception is IOException) {
-      return local!.ioExceptionMessage;
+      return locale!.ioExceptionMessage;
     }else {
-      return local!.dioDefaultMessage;
+      return locale!.dioDefaultMessage;
     }
   }
 }

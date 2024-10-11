@@ -7,11 +7,12 @@ import 'package:retrofit/retrofit.dart';
 
 part 'auth_retrofit_clint.g.dart';
 
+@singleton
 @injectable
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class AuthRetrofitClint {
   @factoryMethod
-  factory AuthRetrofitClint(Dio dio ,{String baseUrl}) = _AuthRetrofitClint;
+  factory AuthRetrofitClint(Dio dio) = _AuthRetrofitClint;
 
   @POST(ApiConstants.signupRoute)
   Future<RegistrationResponseDto> signup(@Body() RegistrationUserDto user);

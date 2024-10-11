@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/domain/core/app_exception.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 
+@singleton
 @injectable
 class ApiExecution {
   Future<Results<T>> execute<T>(Future<T> Function() apiCall) async {
