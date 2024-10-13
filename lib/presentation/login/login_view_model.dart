@@ -83,8 +83,10 @@ class LoginViewModel extends BaseViewModel<LoginViewState> {
       switch (response) {
         case Success<AuthenticationResponse>():
           {
-            if (response.data != null) {
-              await _storeToken(response.data!.token ?? "");
+            if (response.data!.token != null) {
+              if(isRememberMeChecked){
+                await _storeToken(response.data!.token??"");
+              }
               emit(LoginSuccessState());
             } else {
               emit(InvalidCredentialsState());
