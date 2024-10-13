@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-
-import 'di.config.dart';
+import 'package:online_exam_app/core/di/di.config.dart'; // Import the generated config file
 
 final getIt = GetIt.instance;
 

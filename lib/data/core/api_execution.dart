@@ -29,5 +29,4 @@ class ApiExecution {
       return Failure<T>(e as Exception);
     }
   }
-
 }

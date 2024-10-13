@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/data/api/api_constants.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 @module
 abstract class NetworkModule {
@@ -13,12 +14,12 @@ abstract class NetworkModule {
       receiveTimeout: const Duration(seconds: 60),
       baseUrl: ApiConstants.baseUrl,
     );
-    dio.interceptors.add(getIt<LogInterceptor>());
+    dio.interceptors.add(getIt<PrettyDioLogger>());
     return dio;
   }
 
-  LogInterceptor providerInterceptor(){
-    return LogInterceptor(
+  PrettyDioLogger providerInterceptor() {
+    return PrettyDioLogger(
         error: true,
         request: true,
         requestBody: true,
@@ -26,5 +27,4 @@ abstract class NetworkModule {
         responseBody: true,
         responseHeader: true);
   }
-
 }

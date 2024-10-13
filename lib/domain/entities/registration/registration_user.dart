@@ -1,5 +1,3 @@
-import 'package:online_exam_app/data/models/registration/request/registration_user_dto.dart';
-
 class RegistrationUser {
   RegistrationUser({
     this.username,
@@ -18,16 +16,4 @@ class RegistrationUser {
   String? password;
   String? rePassword;
   String? phone;
-
-  RegistrationUserDto toDatasource() {
-    return RegistrationUserDto(
-      username!,
-      firstName!,
-      lastName!,
-      email!,
-      password!,
-      rePassword!,
-      phone!,
-    );
-  }
 }
