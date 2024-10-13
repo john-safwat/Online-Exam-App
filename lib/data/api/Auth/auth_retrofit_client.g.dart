@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_retrofit_clint.dart';
+part of 'auth_retrofit_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'auth_retrofit_clint.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _AuthRetrofitClint implements AuthRetrofitClint {
-  _AuthRetrofitClint(
+class _AuthRetrofitClient implements AuthRetrofitClient {
+  _AuthRetrofitClient(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
@@ -50,6 +50,41 @@ class _AuthRetrofitClint implements AuthRetrofitClint {
     late RegistrationResponseDto _value;
     try {
       _value = RegistrationResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<AuthenticationResponseDto> signIn(
+      AuthenticationRequestDto authentication) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(authentication.toJson());
+    final _options = _setStreamType<AuthenticationResponseDto>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'auth/signin',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late AuthenticationResponseDto _value;
+    try {
+      _value = AuthenticationResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -8,13 +8,13 @@ part of 'registration_user_dto.dart';
 
 RegistrationUserDto _$RegistrationUserDtoFromJson(Map<String, dynamic> json) =>
     RegistrationUserDto(
-      json['username'] as String,
-      json['firstName'] as String,
-      json['lastName'] as String,
-      json['email'] as String,
-      json['password'] as String,
-      json['rePassword'] as String,
-      json['phone'] as String,
+      json['username'] as String?,
+      json['firstName'] as String?,
+      json['lastName'] as String?,
+      json['email'] as String?,
+      json['password'] as String?,
+      json['rePassword'] as String?,
+      json['phone'] as String?,
     );
 
 Map<String, dynamic> _$RegistrationUserDtoToJson(

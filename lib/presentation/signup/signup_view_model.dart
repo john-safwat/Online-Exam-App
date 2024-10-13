@@ -53,6 +53,10 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
         {
           _navigateToHomeScreen();
         }
+      case NavigateToLoginScreenAction():
+        {
+          _navigateToLoginScreen();
+        }
     }
   }
 
@@ -152,13 +156,13 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
               await _storeToken(response.data?.token ?? '');
               emit(SignupSuccessState());
             } else {
-              if(response.data?.code == 409){
+              if (response.data?.code == 409) {
                 if (response.data?.message == "email already exists") {
                   emit(EmailAlreadyExistState());
                 } else {
                   emit(UserNameAlreadyExistState());
                 }
-              }else {
+              } else {
                 emit(BadRequestState());
               }
             }
@@ -188,5 +192,9 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
 
   void _navigateToHomeScreen() {
     emit(NavigateToHomeScreeState());
+  }
+
+  void _navigateToLoginScreen() {
+    emit(NavigateToLoginScreenState());
   }
 }

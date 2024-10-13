@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         Routes.homeRoute: (context) => const MainView(),
         Routes.signupRoute: (context) => const SignupView(),
       },
-      initialRoute: Routes.signupRoute,
+      initialRoute: Routes.loginRoute,
     );
   }
 }

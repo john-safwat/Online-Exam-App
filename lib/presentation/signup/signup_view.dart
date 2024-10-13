@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/core/assets/app_colors.dart';
 import 'package:online_exam_app/core/base/base_view.dart';
 import 'package:online_exam_app/core/constants/routes.dart';
 import 'package:online_exam_app/core/di/di.dart';
@@ -70,6 +69,9 @@ class _SignupViewState extends BaseState<SignupView, SignupViewModel> {
           }
           if (state is NavigateToHomeScreeState) {
             Navigator.pushReplacementNamed(context, Routes.homeRoute);
+          }
+          if (state is NavigateToLoginScreenState) {
+            Navigator.pop(context);
           }
         },
         builder: (context, state) => Scaffold(

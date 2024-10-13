@@ -36,8 +36,7 @@ class SignupForm extends StatelessWidget {
                 child: TextFormField(
                   textInputAction: TextInputAction.next,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) =>
-                      viewModel.nameValidation(value ?? ""),
+                  validator: (value) => viewModel.nameValidation(value ?? ""),
                   keyboardType: TextInputType.name,
                   controller: viewModel.firstNameController,
                   decoration: InputDecoration(
@@ -51,8 +50,7 @@ class SignupForm extends StatelessWidget {
                 child: TextFormField(
                   textInputAction: TextInputAction.next,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) =>
-                      viewModel.nameValidation(value ?? ""),
+                  validator: (value) => viewModel.nameValidation(value ?? ""),
                   keyboardType: TextInputType.name,
                   controller: viewModel.lastNameController,
                   decoration: InputDecoration(
@@ -90,8 +88,8 @@ class SignupForm extends StatelessWidget {
                   obscureText: viewModel.passwordVisible,
                   decoration: InputDecoration(
                     suffixIcon: InkWell(
-                      onTap: () => viewModel
-                          .doIntent(ChangePasswordVisibilityAction()),
+                      onTap: () =>
+                          viewModel.doIntent(ChangePasswordVisibilityAction()),
                       child: Icon(viewModel.passwordVisible
                           ? Icons.visibility_off
                           : Icons.visibility),
@@ -106,8 +104,8 @@ class SignupForm extends StatelessWidget {
                 child: TextFormField(
                   textInputAction: TextInputAction.next,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) => viewModel
-                      .passwordConfirmationValidation(value ?? ""),
+                  validator: (value) =>
+                      viewModel.passwordConfirmationValidation(value ?? ""),
                   keyboardType: TextInputType.visiblePassword,
                   controller: viewModel.confirmPasswordController,
                   obscureText: viewModel.passwordConfirmationVisible,
@@ -155,7 +153,9 @@ class SignupForm extends StatelessWidget {
             children: [
               Text(viewModel.locale!.alreadyHaveAccount),
               TextButton(
-                  onPressed: () {}, child: Text(viewModel.locale!.login))
+                  onPressed: () =>
+                      viewModel.doIntent(NavigateToLoginScreenAction()),
+                  child: Text(viewModel.locale!.login))
             ],
           )
         ],

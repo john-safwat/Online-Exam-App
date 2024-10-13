@@ -40,7 +40,8 @@ class AppTheme {
         errorStyle: const TextStyle(color: AppColors.red, fontSize: 12),
         contentPadding: const EdgeInsets.all(16),
         iconColor: AppColors.blue,
-        hintStyle: TextStyle(color: AppColors.black[AppColors.colorCode30], fontSize: 14),
+        hintStyle: TextStyle(
+            color: AppColors.black[AppColors.colorCode30], fontSize: 14),
         prefixIconColor: AppColors.black,
         suffixIconColor: AppColors.black,
         labelStyle: TextStyle(
@@ -92,7 +93,7 @@ class AppTheme {
           overlayColor: WidgetStateProperty.all(Colors.transparent),
           foregroundColor: WidgetStateProperty.all(AppColors.blue),
           textStyle: WidgetStateProperty.all(const TextStyle(
-            decoration: TextDecoration.underline,
+              decoration: TextDecoration.underline,
               fontWeight: FontWeight.w600,
               fontSize: 16,
               color: AppColors.blue)),
@@ -107,5 +108,12 @@ class AppTheme {
         iconTheme:
             WidgetStateProperty.all(const IconThemeData(color: AppColors.blue)),
         indicatorColor: AppColors.blue[AppColors.colorCode10],
-      ));
+      ),
+      checkboxTheme: const CheckboxThemeData(
+        // fillColor: WidgetStatePropertyAll(AppColors.blue),
+        checkColor: WidgetStatePropertyAll(AppColors.white),
+        side: BorderSide(color: AppColors.blue),
+        overlayColor: WidgetStatePropertyAll(AppColors.blue),
+      )
+  );
 }
