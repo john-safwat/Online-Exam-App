@@ -5,11 +5,12 @@ import 'package:online_exam_app/presentation/signup/signup_contract.dart';
 import 'package:online_exam_app/presentation/signup/signup_view_model.dart';
 
 class SignupForm extends StatelessWidget {
-  const SignupForm({super.key});
+  late SignupViewModel viewModel;
+  SignupForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var viewModel = BlocProvider.of<SignupViewModel>(context);
+    viewModel = BlocProvider.of<SignupViewModel>(context);
     return Form(
       onChanged: () => viewModel.doIntent(FormDataChangedAction()),
       key: viewModel.formKey,

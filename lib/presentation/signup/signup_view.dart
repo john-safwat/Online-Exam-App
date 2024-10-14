@@ -78,7 +78,7 @@ class _SignupViewState extends BaseState<SignupView, SignupViewModel> {
           appBar: AppBar(
             title: Text(viewModel.locale!.signup),
           ),
-          body: const SignupForm(),
+          body: SignupForm(),
         ),
       ),
     );

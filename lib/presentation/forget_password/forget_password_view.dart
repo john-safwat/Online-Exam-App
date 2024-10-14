@@ -1,52 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/core/base/base_view.dart';
-import 'package:online_exam_app/core/constants/routes.dart';
 import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/core/utils/app_dialogs.dart';
-import 'package:online_exam_app/presentation/login/login_contract.dart';
-import 'package:online_exam_app/presentation/login/login_view_model.dart';
-import 'package:online_exam_app/presentation/login/widget/login_form.dart';
+import 'package:online_exam_app/presentation/forget_password/Widgets/forget_password_form.dart';
+import 'package:online_exam_app/presentation/forget_password/forget_password_contract.dart';
+import 'package:online_exam_app/presentation/forget_password/forget_password_view_model.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class ForgetPasswordView extends StatefulWidget {
+  const ForgetPasswordView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<ForgetPasswordView> createState() => _ForgetPasswordViewState();
 }
 
-class _LoginViewState extends BaseState<LoginView, LoginViewModel> {
+class _ForgetPasswordViewState
+    extends BaseState<ForgetPasswordView, ForgetPasswordViewModel> {
   @override
   Widget build(BuildContext context) {
     super.build(context);
     return BlocProvider(
       create: (context) => viewModel,
-      child: BlocConsumer<LoginViewModel, LoginViewState>(
+      child: BlocConsumer<ForgetPasswordViewModel, ForgetPasswordViewState>(
         listener: (context, state) {
-          if (state is LoginLoadingState) {
+          if (state is ForgetPasswordLoadingState) {
             AppDialogs.showLoading(
                 message: viewModel.locale!.loading, context: context);
           }
-          if (state is LoginSuccessState) {
+          if (state is ForgetPasswordSuccessState) {
             AppDialogs.showSuccessDialog(
-                message: viewModel.locale!.loggedInSuccessfully,
+                message: viewModel.locale!.otpSentToYourEmail,
                 context: context,
                 posActionTitle: viewModel.locale!.ok,
                 posAction: () {
-                  viewModel.doIntent(NavigateToHomeScreeAction());
+                  viewModel.doIntent(NavigateToOtpScreenAction());
                 });
           }
-          if(state is NavigateToSignUpScreeState){
-            Navigator.pushNamed(context, Routes.signupRoute);
-          }
-          if (state is LoginFailState) {
+          if (state is ForgetPasswordFailState) {
             AppDialogs.showFailDialog(
               message: state.message,
               context: context,
               posActionTitle: viewModel.locale!.ok,
             );
           }
-          if (state is InvalidCredentialsState) {
+          if (state is InvalidEmailState) {
             AppDialogs.showFailDialog(
               message: viewModel.locale!.invalidCredentials,
               context: context,
@@ -56,25 +53,19 @@ class _LoginViewState extends BaseState<LoginView, LoginViewModel> {
           if (state is HideLoadingState) {
             Navigator.pop(context);
           }
-          if (state is NavigateToHomeScreeState) {
-            Navigator.pushReplacementNamed(context, Routes.homeRoute);
-          }
-          if(state is NavigateToForgetPasswordScreenState){
-            Navigator.pushNamed(context, Routes.forgetPasswordRoute);
-          }
         },
         builder: (context, state) => Scaffold(
           appBar: AppBar(
-            title: Text(viewModel.locale!.login),
+            title: Text(viewModel.locale!.forgetPassword),
           ),
-          body: LoginForm(),
+          body: ForgetPasswordForm(),
         ),
       ),
     );
   }
 
   @override
-  LoginViewModel initViewModel() {
-    return getIt<LoginViewModel>();
+  ForgetPasswordViewModel initViewModel() {
+    return getIt<ForgetPasswordViewModel>();
   }
 }

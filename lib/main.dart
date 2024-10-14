@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:online_exam_app/core/providers/language_provider.dart';
 import 'package:online_exam_app/core/utils/app_initializer.dart';
+import 'package:online_exam_app/presentation/forget_password/forget_password_view.dart';
 import 'package:online_exam_app/presentation/login/login_view.dart';
 import 'package:online_exam_app/presentation/main_layout/main_view.dart';
 import 'package:online_exam_app/presentation/signup/signup_view.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         Routes.loginRoute: (context) => const LoginView(),
         Routes.homeRoute: (context) => const MainView(),
         Routes.signupRoute: (context) => const SignupView(),
+        Routes.forgetPasswordRoute: (context) => const ForgetPasswordView(),
       },
       initialRoute: Routes.loginRoute,
     );

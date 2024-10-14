@@ -60,7 +60,9 @@ class LoginForm extends StatelessWidget {
               ),
               Text(viewModel.locale!.rememberMe),
               const Spacer(),
-              TextButton(onPressed: () {},
+              TextButton(onPressed: () {
+                viewModel.doIntent(NavigateToForgetPasswordScreenAction());
+              },
                   child: Text(viewModel.locale!.forgetPassword)
               ),
             ],

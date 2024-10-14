@@ -110,7 +110,6 @@ class AppTheme {
         indicatorColor: AppColors.blue[AppColors.colorCode10],
       ),
       checkboxTheme: const CheckboxThemeData(
-        // fillColor: WidgetStatePropertyAll(AppColors.blue),
         checkColor: WidgetStatePropertyAll(AppColors.white),
         side: BorderSide(color: AppColors.blue),
         overlayColor: WidgetStatePropertyAll(AppColors.blue),

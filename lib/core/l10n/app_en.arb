@@ -50,5 +50,8 @@
   "doNotHaveAccount": "Don't Have Account?",
   "invalidCredentials" : "Email or password is not correct",
   "rememberMe" : "Remember Me",
-  "forgetPassword" : "Forget Password?"
+  "forgetPassword" : "Forget Password",
+  "otpSentToYourEmail" : "OTP sent to your email",
+  "pleaseEnterYourEmailAssociatedToYourAccount" : "Please enter your email associated to your account",
+  "sendOtp" : "Send OTP"
 }

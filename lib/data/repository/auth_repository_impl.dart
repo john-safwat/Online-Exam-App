@@ -3,6 +3,8 @@ import 'package:online_exam_app/data/datasource/contract/auth_remote_datasource.
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_response.dart';
+import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_request.dart';
+import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_user.dart';
 import 'package:online_exam_app/domain/repository/auth_repository.dart';
@@ -20,8 +22,16 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Results<AuthenticationResponse>> signIn(AuthenticationRequest auth) async{
+  Future<Results<AuthenticationResponse>> signIn(
+      AuthenticationRequest auth) async {
     var response = await _remoteDatasource.signIn(auth);
-    return response ;
+    return response;
+  }
+
+  @override
+  Future<Results<ForgetPasswordResponse>> forgetPassword(
+      ForgetPasswordRequest request) async {
+    var response = await _remoteDatasource.forgetPassword(request);
+    return response;
   }
 }

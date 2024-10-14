@@ -48,7 +48,10 @@
   "userNameAlreadyExist": "اسم المستخدم موجود مسبقاً.",
   "loggedInSuccessfully": "تم تسجيل الدخول بنجاح",
   "doNotHaveAccount": "ليس لديك حساب؟",
-  "invalidCredentials" : "البريد الإلكتروني أو كلمة المرور غير صحيحة",
-  "rememberMe" : "تذكرني",
-  "forgetPassword" : "نسيت كلمة المرور؟"
+  "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+  "rememberMe": "تذكرني",
+  "forgetPassword": "نسيت كلمة المرور",
+  "otpSentToYourEmail": "تم إرسال كلمة المرور لمرة واحدة إلى بريدك الإلكتروني",
+  "pleaseEnterYourEmailAssociatedToYourAccount": "الرجاء إدخال بريدك الإلكتروني المرتبط بحسابك",
+  "sendOtp" : "إرسال كلمة مرور لمرة واحدة"
 }
