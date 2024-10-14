@@ -3,4 +3,5 @@ class ApiConstants {
   static const String signupRoute = "auth/signup";
   static const String loginRoute = "auth/signin";
   static const String forgetPasswordRoute = "auth/forgotPassword";
+  static const String verifyResetCode = "auth/verifyResetCode";
 }
