@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:online_exam_app/core/providers/app_config_provider.dart';
 import 'package:online_exam_app/core/providers/language_provider.dart';
 import 'package:online_exam_app/core/utils/app_initializer.dart';
 import 'package:online_exam_app/presentation/login/login_view.dart';
@@ -12,14 +13,23 @@ import 'core/constants/routes.dart';
 import 'core/di/di.dart';
 import 'core/theme/app_theme.dart';
 
-void main() {
+void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   configureDependencies();
-  getIt<AppInitializer>().initialLocale();
+  await getIt<AppInitializer>().init();
   FlutterNativeSplash.remove();
-  runApp(ChangeNotifierProvider(
-      create: (context) => getIt<LanguageProvider>(), child: const MyApp()));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<LanguageProvider>(
+            create: (context) => getIt<LanguageProvider>()),
+        ChangeNotifierProvider<AppConfigProvider>(
+            create: (context) => getIt<AppConfigProvider>()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -28,6 +38,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var localProvider = Provider.of<LanguageProvider>(context);
+    var appConfigProvider = Provider.of<AppConfigProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
@@ -39,7 +50,9 @@ class MyApp extends StatelessWidget {
         Routes.homeRoute: (context) => const MainView(),
         Routes.signupRoute: (context) => const SignupView(),
       },
-      initialRoute: Routes.loginRoute,
+      initialRoute: appConfigProvider.token.isEmpty
+          ? Routes.loginRoute
+          : Routes.homeRoute,
     );
   }
 }

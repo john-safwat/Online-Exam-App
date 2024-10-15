@@ -114,6 +114,5 @@ class AppTheme {
         checkColor: WidgetStatePropertyAll(AppColors.white),
         side: BorderSide(color: AppColors.blue),
         overlayColor: WidgetStatePropertyAll(AppColors.blue),
-      )
-  );
+      ));
 }

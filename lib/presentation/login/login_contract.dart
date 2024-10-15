@@ -1,7 +1,5 @@
 sealed class LoginViewState {}
 
-
-
 class InitialLoginViewState extends LoginViewState {}
 
 class UpdateValidationState extends LoginViewState {}
@@ -20,7 +18,7 @@ class NavigateToHomeScreeState extends LoginViewState {}
 
 class NavigateToSignUpScreeState extends LoginViewState {}
 
-class RememberMeButtonState extends LoginViewState{}
+class RememberMeButtonState extends LoginViewState {}
 
 class LoginFailState extends LoginViewState {
   String message;
@@ -36,10 +34,8 @@ class FormDataChangedAction extends LoginViewAction {}
 
 class LoginAction extends LoginViewAction {}
 
-class RememberMeButtonAction extends LoginViewAction{}
+class RememberMeButtonAction extends LoginViewAction {}
 
 class NavigateToSignUpScreeAction extends LoginViewAction {}
 
 class NavigateToHomeScreeAction extends LoginViewAction {}
-
-

@@ -48,7 +48,7 @@
   "userNameAlreadyExist": "اسم المستخدم موجود مسبقاً.",
   "loggedInSuccessfully": "تم تسجيل الدخول بنجاح",
   "doNotHaveAccount": "ليس لديك حساب؟",
-  "invalidCredentials" : "البريد الإلكتروني أو كلمة المرور غير صحيحة",
-  "rememberMe" : "تذكرني",
-  "forgetPassword" : "نسيت كلمة المرور؟"
+  "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+  "rememberMe": "تذكرني",
+  "forgetPassword": "نسيت كلمة المرور؟"
 }

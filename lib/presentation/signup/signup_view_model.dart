@@ -1,15 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/core/base/base_view_model.dart';
-import 'package:online_exam_app/core/constants/constants.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_user.dart';
 import 'package:online_exam_app/domain/use_case/signup_user_use_case.dart';
 import 'package:online_exam_app/presentation/signup/signup_contract.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 @injectable
 class SignupViewModel extends BaseViewModel<SignupViewState> {
@@ -51,7 +47,7 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
         }
       case SignupConfirmAction():
         {
-          _navigateToHomeScreen();
+          _navigateToLoginScreen();
         }
       case NavigateToLoginScreenAction():
         {
@@ -153,7 +149,6 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
         case Success<RegistrationResponse>():
           {
             if (response.data?.code == null) {
-              await _storeToken(response.data?.token ?? '');
               emit(SignupSuccessState());
             } else {
               if (response.data?.code == 409) {
@@ -183,15 +178,6 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
   void _changePasswordConfirmationVisibility() {
     passwordConfirmationVisible = !passwordConfirmationVisible;
     emit(ChangePasswordVisibilityState());
-  }
-
-  Future<void> _storeToken(String token) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    await preferences.setString(Constants.tokenKey, token);
-  }
-
-  void _navigateToHomeScreen() {
-    emit(NavigateToHomeScreeState());
   }
 
   void _navigateToLoginScreen() {

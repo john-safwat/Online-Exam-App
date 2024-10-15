@@ -6,7 +6,8 @@ import 'package:online_exam_app/presentation/login/login_view_model.dart';
 
 @immutable
 class LoginForm extends StatelessWidget {
-  late LoginViewModel viewModel ;
+  late LoginViewModel viewModel;
+
   LoginForm({super.key});
 
   @override
@@ -31,8 +32,7 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: 24),
           TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) =>
-                viewModel.passwordValidation(value ?? ""),
+            validator: (value) => viewModel.passwordValidation(value ?? ""),
             keyboardType: TextInputType.visiblePassword,
             controller: viewModel.passwordController,
             obscureText: viewModel.passwordVisible,
@@ -60,16 +60,16 @@ class LoginForm extends StatelessWidget {
               ),
               Text(viewModel.locale!.rememberMe),
               const Spacer(),
-              TextButton(onPressed: () {},
-                  child: Text(viewModel.locale!.forgetPassword)
-              ),
+              TextButton(
+                  onPressed: () {},
+                  child: Text(viewModel.locale!.forgetPassword)),
             ],
           ),
           const SizedBox(height: 32),
           ElevatedButton(
               onPressed: () => viewModel.doIntent(LoginAction()),
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   backgroundColor: viewModel.valid
                       ? AppColors.blue
                       : AppColors.black[AppColors.colorCode30]),

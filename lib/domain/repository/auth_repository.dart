@@ -6,6 +6,6 @@ import 'package:online_exam_app/domain/entities/registration/registration_user.d
 
 abstract class AuthRepository {
   Future<Results<RegistrationResponse>> signup(RegistrationUser user);
-  Future<Results<AuthenticationResponse>> signIn(AuthenticationRequest auth);
 
+  Future<Results<AuthenticationResponse>> signIn(AuthenticationRequest auth);
 }
