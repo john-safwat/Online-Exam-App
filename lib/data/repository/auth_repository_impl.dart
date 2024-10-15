@@ -20,8 +20,9 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Results<AuthenticationResponse>> signIn(AuthenticationRequest auth) async{
+  Future<Results<AuthenticationResponse>> signIn(
+      AuthenticationRequest auth) async {
     var response = await _remoteDatasource.signIn(auth);
-    return response ;
+    return response;
   }
 }

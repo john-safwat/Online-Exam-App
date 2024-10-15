@@ -36,7 +36,7 @@ class _LoginViewState extends BaseState<LoginView, LoginViewModel> {
                   viewModel.doIntent(NavigateToHomeScreeAction());
                 });
           }
-          if(state is NavigateToSignUpScreeState){
+          if (state is NavigateToSignUpScreeState) {
             Navigator.pushNamed(context, Routes.signupRoute);
           }
           if (state is LoginFailState) {

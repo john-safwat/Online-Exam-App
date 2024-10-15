@@ -1,5 +1,3 @@
-
-
 class AuthenticationResponse {
   final String? message;
   final String? token;

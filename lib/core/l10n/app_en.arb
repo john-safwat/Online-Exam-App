@@ -48,7 +48,7 @@
   "userNameAlreadyExist": "User name already exist.",
   "loggedInSuccessfully": "Logged in Successfully",
   "doNotHaveAccount": "Don't Have Account?",
-  "invalidCredentials" : "Email or password is not correct",
-  "rememberMe" : "Remember Me",
-  "forgetPassword" : "Forget Password?"
+  "invalidCredentials": "Email or password is not correct",
+  "rememberMe": "Remember Me",
+  "forgetPassword": "Forget Password?"
 }
