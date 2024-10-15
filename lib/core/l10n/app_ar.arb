@@ -53,5 +53,10 @@
   "forgetPassword": "نسيت كلمة المرور",
   "otpSentToYourEmail": "تم إرسال كلمة المرور لمرة واحدة إلى بريدك الإلكتروني",
   "pleaseEnterYourEmailAssociatedToYourAccount": "الرجاء إدخال بريدك الإلكتروني المرتبط بحسابك",
-  "sendOtp" : "إرسال كلمة مرور لمرة واحدة"
+  "sendOtp" : "إرسال كلمة مرور لمرة واحدة",
+  "emailVerification" : "تأكيد البريد الالكتروني",
+  "pleaseEnterYourCodeThatSendToYourEmailAddress" : "الرجاء إدخال الرمز الخاص بك الذي سيتم إرساله إلى عنوان بريدك الإلكتروني",
+  "didNotReceiveCode" : "لم تتلق الرمز؟",
+  "resend" : "إعادة الإرسال",
+  "otpIsValid" : "كلمة المرور لمرة واحدة صحيحه"
 }

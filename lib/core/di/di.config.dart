@@ -28,6 +28,7 @@ import '../../presentation/forget_password/forget_password_view_model.dart'
     as _i596;
 import '../../presentation/login/login_view_model.dart' as _i867;
 import '../../presentation/main_layout/main_view_model.dart' as _i911;
+import '../../presentation/otp_verify/otp_verify_view_model.dart' as _i950;
 import '../../presentation/signup/signup_view_model.dart' as _i679;
 import '../providers/language_provider.dart' as _i822;
 import '../utils/app_initializer.dart' as _i348;
@@ -72,6 +73,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i499.VerifyResetPasswordUseCase(gh<_i614.AuthRepository>()));
     gh.factory<_i596.ForgetPasswordViewModel>(
         () => _i596.ForgetPasswordViewModel(gh<_i742.ForgetPasswordUseCase>()));
+    gh.factory<_i950.OtpVerifyViewModel>(
+        () => _i950.OtpVerifyViewModel(gh<_i499.VerifyResetPasswordUseCase>()));
     gh.factory<_i867.LoginViewModel>(
         () => _i867.LoginViewModel(gh<_i678.LoginUserUseCase>()));
     return this;

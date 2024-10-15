@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/core/base/base_view.dart';
+import 'package:online_exam_app/core/constants/routes.dart';
 import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/core/utils/app_dialogs.dart';
 import 'package:online_exam_app/presentation/forget_password/Widgets/forget_password_form.dart';
@@ -33,7 +34,7 @@ class _ForgetPasswordViewState
                 context: context,
                 posActionTitle: viewModel.locale!.ok,
                 posAction: () {
-                  viewModel.doIntent(NavigateToOtpScreenAction());
+                  Navigator.pushReplacementNamed(context, Routes.otpVerifyRoute);
                 });
           }
           if (state is ForgetPasswordFailState) {
