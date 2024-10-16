@@ -18,6 +18,7 @@ class OtpVerifyView extends StatefulWidget {
 class _OtpVerifyViewState extends BaseState<OtpVerifyView, OtpVerifyViewModel> {
   @override
   Widget build(BuildContext context) {
+    final email = ModalRoute.of(context)?.settings.arguments as String?;
     super.build(context);
     return BlocProvider(
       create: (context) => viewModel,
@@ -33,7 +34,8 @@ class _OtpVerifyViewState extends BaseState<OtpVerifyView, OtpVerifyViewModel> {
                 context: context,
                 posActionTitle: viewModel.locale!.ok,
                 posAction: () {
-                  Navigator.pushReplacementNamed(context, Routes.signupRoute);
+                  Navigator.pushReplacementNamed(
+                      context, Routes.resetPasswordViewRoute , arguments: email);
                 });
           }
           if (state is OtpFailState) {

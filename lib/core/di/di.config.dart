@@ -22,6 +22,7 @@ import '../../data/repository/auth_repository_impl.dart' as _i581;
 import '../../domain/repository/auth_repository.dart' as _i614;
 import '../../domain/use_case/forget_password_use_case.dart' as _i742;
 import '../../domain/use_case/login_user_use_case.dart' as _i678;
+import '../../domain/use_case/reset_password_use_case.dart' as _i16;
 import '../../domain/use_case/signup_user_use_case.dart' as _i205;
 import '../../domain/use_case/verify_reset_code_use_case.dart' as _i499;
 import '../../presentation/forget_password/forget_password_view_model.dart'
@@ -29,6 +30,8 @@ import '../../presentation/forget_password/forget_password_view_model.dart'
 import '../../presentation/login/login_view_model.dart' as _i867;
 import '../../presentation/main_layout/main_view_model.dart' as _i911;
 import '../../presentation/otp_verify/otp_verify_view_model.dart' as _i950;
+import '../../presentation/reset_password/reset_password_View_model.dart'
+    as _i642;
 import '../../presentation/signup/signup_view_model.dart' as _i679;
 import '../providers/language_provider.dart' as _i822;
 import '../utils/app_initializer.dart' as _i348;
@@ -71,10 +74,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i678.LoginUserUseCase(gh<_i614.AuthRepository>()));
     gh.factory<_i499.VerifyResetPasswordUseCase>(
         () => _i499.VerifyResetPasswordUseCase(gh<_i614.AuthRepository>()));
+    gh.factory<_i16.ResetPasswordUseCase>(
+        () => _i16.ResetPasswordUseCase(gh<_i614.AuthRepository>()));
     gh.factory<_i596.ForgetPasswordViewModel>(
         () => _i596.ForgetPasswordViewModel(gh<_i742.ForgetPasswordUseCase>()));
     gh.factory<_i950.OtpVerifyViewModel>(
         () => _i950.OtpVerifyViewModel(gh<_i499.VerifyResetPasswordUseCase>()));
+    gh.factory<_i642.ResetPasswordViewModel>(
+        () => _i642.ResetPasswordViewModel(gh<_i16.ResetPasswordUseCase>()));
     gh.factory<_i867.LoginViewModel>(
         () => _i867.LoginViewModel(gh<_i678.LoginUserUseCase>()));
     return this;

@@ -58,5 +58,9 @@
   "pleaseEnterYourCodeThatSendToYourEmailAddress" : "الرجاء إدخال الرمز الخاص بك الذي سيتم إرساله إلى عنوان بريدك الإلكتروني",
   "didNotReceiveCode" : "لم تتلق الرمز؟",
   "resend" : "إعادة الإرسال",
-  "otpIsValid" : "كلمة المرور لمرة واحدة صحيحه"
+  "otpIsValid" : "كلمة المرور لمرة واحدة صحيحه",
+  "resetPassword" : "إعادة تعيين كلمة المرور",
+  "passwordChangedSuccessfully" : "تم تغيير كلمة المرور بنجاح",
+  "confirm" : "تأكيد",
+  "enterNewPassword" : "أدخل كلمة المرور الجديدة"
 }

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/data/api/Auth/auth_retrofit_client.dart';
@@ -7,6 +6,7 @@ import 'package:online_exam_app/data/core/api_execution.dart';
 import 'package:online_exam_app/data/datasource/contract/auth_remote_datasource.dart';
 import 'package:online_exam_app/data/models/authentication/forget_password/request/forget_password_request_dto.dart';
 import 'package:online_exam_app/data/models/authentication/login/request/authentication_request_dto.dart';
+import 'package:online_exam_app/data/models/authentication/reset_password/request/reset_password_request_dto.dart';
 import 'package:online_exam_app/data/models/authentication/verify_reset_code/request/verify_reset_code_request_dto.dart';
 import 'package:online_exam_app/data/models/registration/request/registration_user_dto.dart';
 import 'package:online_exam_app/domain/core/results.dart';
@@ -14,6 +14,8 @@ import 'package:online_exam_app/domain/entities/authentication/authentication_re
 import 'package:online_exam_app/domain/entities/authentication/authentication_response.dart';
 import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_response.dart';
+import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_request.dart';
+import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_response.dart';
 import 'package:online_exam_app/domain/entities/authentication/verify_reset_code/verify_reset_code_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/verify_reset_code/verify_reset_code_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_response.dart';
@@ -68,6 +70,18 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
         await _apiExecution.execute<VerifyResetCodeResponse>(() async {
       var response = await _authRetrofitClint.verifyResetCode(
           VerifyResetCodeRequestDto(resetCode: verify.resetCode));
+      return response.toDomain();
+    });
+    return response;
+  }
+
+  @override
+  Future<Results<ResetPasswordResponse>> resetPassword(
+      ResetPasswordRequest request) async {
+    var response = await _apiExecution.execute<ResetPasswordResponse>(() async {
+      var response = await _authRetrofitClint.resetPassword(
+          ResetPasswordRequestDto(
+              email: request.email, newPassword: request.newPassword));
       return response.toDomain();
     });
     return response;

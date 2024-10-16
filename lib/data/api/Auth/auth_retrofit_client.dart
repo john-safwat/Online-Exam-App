@@ -5,6 +5,8 @@ import 'package:online_exam_app/data/models/authentication/forget_password/reque
 import 'package:online_exam_app/data/models/authentication/forget_password/response/forget_password_response_dto.dart';
 import 'package:online_exam_app/data/models/authentication/login/request/authentication_request_dto.dart';
 import 'package:online_exam_app/data/models/authentication/login/response/authentication_response_dto.dart';
+import 'package:online_exam_app/data/models/authentication/reset_password/request/reset_password_request_dto.dart';
+import 'package:online_exam_app/data/models/authentication/reset_password/response/reset_password_response_dto.dart';
 import 'package:online_exam_app/data/models/authentication/verify_reset_code/request/verify_reset_code_request_dto.dart';
 import 'package:online_exam_app/data/models/authentication/verify_reset_code/response/verify_reset_code_response_dto.dart';
 import 'package:online_exam_app/data/models/registration/request/registration_user_dto.dart';
@@ -34,4 +36,8 @@ abstract class AuthRetrofitClient {
   @POST(ApiConstants.verifyResetCode)
   Future<VerifyResetCodeResponseDto> verifyResetCode(
       @Body() VerifyResetCodeRequestDto verify);
+
+  @PUT(ApiConstants.resetPasswordRoute)
+  Future<ResetPasswordResponseDto> resetPassword(
+      @Body() ResetPasswordRequestDto request);
 }

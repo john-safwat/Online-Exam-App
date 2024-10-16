@@ -12,10 +12,9 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
   final VerifyResetPasswordUseCase _verifyResetPasswordUseCase;
 
   OtpVerifyViewModel(
-      this._verifyResetPasswordUseCase)
+      this._verifyResetPasswordUseCase )
       : super(InitialOtpVerifyViewState());
   final TextEditingController otpController = TextEditingController();
-
   void doIntent(OtpVerifyViewAction action) {
     switch (action) {
       case OnCompleteCodeVerifyAction():

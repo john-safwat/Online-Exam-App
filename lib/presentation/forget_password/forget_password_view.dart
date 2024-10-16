@@ -34,7 +34,9 @@ class _ForgetPasswordViewState
                 context: context,
                 posActionTitle: viewModel.locale!.ok,
                 posAction: () {
-                  Navigator.pushReplacementNamed(context, Routes.otpVerifyRoute);
+                  Navigator.pushReplacementNamed(context, Routes.otpVerifyRoute,
+                    arguments: viewModel.emailController.text
+                  );
                 });
           }
           if (state is ForgetPasswordFailState) {

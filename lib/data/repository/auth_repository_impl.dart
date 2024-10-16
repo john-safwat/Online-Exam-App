@@ -5,6 +5,8 @@ import 'package:online_exam_app/domain/entities/authentication/authentication_re
 import 'package:online_exam_app/domain/entities/authentication/authentication_response.dart';
 import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_response.dart';
+import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_request.dart';
+import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_response.dart';
 import 'package:online_exam_app/domain/entities/authentication/verify_reset_code/verify_reset_code_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/verify_reset_code/verify_reset_code_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_response.dart';
@@ -40,6 +42,12 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Results<VerifyResetCodeResponse>> verifyResetCode(VerifyResetCodeRequest request) async{
     var response = await _remoteDatasource.verifyResetCode(request);
+    return response;
+  }
+
+  @override
+  Future<Results<ResetPasswordResponse>> resetPassword(ResetPasswordRequest request) async{
+    var response = await _remoteDatasource.resetPassword(request);
     return response;
   }
 }
