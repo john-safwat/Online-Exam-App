@@ -22,9 +22,6 @@ class AuthenticationResponseDto {
     return _$AuthenticationResponseDtoToJson(this);
   }
 
-  AuthenticationResponse toDomain() => AuthenticationResponse(
-    message: message,
-    code: code,
-    token: token
-  );
+  AuthenticationResponse toDomain() =>
+      AuthenticationResponse(message: message, code: code, token: token);
 }

@@ -13,7 +13,7 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 
-import '../../data/api/Auth/auth_retrofit_client.dart' as _i294;
+import '../../data/api/auth/auth_retrofit_client.dart' as _i797;
 import '../../data/api/dio_provider.dart' as _i304;
 import '../../data/core/api_execution.dart' as _i94;
 import '../../data/datasource/contract/auth_remote_datasource.dart' as _i912;
@@ -33,6 +33,7 @@ import '../../presentation/otp_verify/otp_verify_view_model.dart' as _i950;
 import '../../presentation/reset_password/reset_password_View_model.dart'
     as _i642;
 import '../../presentation/signup/signup_view_model.dart' as _i679;
+import '../providers/app_config_provider.dart' as _i56;
 import '../providers/language_provider.dart' as _i822;
 import '../utils/app_initializer.dart' as _i348;
 
@@ -53,14 +54,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i911.MainViewModel>(() => _i911.MainViewModel());
     gh.singleton<_i822.LanguageProvider>(() => _i822.LanguageProvider());
     gh.singleton<_i94.ApiExecution>(() => _i94.ApiExecution());
+    gh.singleton<_i56.AppConfigProvider>(() => _i56.AppConfigProvider());
     gh.lazySingleton<_i361.Dio>(() => networkModule.provideDio());
-    gh.singleton<_i294.AuthRetrofitClient>(
-        () => _i294.AuthRetrofitClient(gh<_i361.Dio>()));
-    gh.singleton<_i348.AppInitializer>(
-        () => _i348.AppInitializer(gh<_i822.LanguageProvider>()));
+    gh.singleton<_i797.AuthRetrofitClient>(
+        () => _i797.AuthRetrofitClient(gh<_i361.Dio>()));
     gh.factory<_i912.AuthRemoteDatasource>(() => _i939.AuthRemoteDatasourceImpl(
-          gh<_i294.AuthRetrofitClient>(),
+          gh<_i797.AuthRetrofitClient>(),
           gh<_i94.ApiExecution>(),
+        ));
+    gh.lazySingleton<_i348.AppInitializer>(() => _i348.AppInitializer(
+          gh<_i822.LanguageProvider>(),
+          gh<_i56.AppConfigProvider>(),
         ));
     gh.factory<_i614.AuthRepository>(
         () => _i581.AuthRepositoryImpl(gh<_i912.AuthRemoteDatasource>()));

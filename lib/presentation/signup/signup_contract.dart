@@ -12,7 +12,6 @@ class SignupConfirmAction extends SignupViewAction {}
 
 class NavigateToLoginScreenAction extends SignupViewAction {}
 
-
 sealed class SignupViewState {}
 
 class InitialSignupViewState extends SignupViewState {}
@@ -40,7 +39,3 @@ class ChangePasswordVisibilityState extends SignupViewState {}
 class EmailAlreadyExistState extends SignupViewState {}
 
 class UserNameAlreadyExistState extends SignupViewState {}
-
-class NavigateToHomeScreeState extends SignupViewState {}
-
-

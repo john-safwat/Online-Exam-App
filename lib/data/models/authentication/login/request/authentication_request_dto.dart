@@ -23,6 +23,8 @@ class AuthenticationRequestDto {
     return _$AuthenticationRequestDtoToJson(this);
   }
 
-  factory AuthenticationRequestDto.fromDomain(AuthenticationRequest authentication)  => AuthenticationRequestDto(
-      email: authentication.email, password: authentication.password);
+  factory AuthenticationRequestDto.fromDomain(
+          AuthenticationRequest authentication) =>
+      AuthenticationRequestDto(
+          email: authentication.email, password: authentication.password);
 }

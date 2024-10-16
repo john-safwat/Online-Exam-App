@@ -63,4 +63,7 @@
   "passwordChangedSuccessfully" : "Password Changed Successfully",
   "confirm" : "Confirm",
   "enterNewPassword" : "Enter New Password"
+  "invalidCredentials": "Email or password is not correct",
+  "rememberMe": "Remember Me",
+  "forgetPassword": "Forget Password?"
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/core/base/base_view.dart';
-import 'package:online_exam_app/core/constants/routes.dart';
 import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/core/utils/app_dialogs.dart';
 import 'package:online_exam_app/presentation/signup/signup_contract.dart';
@@ -67,9 +66,6 @@ class _SignupViewState extends BaseState<SignupView, SignupViewModel> {
           if (state is HideLoadingState) {
             Navigator.pop(context);
           }
-          if (state is NavigateToHomeScreeState) {
-            Navigator.pushReplacementNamed(context, Routes.homeRoute);
-          }
           if (state is NavigateToLoginScreenState) {
             Navigator.pop(context);
           }
@@ -78,7 +74,7 @@ class _SignupViewState extends BaseState<SignupView, SignupViewModel> {
           appBar: AppBar(
             title: Text(viewModel.locale!.signup),
           ),
-          body: SignupForm(),
+          body: SignupForm(viewModel),
         ),
       ),
     );

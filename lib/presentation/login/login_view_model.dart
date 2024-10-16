@@ -21,6 +21,7 @@ class LoginViewModel extends BaseViewModel<LoginViewState> {
   bool valid = false;
   bool passwordVisible = true;
   bool isRememberMeChecked = false;
+
   String? emailValidation(String input) {
     if (input.isEmpty) {
       return locale!.emailCantBeEmpty;
@@ -86,8 +87,8 @@ class LoginViewModel extends BaseViewModel<LoginViewState> {
         case Success<AuthenticationResponse>():
           {
             if (response.data!.token != null) {
-              if(isRememberMeChecked){
-                await _storeToken(response.data!.token??"");
+              if (isRememberMeChecked) {
+                await _storeToken(response.data!.token ?? "");
               }
               emit(LoginSuccessState());
             } else {
@@ -130,6 +131,7 @@ class LoginViewModel extends BaseViewModel<LoginViewState> {
   void _navigateToSignUpScreen() {
     emit(NavigateToSignUpScreeState());
   }
+
   void _changeRememberMeButton() {
     isRememberMeChecked = !isRememberMeChecked;
     emit(RememberMeButtonState());

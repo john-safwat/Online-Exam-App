@@ -5,8 +5,9 @@ import 'package:online_exam_app/presentation/signup/signup_contract.dart';
 import 'package:online_exam_app/presentation/signup/signup_view_model.dart';
 
 class SignupForm extends StatelessWidget {
-  late SignupViewModel viewModel;
-  SignupForm({super.key});
+  SignupViewModel viewModel;
+
+  SignupForm(this.viewModel, {super.key});
 
   @override
   Widget build(BuildContext context) {
