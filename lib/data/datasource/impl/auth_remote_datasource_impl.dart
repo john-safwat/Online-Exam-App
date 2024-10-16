@@ -43,7 +43,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       AuthenticationRequest auth) async {
     var response =
         await _apiExecution.execute<AuthenticationResponse>(() async {
-      var response = await _authRetrofitClint
+      var response = await _authRetrofitClient
           .signIn(AuthenticationRequestDto.fromDomain(auth));
       return response.toDomain();
     });
@@ -55,7 +55,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       ForgetPasswordRequest forgetPassword) async {
     var response =
         await _apiExecution.execute<ForgetPasswordResponse>(() async {
-      var response = await _authRetrofitClint.forgetPassword(
+      var response = await _authRetrofitClient.forgetPassword(
           ForgetPasswordRequestDto(email: forgetPassword.email));
       return response.toDomain();
     });
@@ -67,7 +67,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       VerifyResetCodeRequest verify) async {
     var response =
         await _apiExecution.execute<VerifyResetCodeResponse>(() async {
-      var response = await _authRetrofitClint.verifyResetCode(
+      var response = await _authRetrofitClient.verifyResetCode(
           VerifyResetCodeRequestDto(resetCode: verify.resetCode));
       return response.toDomain();
     });
@@ -78,7 +78,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   Future<Results<ResetPasswordResponse>> resetPassword(
       ResetPasswordRequest request) async {
     var response = await _apiExecution.execute<ResetPasswordResponse>(() async {
-      var response = await _authRetrofitClint.resetPassword(
+      var response = await _authRetrofitClient.resetPassword(
           ResetPasswordRequestDto(
               email: request.email, newPassword: request.newPassword));
       return response.toDomain();

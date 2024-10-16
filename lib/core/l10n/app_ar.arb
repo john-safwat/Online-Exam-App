@@ -63,7 +63,4 @@
   "passwordChangedSuccessfully" : "تم تغيير كلمة المرور بنجاح",
   "confirm" : "تأكيد",
   "enterNewPassword" : "أدخل كلمة المرور الجديدة"
-  "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
-  "rememberMe": "تذكرني",
-  "forgetPassword": "نسيت كلمة المرور؟"
 }
