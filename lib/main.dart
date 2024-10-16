@@ -4,8 +4,11 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:online_exam_app/core/providers/app_config_provider.dart';
 import 'package:online_exam_app/core/providers/language_provider.dart';
 import 'package:online_exam_app/core/utils/app_initializer.dart';
+import 'package:online_exam_app/presentation/forget_password/forget_password_view.dart';
 import 'package:online_exam_app/presentation/login/login_view.dart';
 import 'package:online_exam_app/presentation/main_layout/main_view.dart';
+import 'package:online_exam_app/presentation/otp_verify/otp_verify_view.dart';
+import 'package:online_exam_app/presentation/reset_password/reset_password_view.dart';
 import 'package:online_exam_app/presentation/signup/signup_view.dart';
 import 'package:provider/provider.dart';
 
@@ -49,10 +52,11 @@ class MyApp extends StatelessWidget {
         Routes.loginRoute: (context) => const LoginView(),
         Routes.homeRoute: (context) => const MainView(),
         Routes.signupRoute: (context) => const SignupView(),
+        Routes.forgetPasswordRoute: (context) => const ForgetPasswordView(),
+        Routes.otpVerifyRoute: (context) => const OtpVerifyView(),
+        Routes.resetPasswordViewRoute: (context) => const ResetPasswordView()
       },
-      initialRoute: appConfigProvider.token.isEmpty
-          ? Routes.loginRoute
-          : Routes.homeRoute,
+      initialRoute: Routes.otpVerifyRoute,
     );
   }
 }

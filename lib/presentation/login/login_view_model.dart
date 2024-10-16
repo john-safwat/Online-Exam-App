@@ -72,6 +72,8 @@ class LoginViewModel extends BaseViewModel<LoginViewState> {
         }
       case NavigateToHomeScreeAction():
         _navigateToHomeScreen();
+      case NavigateToForgetPasswordScreenAction():
+        _navigateToForgetPasswordScreen();
     }
   }
 
@@ -133,5 +135,9 @@ class LoginViewModel extends BaseViewModel<LoginViewState> {
   void _changeRememberMeButton() {
     isRememberMeChecked = !isRememberMeChecked;
     emit(RememberMeButtonState());
+  }
+
+  void _navigateToForgetPasswordScreen() {
+    emit(NavigateToForgetPasswordScreenState());
   }
 }

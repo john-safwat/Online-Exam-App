@@ -3,6 +3,11 @@ import 'package:online_exam_app/data/datasource/contract/auth_remote_datasource.
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_response.dart';
+import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_response.dart';
+import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_request.dart';
+import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_response.dart';
+import 'package:online_exam_app/domain/entities/authentication/verify_reset_code/verify_reset_code_request.dart';
+import 'package:online_exam_app/domain/entities/authentication/verify_reset_code/verify_reset_code_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_user.dart';
 import 'package:online_exam_app/domain/repository/auth_repository.dart';
@@ -23,6 +28,25 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Results<AuthenticationResponse>> signIn(
       AuthenticationRequest auth) async {
     var response = await _remoteDatasource.signIn(auth);
+    return response;
+  }
+
+  @override
+  Future<Results<ForgetPasswordResponse>> forgetPassword(
+      String email) async {
+    var response = await _remoteDatasource.forgetPassword(email);
+    return response;
+  }
+
+  @override
+  Future<Results<VerifyResetCodeResponse>> verifyResetCode(String resetCode) async{
+    var response = await _remoteDatasource.verifyResetCode(resetCode);
+    return response;
+  }
+
+  @override
+  Future<Results<ResetPasswordResponse>> resetPassword(ResetPasswordRequest request) async{
+    var response = await _remoteDatasource.resetPassword(request);
     return response;
   }
 }

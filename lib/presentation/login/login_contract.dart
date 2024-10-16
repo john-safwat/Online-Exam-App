@@ -25,6 +25,7 @@ class LoginFailState extends LoginViewState {
 
   LoginFailState(this.message);
 }
+class NavigateToForgetPasswordScreenState extends LoginViewState{}
 
 sealed class LoginViewAction {}
 
@@ -39,3 +40,4 @@ class RememberMeButtonAction extends LoginViewAction {}
 class NavigateToSignUpScreeAction extends LoginViewAction {}
 
 class NavigateToHomeScreeAction extends LoginViewAction {}
+class NavigateToForgetPasswordScreenAction extends LoginViewAction {}

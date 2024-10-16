@@ -20,10 +20,18 @@ import '../../data/datasource/contract/auth_remote_datasource.dart' as _i912;
 import '../../data/datasource/impl/auth_remote_datasource_impl.dart' as _i939;
 import '../../data/repository/auth_repository_impl.dart' as _i581;
 import '../../domain/repository/auth_repository.dart' as _i614;
+import '../../domain/use_case/forget_password_use_case.dart' as _i742;
 import '../../domain/use_case/login_user_use_case.dart' as _i678;
+import '../../domain/use_case/reset_password_use_case.dart' as _i16;
 import '../../domain/use_case/signup_user_use_case.dart' as _i205;
+import '../../domain/use_case/verify_reset_code_use_case.dart' as _i499;
+import '../../presentation/forget_password/forget_password_view_model.dart'
+    as _i596;
 import '../../presentation/login/login_view_model.dart' as _i867;
 import '../../presentation/main_layout/main_view_model.dart' as _i911;
+import '../../presentation/otp_verify/otp_verify_view_model.dart' as _i950;
+import '../../presentation/reset_password/reset_password_View_model.dart'
+    as _i642;
 import '../../presentation/signup/signup_view_model.dart' as _i679;
 import '../providers/app_config_provider.dart' as _i56;
 import '../providers/language_provider.dart' as _i822;
@@ -60,12 +68,24 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i614.AuthRepository>(
         () => _i581.AuthRepositoryImpl(gh<_i912.AuthRemoteDatasource>()));
+    gh.factory<_i742.ForgetPasswordUseCase>(
+        () => _i742.ForgetPasswordUseCase(gh<_i614.AuthRepository>()));
     gh.factory<_i205.SignupUserUseCase>(
         () => _i205.SignupUserUseCase(gh<_i614.AuthRepository>()));
     gh.factory<_i679.SignupViewModel>(
         () => _i679.SignupViewModel(gh<_i205.SignupUserUseCase>()));
     gh.factory<_i678.LoginUserUseCase>(
         () => _i678.LoginUserUseCase(gh<_i614.AuthRepository>()));
+    gh.factory<_i499.VerifyResetPasswordUseCase>(
+        () => _i499.VerifyResetPasswordUseCase(gh<_i614.AuthRepository>()));
+    gh.factory<_i16.ResetPasswordUseCase>(
+        () => _i16.ResetPasswordUseCase(gh<_i614.AuthRepository>()));
+    gh.factory<_i596.ForgetPasswordViewModel>(
+        () => _i596.ForgetPasswordViewModel(gh<_i742.ForgetPasswordUseCase>()));
+    gh.factory<_i950.OtpVerifyViewModel>(
+        () => _i950.OtpVerifyViewModel(gh<_i499.VerifyResetPasswordUseCase>()));
+    gh.factory<_i642.ResetPasswordViewModel>(
+        () => _i642.ResetPasswordViewModel(gh<_i16.ResetPasswordUseCase>()));
     gh.factory<_i867.LoginViewModel>(
         () => _i867.LoginViewModel(gh<_i678.LoginUserUseCase>()));
     return this;
