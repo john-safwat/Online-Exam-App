@@ -23,6 +23,7 @@ class ResetPasswordViewModel extends BaseViewModel<ResetPasswordViewState> {
   bool passwordVisible = true;
   bool passwordConfirmationVisible = true;
   String? email = "";
+
   void doIntent(ResetPasswordViewAction action) {
     switch (action) {
       case NavigateToLoginScreenAction():
@@ -82,8 +83,8 @@ class ResetPasswordViewModel extends BaseViewModel<ResetPasswordViewState> {
   void _resetPassword() async {
     if (formKey.currentState!.validate()) {
       emit(ResetPasswordViewLoadingState());
-      var response = await _resetPasswordUseCase
-          .call(ResetPasswordRequest(email: email,newPassword: passwordController.text));
+      var response = await _resetPasswordUseCase(ResetPasswordRequest(
+          email: email, newPassword: passwordController.text));
       emit(HideLoadingState());
       switch (response) {
         case Success<ResetPasswordResponse>():

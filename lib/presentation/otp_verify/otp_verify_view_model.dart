@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/core/base/base_view_model.dart';
 import 'package:online_exam_app/domain/core/results.dart';
-import 'package:online_exam_app/domain/entities/authentication/verify_reset_code/verify_reset_code_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/verify_reset_code/verify_reset_code_response.dart';
 import 'package:online_exam_app/domain/use_case/verify_reset_code_use_case.dart';
 import 'package:online_exam_app/presentation/otp_verify/otp_verify_contract.dart';
@@ -11,10 +10,11 @@ import 'package:online_exam_app/presentation/otp_verify/otp_verify_contract.dart
 class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
   final VerifyResetPasswordUseCase _verifyResetPasswordUseCase;
 
-  OtpVerifyViewModel(
-      this._verifyResetPasswordUseCase )
+  OtpVerifyViewModel(this._verifyResetPasswordUseCase)
       : super(InitialOtpVerifyViewState());
   final TextEditingController otpController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   void doIntent(OtpVerifyViewAction action) {
     switch (action) {
       case OnCompleteCodeVerifyAction():
@@ -30,6 +30,8 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
         {
           _resendOtp();
         }
+      case FormDataChangedAction():
+
     }
   }
 
@@ -39,8 +41,8 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
 
   void _otpVerify() async {
     emit(OtpVerifyLoadingState());
-    var response = await _verifyResetPasswordUseCase
-        .call(VerifyResetCodeRequest(resetCode: otpController.text));
+    var response =
+        await _verifyResetPasswordUseCase(resetCode: otpController.text);
     emit(HideLoadingState());
     switch (response) {
       case Success<VerifyResetCodeResponse>():

@@ -20,6 +20,9 @@ class OtpFailState extends OtpVerifyViewState {
 
 class OtpResendState extends OtpVerifyViewState {}
 
+class UpdateValidationState extends OtpVerifyViewState {}
+
+
 sealed class OtpVerifyViewAction {}
 
 class OnCompleteCodeVerifyAction extends OtpVerifyViewAction {}
@@ -27,3 +30,6 @@ class OnCompleteCodeVerifyAction extends OtpVerifyViewAction {}
 class NavigateToResetPasswordScreenAction extends OtpVerifyViewAction {}
 
 class OtpResendAction extends OtpVerifyViewAction {}
+
+class FormDataChangedAction extends OtpVerifyViewAction {}
+

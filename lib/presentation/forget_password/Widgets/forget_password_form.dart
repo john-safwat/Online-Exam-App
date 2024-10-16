@@ -5,38 +5,42 @@ import 'package:online_exam_app/core/theme/app_theme.dart';
 import 'package:online_exam_app/presentation/forget_password/forget_password_contract.dart';
 import 'package:online_exam_app/presentation/forget_password/forget_password_view_model.dart';
 
-
 class ForgetPasswordForm extends StatelessWidget {
   late ForgetPasswordViewModel viewModel;
+
   ForgetPasswordForm({super.key});
 
   @override
   Widget build(BuildContext context) {
     viewModel = BlocProvider.of<ForgetPasswordViewModel>(context);
     return Form(
-      onChanged: () => viewModel.doIntent(FormDataChangedAction()),
-      key: viewModel.formKey,
+        onChanged: () => viewModel.doIntent(FormDataChangedAction()),
+        key: viewModel.formKey,
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(viewModel.locale!.forgetPassword ,
-                  style: AppTheme.appTheme.textTheme.titleLarge!.copyWith(fontSize: 18)
-                ),
+                Text(viewModel.locale!.forgetPassword,
+                    style: AppTheme.appTheme.textTheme.titleLarge!
+                        .copyWith(fontSize: 18)),
               ],
             ),
-            const SizedBox(height: 16,),
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(viewModel.locale!.pleaseEnterYourEmailAssociatedToYourAccount ,
-                    style: AppTheme.appTheme.textTheme.titleLarge!.copyWith(fontSize: 14)
-                ),
+                Text(
+                    viewModel
+                        .locale!.pleaseEnterYourEmailAssociatedToYourAccount,
+                    style: AppTheme.appTheme.textTheme.titleLarge!
+                        .copyWith(fontSize: 14)),
               ],
             ),
-            const SizedBox(height: 16,),
+            const SizedBox(
+              height: 16,
+            ),
             TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) => viewModel.emailValidation(value ?? ""),
@@ -57,7 +61,6 @@ class ForgetPasswordForm extends StatelessWidget {
                         : AppColors.black[AppColors.colorCode30]),
                 child: Text(viewModel.locale!.sendOtp)),
           ],
-        )
-    );
+        ));
   }
 }

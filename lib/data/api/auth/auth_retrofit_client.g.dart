@@ -93,13 +93,11 @@ class _AuthRetrofitClient implements AuthRetrofitClient {
   }
 
   @override
-  Future<ForgetPasswordResponseDto> forgetPassword(
-      ForgetPasswordRequestDto forgetPassword) async {
+  Future<ForgetPasswordResponseDto> forgetPassword(String email) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(forgetPassword.toJson());
+    final _data = email;
     final _options = _setStreamType<ForgetPasswordResponseDto>(Options(
       method: 'POST',
       headers: _headers,
@@ -128,13 +126,11 @@ class _AuthRetrofitClient implements AuthRetrofitClient {
   }
 
   @override
-  Future<VerifyResetCodeResponseDto> verifyResetCode(
-      VerifyResetCodeRequestDto verify) async {
+  Future<VerifyResetCodeResponseDto> verifyResetCode(String resetCode) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(verify.toJson());
+    final _data = resetCode;
     final _options = _setStreamType<VerifyResetCodeResponseDto>(Options(
       method: 'POST',
       headers: _headers,

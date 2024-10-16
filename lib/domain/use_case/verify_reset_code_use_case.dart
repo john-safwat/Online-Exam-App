@@ -10,8 +10,8 @@ class VerifyResetPasswordUseCase{
 
   const VerifyResetPasswordUseCase(this._authRepository);
 
-  Future<Results<VerifyResetCodeResponse>> call(VerifyResetCodeRequest request)async{
-    var response = await _authRepository.verifyResetCode(request);
+  Future<Results<VerifyResetCodeResponse>> call({required String resetCode})async{
+    var response = await _authRepository.verifyResetCode(resetCode);
     return response;
   }
 }

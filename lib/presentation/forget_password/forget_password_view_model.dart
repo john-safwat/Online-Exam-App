@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/core/base/base_view_model.dart';
 import 'package:online_exam_app/domain/core/results.dart';
-import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_response.dart';
 import 'package:online_exam_app/domain/use_case/forget_password_use_case.dart';
 import 'package:online_exam_app/presentation/forget_password/forget_password_contract.dart';
@@ -51,8 +50,7 @@ class ForgetPasswordViewModel extends BaseViewModel<ForgetPasswordViewState> {
   void _forgetPassword() async {
     if (formKey.currentState!.validate()) {
       emit(ForgetPasswordLoadingState());
-      var response = await _forgetPasswordUseCase
-          .call(ForgetPasswordRequest(email: emailController.text));
+      var response = await _forgetPasswordUseCase(email: emailController.text);
       emit(HideLoadingState());
       switch (response) {
         case Success<ForgetPasswordResponse>():
@@ -60,8 +58,10 @@ class ForgetPasswordViewModel extends BaseViewModel<ForgetPasswordViewState> {
             emit(ForgetPasswordSuccessState());
           }
         case Failure<ForgetPasswordResponse>():
-          emit(ForgetPasswordFailState(
-              mapExceptionToMessage(response.exception)));
+          {
+            emit(ForgetPasswordFailState(
+                mapExceptionToMessage(response.exception)));
+          }
       }
     }
   }

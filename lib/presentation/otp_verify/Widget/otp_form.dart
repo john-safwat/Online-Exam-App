@@ -1,86 +1,187 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/core/assets/app_colors.dart';
 import 'package:online_exam_app/core/theme/app_theme.dart';
-import 'package:online_exam_app/presentation/otp_verify/otp_verify_contract.dart';
 import 'package:online_exam_app/presentation/otp_verify/otp_verify_view_model.dart';
-import 'package:pinput/pinput.dart';
 
 class OtpForm extends StatelessWidget {
   late OtpVerifyViewModel viewModel;
-  final defaultPinTheme = PinTheme(
-    width: 65,
-    height: 65,
-    textStyle: const TextStyle(fontSize: 20, color: Colors.black),
-    decoration: BoxDecoration(
-      color: Color(AppColors.lightGreen.value),
-      border: Border.all(color: Color(AppColors.black.value)),
-      borderRadius: BorderRadius.circular(25),
-    ),
-  );
 
   OtpForm({super.key});
 
   @override
   Widget build(BuildContext context) {
     viewModel = BlocProvider.of<OtpVerifyViewModel>(context);
-    return ListView(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
+    return Form(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      key: viewModel.formKey,
+      child: ListView(
+        padding: const EdgeInsets.all(14),
+        children: [
+          Text(
+              textAlign: TextAlign.center,
               viewModel.locale!.emailVerification,
-              style:
-                  AppTheme.appTheme.textTheme.bodyLarge!.copyWith(fontSize: 18),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              viewModel.locale!.pleaseEnterYourCodeThatSendToYourEmailAddress,
-              style:
-                  AppTheme.appTheme.textTheme.bodyLarge!.copyWith(fontSize: 14),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        Pinput(
-          controller: viewModel.otpController,
-          length: 6,
-          defaultPinTheme: defaultPinTheme,
-          focusedPinTheme: defaultPinTheme.copyWith(
-            decoration: defaultPinTheme.decoration!
-                .copyWith(border: Border.all(color: AppColors.green)),
+              style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(
+            height: 16,
           ),
-          onCompleted: (value) =>
-              viewModel.doIntent(OnCompleteCodeVerifyAction()),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              viewModel.locale!.didNotReceiveCode,
-              style:
-                  AppTheme.appTheme.textTheme.bodyLarge!.copyWith(fontSize: 14),
-            ),
-            TextButton(
-                onPressed: () {},
-                child: Text(
-                  viewModel.locale!.resend,
-                  style: AppTheme.appTheme.textTheme.bodyLarge!
-                      .copyWith(fontSize: 14),
-                ))
-          ],
-        ),
-      ],
+          Text(
+            textAlign: TextAlign.center,
+            viewModel.locale!.pleaseEnterYourCodeThatSendToYourEmailAddress,
+            style: Theme.of(context).textTheme.bodyLarge,
+            maxLines: 2,
+          ),
+          const SizedBox(height: 32),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                child: TextFormField(
+                  autofocus: true,
+                  onSaved: (pin1) {},
+                  onChanged: (value) {
+                    if (value.length == 1) {
+                      FocusScope.of(context).nextFocus();
+                    }
+                  },
+                  keyboardType: TextInputType.number,
+                  maxLength: 1,
+                  decoration: const InputDecoration(
+                      counterText: "",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: TextFormField(
+                  onSaved: (pin2) {},
+                  onChanged: (value) {
+                    if (value.length == 1) {
+                      FocusScope.of(context).nextFocus();
+                    } else if (value.isEmpty) {
+                      FocusScope.of(context).previousFocus();
+                    }
+                  },
+                  keyboardType: TextInputType.number,
+                  maxLength: 1,
+                  decoration: const InputDecoration(
+                      counterText: "",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: TextFormField(
+                  onSaved: (pin3) {},
+                  onChanged: (value) {
+                    if (value.length == 1) {
+                      FocusScope.of(context).nextFocus();
+                    } else if (value.isEmpty) {
+                      FocusScope.of(context).previousFocus();
+                    }
+                  },
+                  keyboardType: TextInputType.number,
+                  maxLength: 1,
+                  decoration: const InputDecoration(
+                      counterText: "",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: TextFormField(
+                  onSaved: (pin4) {},
+                  onChanged: (value) {
+                    if (value.length == 1) {
+                      FocusScope.of(context).nextFocus();
+                    } else if (value.isEmpty) {
+                      FocusScope.of(context).previousFocus();
+                    }
+                  },
+                  keyboardType: TextInputType.number,
+                  maxLength: 1,
+                  decoration: const InputDecoration(
+                      counterText: "",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: TextFormField(
+                  onSaved: (pin5) {},
+                  onChanged: (value) {
+                    if (value.length == 1) {
+                      FocusScope.of(context).nextFocus();
+                    } else if (value.isEmpty) {
+                      FocusScope.of(context).previousFocus();
+                    }
+                  },
+                  keyboardType: TextInputType.number,
+                  maxLength: 1,
+                  decoration: const InputDecoration(
+                      counterText: "",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: TextFormField(
+                  onSaved: (pin6) {},
+                  onChanged: (value) {
+                    if (value.length == 1) {
+                      FocusScope.of(context).nextFocus();
+                    } else if (value.isEmpty) {
+                      FocusScope.of(context).previousFocus();
+                    }
+                  },
+                  keyboardType: TextInputType.number,
+                  maxLength: 1,
+                  decoration: const InputDecoration(
+                      counterText: "",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                viewModel.locale!.didNotReceiveCode,
+                style: AppTheme.appTheme.textTheme.bodyLarge!
+                    .copyWith(fontSize: 14),
+              ),
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    viewModel.locale!.resend,
+                    style: AppTheme.appTheme.textTheme.bodyLarge!
+                        .copyWith(fontSize: 14),
+                  ))
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
