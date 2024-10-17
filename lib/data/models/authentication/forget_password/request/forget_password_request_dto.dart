@@ -7,7 +7,7 @@ class ForgetPasswordRequestDto {
   @JsonKey(name: "email")
   final String? email;
 
-  ForgetPasswordRequestDto ({
+  ForgetPasswordRequestDto({
     this.email,
   });
 
@@ -19,5 +19,3 @@ class ForgetPasswordRequestDto {
     return _$ForgetPasswordRequestDtoToJson(this);
   }
 }
-
-

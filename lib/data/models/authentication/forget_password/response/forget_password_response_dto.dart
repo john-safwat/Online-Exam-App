@@ -12,11 +12,7 @@ class ForgetPasswordResponseDto {
   @JsonKey(name: "code")
   final num? code;
 
-  ForgetPasswordResponseDto ({
-    this.message,
-    this.info,
-    this.code
-  });
+  ForgetPasswordResponseDto({this.message, this.info, this.code});
 
   factory ForgetPasswordResponseDto.fromJson(Map<String, dynamic> json) {
     return _$ForgetPasswordResponseDtoFromJson(json);
@@ -26,11 +22,6 @@ class ForgetPasswordResponseDto {
     return _$ForgetPasswordResponseDtoToJson(this);
   }
 
-  ForgetPasswordResponse toDomain() => ForgetPasswordResponse(
-    message: message,
-    info: info,
-    code: code?.toInt()
-  );
+  ForgetPasswordResponse toDomain() =>
+      ForgetPasswordResponse(message: message, info: info, code: code?.toInt());
 }
-
-

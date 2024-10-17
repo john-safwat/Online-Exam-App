@@ -30,7 +30,8 @@ abstract class AuthRetrofitClient {
       @Body() AuthenticationRequestDto authentication);
 
   @POST(ApiConstants.forgetPasswordRoute)
-  Future<ForgetPasswordResponseDto> forgetPassword(@Body() ForgetPasswordRequestDto request);
+  Future<ForgetPasswordResponseDto> forgetPassword(
+      @Body() ForgetPasswordRequestDto request);
 
   @POST(ApiConstants.verifyResetCode)
   Future<VerifyResetCodeResponseDto> verifyResetCode(

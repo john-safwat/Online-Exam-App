@@ -1,4 +1,3 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'verify_reset_code_request_dto.g.dart';
@@ -8,7 +7,7 @@ class VerifyResetCodeRequestDto {
   @JsonKey(name: "resetCode")
   final String? resetCode;
 
-  VerifyResetCodeRequestDto ({
+  VerifyResetCodeRequestDto({
     this.resetCode,
   });
 
@@ -20,5 +19,3 @@ class VerifyResetCodeRequestDto {
     return _$VerifyResetCodeRequestDtoToJson(this);
   }
 }
-
-

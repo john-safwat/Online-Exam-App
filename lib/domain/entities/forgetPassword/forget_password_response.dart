@@ -3,9 +3,5 @@ class ForgetPasswordResponse {
   final String? info;
   final int? code;
 
-  ForgetPasswordResponse({
-    this.message,
-    this.info,
-    this.code
-  });
+  ForgetPasswordResponse({this.message, this.info, this.code});
 }

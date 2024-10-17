@@ -13,11 +13,9 @@ abstract class AuthRemoteDatasource {
 
   Future<Results<AuthenticationResponse>> signIn(AuthenticationRequest auth);
 
-  Future<Results<ForgetPasswordResponse>> forgetPassword(
-      String email);
+  Future<Results<ForgetPasswordResponse>> forgetPassword(String email);
 
-  Future<Results<VerifyResetCodeResponse>> verifyResetCode(
-      String resetCode);
+  Future<Results<VerifyResetCodeResponse>> verifyResetCode(String resetCode);
 
   Future<Results<ResetPasswordResponse>> resetPassword(
       ResetPasswordRequest request);

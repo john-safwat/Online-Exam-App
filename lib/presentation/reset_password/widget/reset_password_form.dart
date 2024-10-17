@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/core/assets/app_colors.dart';
 import 'package:online_exam_app/core/theme/app_theme.dart';
-import 'package:online_exam_app/presentation/reset_password/reset_password_view_model.dart';
 import 'package:online_exam_app/presentation/reset_password/reset_password_contract.dart';
+import 'package:online_exam_app/presentation/reset_password/reset_password_view_model.dart';
 
 class ResetPasswordForm extends StatelessWidget {
   late ResetPasswordViewModel viewModel;
@@ -14,7 +14,7 @@ class ResetPasswordForm extends StatelessWidget {
   Widget build(BuildContext context) {
     viewModel = BlocProvider.of<ResetPasswordViewModel>(context);
     return Form(
-      onChanged: () => viewModel.doIntent(FormDataChangedAction()),
+        onChanged: () => viewModel.doIntent(FormDataChangedAction()),
         key: viewModel.formKey,
         child: ListView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -35,7 +35,8 @@ class ResetPasswordForm extends StatelessWidget {
               obscureText: viewModel.passwordVisible,
               decoration: InputDecoration(
                 suffixIcon: InkWell(
-                  onTap: () => viewModel.doIntent(ChangePasswordVisibilityAction()),
+                  onTap: () =>
+                      viewModel.doIntent(ChangePasswordVisibilityAction()),
                   child: Icon(viewModel.passwordVisible
                       ? Icons.visibility_off
                       : Icons.visibility),
@@ -55,7 +56,8 @@ class ResetPasswordForm extends StatelessWidget {
               obscureText: viewModel.passwordConfirmationVisible,
               decoration: InputDecoration(
                 suffixIcon: InkWell(
-                  onTap: () => viewModel.doIntent(ChangePasswordConfirmVisibilityAction()),
+                  onTap: () => viewModel
+                      .doIntent(ChangePasswordConfirmVisibilityAction()),
                   child: Icon(viewModel.passwordConfirmationVisible
                       ? Icons.visibility_off
                       : Icons.visibility),

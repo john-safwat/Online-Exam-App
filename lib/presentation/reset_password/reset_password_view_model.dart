@@ -83,7 +83,8 @@ class ResetPasswordViewModel extends BaseViewModel<ResetPasswordViewState> {
     if (formKey.currentState!.validate()) {
       emit(ResetPasswordViewLoadingState());
       var response = await _resetPasswordUseCase(ResetPasswordRequest(
-          email: appConfigProvider!.email, newPassword: passwordController.text));
+          email: appConfigProvider!.email,
+          newPassword: passwordController.text));
       emit(HideLoadingState());
       switch (response) {
         case Success<ResetPasswordResponse>():

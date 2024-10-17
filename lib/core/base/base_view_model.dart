@@ -22,7 +22,7 @@ class BaseViewModel<T> extends Cubit<T> {
     } else if (exception is HttpException) {
       return locale!.httpExceptionMessage;
     } else if (exception is DioException) {
-      switch (exception.type){
+      switch (exception.type) {
         case DioExceptionType.connectionTimeout:
           return locale!.dioConnectionTimeoutMessage;
         case DioExceptionType.sendTimeout:

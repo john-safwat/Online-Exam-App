@@ -59,7 +59,7 @@ class _LoginViewState extends BaseState<LoginView, LoginViewModel> {
           if (state is NavigateToHomeScreeState) {
             Navigator.pushReplacementNamed(context, Routes.homeRoute);
           }
-          if(state is NavigateToForgetPasswordScreenState){
+          if (state is NavigateToForgetPasswordScreenState) {
             Navigator.pushNamed(context, Routes.forgetPasswordRoute);
           }
         },

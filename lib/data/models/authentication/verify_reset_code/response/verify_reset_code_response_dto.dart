@@ -8,7 +8,7 @@ class VerifyResetCodeResponseDto {
   @JsonKey(name: "status")
   final String? status;
 
-  VerifyResetCodeResponseDto ({
+  VerifyResetCodeResponseDto({
     this.status,
   });
 
@@ -21,8 +21,6 @@ class VerifyResetCodeResponseDto {
   }
 
   VerifyResetCodeResponse toDomain() => VerifyResetCodeResponse(
-     status: status,
-  );
+        status: status,
+      );
 }
-
-

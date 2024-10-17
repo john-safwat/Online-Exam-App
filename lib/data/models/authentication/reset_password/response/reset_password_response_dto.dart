@@ -23,8 +23,6 @@ class ResetPasswordResponseDto {
     return _$ResetPasswordResponseDtoToJson(this);
   }
 
-  ResetPasswordResponse toDomain() => ResetPasswordResponse(
-      message: message,
-      token: token
-  );
+  ResetPasswordResponse toDomain() =>
+      ResetPasswordResponse(message: message, token: token);
 }

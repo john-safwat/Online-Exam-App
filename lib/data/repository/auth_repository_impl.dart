@@ -31,20 +31,21 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Results<ForgetPasswordResponse>> forgetPassword(
-      String email) async {
+  Future<Results<ForgetPasswordResponse>> forgetPassword(String email) async {
     var response = await _remoteDatasource.forgetPassword(email);
     return response;
   }
 
   @override
-  Future<Results<VerifyResetCodeResponse>> verifyResetCode(String resetCode) async{
+  Future<Results<VerifyResetCodeResponse>> verifyResetCode(
+      String resetCode) async {
     var response = await _remoteDatasource.verifyResetCode(resetCode);
     return response;
   }
 
   @override
-  Future<Results<ResetPasswordResponse>> resetPassword(ResetPasswordRequest request) async{
+  Future<Results<ResetPasswordResponse>> resetPassword(
+      ResetPasswordRequest request) async {
     var response = await _remoteDatasource.resetPassword(request);
     return response;
   }

@@ -71,10 +71,10 @@ class _OtpVerifyViewState extends BaseState<OtpVerifyView, OtpVerifyViewModel> {
             Navigator.pushReplacementNamed(
                 context, Routes.resetPasswordViewRoute);
           }
-          if(state is OtpPreviousFocusState){
+          if (state is OtpPreviousFocusState) {
             FocusScope.of(context).previousFocus();
           }
-          if (state is OtpNextFocusState){
+          if (state is OtpNextFocusState) {
             FocusScope.of(context).nextFocus();
           }
         },

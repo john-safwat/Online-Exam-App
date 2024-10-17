@@ -4,8 +4,8 @@ import 'package:online_exam_app/core/base/base_view.dart';
 import 'package:online_exam_app/core/constants/routes.dart';
 import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/core/utils/app_dialogs.dart';
-import 'package:online_exam_app/presentation/reset_password/reset_password_view_model.dart';
 import 'package:online_exam_app/presentation/reset_password/reset_password_contract.dart';
+import 'package:online_exam_app/presentation/reset_password/reset_password_view_model.dart';
 import 'package:online_exam_app/presentation/reset_password/widget/reset_password_form.dart';
 
 class ResetPasswordView extends StatefulWidget {

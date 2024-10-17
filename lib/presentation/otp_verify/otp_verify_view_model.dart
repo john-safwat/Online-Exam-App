@@ -94,7 +94,7 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
   }
 
   void _otpVerify() async {
-    if(valid){
+    if (valid) {
       emit(OtpVerifyLoadingState());
       otpMessage = opts.join();
       var response = await _verifyResetPasswordUseCase(resetCode: otpMessage);
@@ -109,9 +109,9 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
             emit(OtpFailState(mapExceptionToMessage(response.exception)));
           }
       }
-    }else {
-      if(time == 0){
-        emit( OtpFailState(locale!.timeoutExceptionMessage));
+    } else {
+      if (time == 0) {
+        emit(OtpFailState(locale!.timeoutExceptionMessage));
       }
     }
   }
@@ -154,8 +154,7 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
         opts[2].isEmpty ||
         opts[3].isEmpty ||
         opts[4].isEmpty ||
-        opts[5].isEmpty
-    ) {
+        opts[5].isEmpty) {
       valid = false;
     } else if (time == 0) {
       valid = false;
