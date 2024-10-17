@@ -4,7 +4,7 @@ import 'package:online_exam_app/core/base/base_view.dart';
 import 'package:online_exam_app/core/constants/routes.dart';
 import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/core/utils/app_dialogs.dart';
-import 'package:online_exam_app/presentation/reset_password/reset_password_View_model.dart';
+import 'package:online_exam_app/presentation/reset_password/reset_password_view_model.dart';
 import 'package:online_exam_app/presentation/reset_password/reset_password_contract.dart';
 import 'package:online_exam_app/presentation/reset_password/widget/reset_password_form.dart';
 
@@ -19,7 +19,6 @@ class _ResetPasswordViewState
     extends BaseState<ResetPasswordView, ResetPasswordViewModel> {
   @override
   Widget build(BuildContext context) {
-    viewModel.email = ModalRoute.of(context)?.settings.arguments as String?;
     super.build(context);
     return BlocProvider(
       create: (context) => viewModel,
@@ -44,12 +43,13 @@ class _ResetPasswordViewState
           }
           if (state is ResetPasswordSuccessState) {
             AppDialogs.showSuccessDialog(
-                message: viewModel.locale!.passwordChangedSuccessfully,
-                context: context,
-                posActionTitle: viewModel.locale!.ok,
-                posAction: () {
-                  viewModel.doIntent(NavigateToLoginScreenAction());
-                });
+              message: viewModel.locale!.passwordChangedSuccessfully,
+              context: context,
+              posActionTitle: viewModel.locale!.ok,
+              posAction: () {
+                viewModel.doIntent(NavigateToLoginScreenAction());
+              },
+            );
           }
         },
         builder: (context, state) => Scaffold(

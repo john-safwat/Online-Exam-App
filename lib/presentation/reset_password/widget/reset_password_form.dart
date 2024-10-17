@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/core/assets/app_colors.dart';
 import 'package:online_exam_app/core/theme/app_theme.dart';
-import 'package:online_exam_app/presentation/reset_password/reset_password_View_model.dart';
+import 'package:online_exam_app/presentation/reset_password/reset_password_view_model.dart';
 import 'package:online_exam_app/presentation/reset_password/reset_password_contract.dart';
 
 class ResetPasswordForm extends StatelessWidget {

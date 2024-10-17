@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/core/base/base_view_model.dart';
 import 'package:online_exam_app/domain/core/results.dart';
-import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_response.dart';
+import 'package:online_exam_app/domain/entities/forgetPassword/forget_password_response.dart';
 import 'package:online_exam_app/domain/use_case/forget_password_use_case.dart';
 import 'package:online_exam_app/presentation/forget_password/forget_password_contract.dart';
 
@@ -78,6 +78,7 @@ class ForgetPasswordViewModel extends BaseViewModel<ForgetPasswordViewState> {
   }
 
   void _navigateToOtpScreen() {
+    appConfigProvider!.email = emailController.text;
     emit(NavigateToOtpScreenState());
   }
 }

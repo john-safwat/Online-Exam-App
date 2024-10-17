@@ -9,11 +9,16 @@
   "formatExceptionMessage": "There was an issue with the data received from the server. Please try again later or contact our support team.",
   "ioExceptionMessage": "There was a problem with the network connection.",
   "dioConnectTimeoutMessage": "We're having trouble connecting to the server. Please try again later or check your internet connection.",
-  "dioReceiveTimeoutMessage": "The server is taking too long to respond. Please try again later or check your internet connection.",
-  "dioSendTimeoutMessage": "There was a problem sending your request. Please try again later or check your internet connection.",
-  "dioCancelMessage": "Your request was canceled. Please try again.",
   "dioResponseMessage": "The server returned an unexpected response. Please try again later or contact our support team.",
   "dioDefaultMessage": "An error occurred. Please try again later or contact our support team.",
+  "dioConnectionTimeoutMessage": "The connection to the server timed out. Please check your internet connection or try again later.",
+  "dioSendTimeoutMessage": "The request timed out while sending data. Please check your internet connection or try again later.",
+  "dioReceiveTimeoutMessage": "The request timed out while waiting for a response from the server. Please check your internet connection or try again later.",
+  "dioBadCertificateMessage": "The server's security certificate is not trusted. Please ensure you're using a secure connection or contact our support team.",
+  "dioBadResponseMessage": "Unauthorized access. Please check your credentials or log in again.",
+  "dioCancelMessage": "The request was cancelled. Please try again or contact our support team if the issue persists.",
+  "dioConnectionErrorMessage": "There was a connection error. Please check your internet connection or try again later.",
+  "dioUnknownMessage": "An unknown error occurred. Please try again later or contact our support team.",
   "signup": "Sign Up",
   "userName": "User Name",
   "enterYouUserName": "Enter Your User Name",
@@ -62,5 +67,6 @@
   "resetPassword" : "Reset Password",
   "passwordChangedSuccessfully" : "Password Changed Successfully",
   "confirm" : "Confirm",
-  "enterNewPassword" : "Enter New Password"
+  "enterNewPassword" : "Enter New Password",
+  "validFor" : "Valid For : "
 }

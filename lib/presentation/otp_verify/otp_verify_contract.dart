@@ -10,6 +10,8 @@ class HideLoadingState extends OtpVerifyViewState {}
 
 class NavigateToResetPasswordScreenState extends OtpVerifyViewState {}
 
+class UpdateTimerState extends OtpVerifyViewState {}
+
 class OtpSuccessState extends OtpVerifyViewState {}
 
 class OtpFailState extends OtpVerifyViewState {
@@ -18,10 +20,21 @@ class OtpFailState extends OtpVerifyViewState {
   OtpFailState(this.message);
 }
 
-class OtpResendState extends OtpVerifyViewState {}
+class OtpResendLoadingState extends OtpVerifyViewState {}
+
+class OtpResendLoadingSuccessState extends OtpVerifyViewState {}
+
+class OtpResendLoadingFailState extends OtpVerifyViewState {
+  String message;
+
+  OtpResendLoadingFailState(this.message);
+}
+
+class OtpNextFocusState extends OtpVerifyViewState {}
+
+class OtpPreviousFocusState extends OtpVerifyViewState {}
 
 class UpdateValidationState extends OtpVerifyViewState {}
-
 
 sealed class OtpVerifyViewAction {}
 
@@ -33,3 +46,11 @@ class OtpResendAction extends OtpVerifyViewAction {}
 
 class FormDataChangedAction extends OtpVerifyViewAction {}
 
+class EnterOtpNumberAction extends OtpVerifyViewAction {
+  String otpNumber;
+  int index;
+
+  EnterOtpNumberAction(this.otpNumber, this.index);
+}
+
+class DisableTimerAction extends OtpVerifyViewAction {}
