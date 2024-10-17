@@ -9,7 +9,7 @@ class ResetPasswordRequestDto {
   @JsonKey(name: "newPassword")
   final String? newPassword;
 
-  ResetPasswordRequestDto ({
+  ResetPasswordRequestDto({
     this.email,
     this.newPassword,
   });
@@ -22,5 +22,3 @@ class ResetPasswordRequestDto {
     return _$ResetPasswordRequestDtoToJson(this);
   }
 }
-
-

@@ -56,7 +56,9 @@ class MyApp extends StatelessWidget {
         Routes.otpVerifyRoute: (context) => const OtpVerifyView(),
         Routes.resetPasswordViewRoute: (context) => const ResetPasswordView()
       },
-      initialRoute: Routes.otpVerifyRoute,
+      initialRoute: appConfigProvider.token.isEmpty
+          ? Routes.loginRoute
+          : Routes.homeRoute,
     );
   }
 }

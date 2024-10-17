@@ -4,18 +4,20 @@ import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/data/api/auth/auth_retrofit_client.dart';
 import 'package:online_exam_app/data/core/api_execution.dart';
 import 'package:online_exam_app/data/datasource/contract/auth_remote_datasource.dart';
+import 'package:online_exam_app/data/models/authentication/forget_password/request/forget_password_request_dto.dart';
 import 'package:online_exam_app/data/models/authentication/login/request/authentication_request_dto.dart';
 import 'package:online_exam_app/data/models/authentication/reset_password/request/reset_password_request_dto.dart';
+import 'package:online_exam_app/data/models/authentication/verify_reset_code/request/verify_reset_code_request_dto.dart';
 import 'package:online_exam_app/data/models/registration/request/registration_user_dto.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_response.dart';
-import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_response.dart';
-import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_request.dart';
-import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_response.dart';
-import 'package:online_exam_app/domain/entities/authentication/verify_reset_code/verify_reset_code_response.dart';
+import 'package:online_exam_app/domain/entities/forgetPassword/forget_password_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_user.dart';
+import 'package:online_exam_app/domain/entities/reset_password/reset_password_request.dart';
+import 'package:online_exam_app/domain/entities/reset_password/reset_password_response.dart';
+import 'package:online_exam_app/domain/entities/verify_reset_code/verify_reset_code_response.dart';
 
 @Injectable(as: AuthRemoteDatasource)
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
@@ -51,7 +53,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     var response =
         await _apiExecution.execute<ForgetPasswordResponse>(() async {
       var response = await _authRetrofitClient
-          .forgetPassword(email);
+          .forgetPassword(ForgetPasswordRequestDto(email: email));
       return response.toDomain();
     });
     return response;
@@ -62,7 +64,8 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       String resetCode) async {
     var response =
         await _apiExecution.execute<VerifyResetCodeResponse>(() async {
-      var response = await _authRetrofitClient.verifyResetCode(resetCode);
+      var response = await _authRetrofitClient
+          .verifyResetCode(VerifyResetCodeRequestDto(resetCode: resetCode));
       return response.toDomain();
     });
     return response;

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/core/base/base_view_model.dart';
 import 'package:online_exam_app/domain/core/results.dart';
-import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_request.dart';
-import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_response.dart';
+import 'package:online_exam_app/domain/entities/reset_password/reset_password_request.dart';
+import 'package:online_exam_app/domain/entities/reset_password/reset_password_response.dart';
 import 'package:online_exam_app/domain/use_case/reset_password_use_case.dart';
 import 'package:online_exam_app/presentation/reset_password/reset_password_contract.dart';
 
@@ -22,7 +22,6 @@ class ResetPasswordViewModel extends BaseViewModel<ResetPasswordViewState> {
   bool valid = false;
   bool passwordVisible = true;
   bool passwordConfirmationVisible = true;
-  String? email = "";
 
   void doIntent(ResetPasswordViewAction action) {
     switch (action) {
@@ -84,7 +83,8 @@ class ResetPasswordViewModel extends BaseViewModel<ResetPasswordViewState> {
     if (formKey.currentState!.validate()) {
       emit(ResetPasswordViewLoadingState());
       var response = await _resetPasswordUseCase(ResetPasswordRequest(
-          email: email, newPassword: passwordController.text));
+          email: appConfigProvider!.email,
+          newPassword: passwordController.text));
       emit(HideLoadingState());
       switch (response) {
         case Success<ResetPasswordResponse>():

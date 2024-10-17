@@ -11,8 +11,6 @@ class LoginUserUseCase {
   const LoginUserUseCase(this._authRepository);
 
   Future<Results<AuthenticationResponse>> call(
-      AuthenticationRequest auth) async {
-    var response = await _authRepository.signIn(auth);
-    return response;
-  }
+          AuthenticationRequest auth) async =>
+      await _authRepository.signIn(auth);
 }

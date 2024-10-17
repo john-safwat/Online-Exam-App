@@ -30,14 +30,13 @@ class _ForgetPasswordViewState
           }
           if (state is ForgetPasswordSuccessState) {
             AppDialogs.showSuccessDialog(
-                message: viewModel.locale!.otpSentToYourEmail,
-                context: context,
-                posActionTitle: viewModel.locale!.ok,
-                posAction: () {
-                  Navigator.pushReplacementNamed(context, Routes.otpVerifyRoute,
-                    arguments: viewModel.emailController.text
-                  );
-                });
+              message: viewModel.locale!.otpSentToYourEmail,
+              context: context,
+              posActionTitle: viewModel.locale!.ok,
+              posAction: () {
+                viewModel.doIntent(NavigateToOtpScreenAction());
+              },
+            );
           }
           if (state is ForgetPasswordFailState) {
             AppDialogs.showFailDialog(
@@ -55,6 +54,9 @@ class _ForgetPasswordViewState
           }
           if (state is HideLoadingState) {
             Navigator.pop(context);
+          }
+          if (state is NavigateToOtpScreenState) {
+            Navigator.pushReplacementNamed(context, Routes.otpVerifyRoute);
           }
         },
         builder: (context, state) => Scaffold(

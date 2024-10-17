@@ -30,8 +30,8 @@ import '../../presentation/forget_password/forget_password_view_model.dart'
 import '../../presentation/login/login_view_model.dart' as _i867;
 import '../../presentation/main_layout/main_view_model.dart' as _i911;
 import '../../presentation/otp_verify/otp_verify_view_model.dart' as _i950;
-import '../../presentation/reset_password/reset_password_View_model.dart'
-    as _i642;
+import '../../presentation/reset_password/reset_password_view_model.dart'
+    as _i525;
 import '../../presentation/signup/signup_view_model.dart' as _i679;
 import '../providers/app_config_provider.dart' as _i56;
 import '../providers/language_provider.dart' as _i822;
@@ -52,9 +52,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i528.PrettyDioLogger>(
         () => networkModule.providerInterceptor());
     gh.factory<_i911.MainViewModel>(() => _i911.MainViewModel());
+    gh.singleton<_i56.AppConfigProvider>(() => _i56.AppConfigProvider());
     gh.singleton<_i822.LanguageProvider>(() => _i822.LanguageProvider());
     gh.singleton<_i94.ApiExecution>(() => _i94.ApiExecution());
-    gh.singleton<_i56.AppConfigProvider>(() => _i56.AppConfigProvider());
     gh.lazySingleton<_i361.Dio>(() => networkModule.provideDio());
     gh.singleton<_i797.AuthRetrofitClient>(
         () => _i797.AuthRetrofitClient(gh<_i361.Dio>()));
@@ -76,16 +76,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i679.SignupViewModel(gh<_i205.SignupUserUseCase>()));
     gh.factory<_i678.LoginUserUseCase>(
         () => _i678.LoginUserUseCase(gh<_i614.AuthRepository>()));
-    gh.factory<_i499.VerifyResetPasswordUseCase>(
-        () => _i499.VerifyResetPasswordUseCase(gh<_i614.AuthRepository>()));
     gh.factory<_i16.ResetPasswordUseCase>(
         () => _i16.ResetPasswordUseCase(gh<_i614.AuthRepository>()));
+    gh.factory<_i499.VerifyResetPasswordUseCase>(
+        () => _i499.VerifyResetPasswordUseCase(gh<_i614.AuthRepository>()));
     gh.factory<_i596.ForgetPasswordViewModel>(
         () => _i596.ForgetPasswordViewModel(gh<_i742.ForgetPasswordUseCase>()));
-    gh.factory<_i950.OtpVerifyViewModel>(
-        () => _i950.OtpVerifyViewModel(gh<_i499.VerifyResetPasswordUseCase>()));
-    gh.factory<_i642.ResetPasswordViewModel>(
-        () => _i642.ResetPasswordViewModel(gh<_i16.ResetPasswordUseCase>()));
+    gh.factory<_i525.ResetPasswordViewModel>(
+        () => _i525.ResetPasswordViewModel(gh<_i16.ResetPasswordUseCase>()));
+    gh.factory<_i950.OtpVerifyViewModel>(() => _i950.OtpVerifyViewModel(
+          gh<_i499.VerifyResetPasswordUseCase>(),
+          gh<_i742.ForgetPasswordUseCase>(),
+        ));
     gh.factory<_i867.LoginViewModel>(
         () => _i867.LoginViewModel(gh<_i678.LoginUserUseCase>()));
     return this;

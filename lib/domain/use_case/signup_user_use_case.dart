@@ -10,8 +10,6 @@ class SignupUserUseCase {
 
   const SignupUserUseCase(this._repository);
 
-  Future<Results<RegistrationResponse>> call(RegistrationUser user) async {
-    var response = await _repository.signup(user);
-    return response;
-  }
+  Future<Results<RegistrationResponse>> call(RegistrationUser user) async =>
+      await _repository.signup(user);
 }

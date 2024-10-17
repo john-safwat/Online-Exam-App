@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/domain/core/results.dart';
-import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_request.dart';
-import 'package:online_exam_app/domain/entities/authentication/reset_password/reset_password_response.dart';
+import 'package:online_exam_app/domain/entities/reset_password/reset_password_request.dart';
+import 'package:online_exam_app/domain/entities/reset_password/reset_password_response.dart';
 import 'package:online_exam_app/domain/repository/auth_repository.dart';
 
 @injectable
@@ -11,8 +11,6 @@ class ResetPasswordUseCase {
   const ResetPasswordUseCase(this._authRepository);
 
   Future<Results<ResetPasswordResponse>> call(
-      ResetPasswordRequest request) async {
-    var response = await _authRepository.resetPassword(request);
-    return response;
-  }
+          ResetPasswordRequest request) async =>
+      await _authRepository.resetPassword(request);
 }

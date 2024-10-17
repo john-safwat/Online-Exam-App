@@ -87,6 +87,7 @@ class LoginViewModel extends BaseViewModel<LoginViewState> {
         case Success<AuthenticationResponse>():
           {
             if (response.data!.token != null) {
+              appConfigProvider!.token = response.data!.token ?? "";
               if (isRememberMeChecked) {
                 await _storeToken(response.data!.token ?? "");
               }

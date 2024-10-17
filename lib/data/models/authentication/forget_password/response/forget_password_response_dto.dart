@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:online_exam_app/domain/entities/authentication/forgetPassword/forget_password_response.dart';
+import 'package:online_exam_app/domain/entities/forgetPassword/forget_password_response.dart';
 
 part 'forget_password_response_dto.g.dart';
 
@@ -9,11 +9,10 @@ class ForgetPasswordResponseDto {
   final String? message;
   @JsonKey(name: "info")
   final String? info;
+  @JsonKey(name: "code")
+  final num? code;
 
-  ForgetPasswordResponseDto ({
-    this.message,
-    this.info,
-  });
+  ForgetPasswordResponseDto({this.message, this.info, this.code});
 
   factory ForgetPasswordResponseDto.fromJson(Map<String, dynamic> json) {
     return _$ForgetPasswordResponseDtoFromJson(json);
@@ -23,10 +22,6 @@ class ForgetPasswordResponseDto {
     return _$ForgetPasswordResponseDtoToJson(this);
   }
 
-  ForgetPasswordResponse toDomain() => ForgetPasswordResponse(
-    message: message,
-    info: info
-  );
+  ForgetPasswordResponse toDomain() =>
+      ForgetPasswordResponse(message: message, info: info, code: code?.toInt());
 }
-
-

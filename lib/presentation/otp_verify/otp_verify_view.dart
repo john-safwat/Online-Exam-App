@@ -17,14 +17,20 @@ class OtpVerifyView extends StatefulWidget {
 
 class _OtpVerifyViewState extends BaseState<OtpVerifyView, OtpVerifyViewModel> {
   @override
+  void dispose() {
+    super.dispose();
+    viewModel.doIntent(DisableTimerAction());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final email = ModalRoute.of(context)?.settings.arguments as String?;
     super.build(context);
     return BlocProvider(
       create: (context) => viewModel,
       child: BlocConsumer<OtpVerifyViewModel, OtpVerifyViewState>(
         listener: (context, state) {
-          if (state is OtpVerifyLoadingState) {
+          if (state is OtpVerifyLoadingState ||
+              state is OtpResendLoadingState) {
             AppDialogs.showLoading(
                 message: viewModel.locale!.loading, context: context);
           }
@@ -34,9 +40,15 @@ class _OtpVerifyViewState extends BaseState<OtpVerifyView, OtpVerifyViewModel> {
                 context: context,
                 posActionTitle: viewModel.locale!.ok,
                 posAction: () {
-                  Navigator.pushReplacementNamed(
-                      context, Routes.resetPasswordViewRoute , arguments: email);
+                  viewModel.doIntent(NavigateToResetPasswordScreenAction());
                 });
+          }
+          if (state is OtpResendLoadingSuccessState) {
+            AppDialogs.showSuccessDialog(
+              message: viewModel.locale!.resend,
+              context: context,
+              posActionTitle: viewModel.locale!.ok,
+            );
           }
           if (state is OtpFailState) {
             AppDialogs.showFailDialog(
@@ -45,8 +57,25 @@ class _OtpVerifyViewState extends BaseState<OtpVerifyView, OtpVerifyViewModel> {
               posActionTitle: viewModel.locale!.ok,
             );
           }
+          if (state is OtpResendLoadingFailState) {
+            AppDialogs.showFailDialog(
+              message: state.message,
+              context: context,
+              posActionTitle: viewModel.locale!.ok,
+            );
+          }
           if (state is HideLoadingState) {
             Navigator.pop(context);
+          }
+          if (state is NavigateToResetPasswordScreenState) {
+            Navigator.pushReplacementNamed(
+                context, Routes.resetPasswordViewRoute);
+          }
+          if (state is OtpPreviousFocusState) {
+            FocusScope.of(context).previousFocus();
+          }
+          if (state is OtpNextFocusState) {
+            FocusScope.of(context).nextFocus();
           }
         },
         builder: (context, state) => Scaffold(
