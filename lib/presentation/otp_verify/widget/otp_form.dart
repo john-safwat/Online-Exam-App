@@ -47,21 +47,27 @@ class OtpForm extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 32),
-        Text(
-          viewModel.validationTitle,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.titleLarge,
+        ValueListenableBuilder(
+          valueListenable: viewModel.timerMessage,
+          builder: (context, value, child) => Text(
+            viewModel.timerMessage.value,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
         ),
         const SizedBox(height: 32),
-        ElevatedButton(
-          onPressed: () => viewModel.doIntent(OnCompleteCodeVerifyAction()),
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.all(16),
-            backgroundColor: viewModel.valid
-                ? AppColors.blue
-                : AppColors.black[AppColors.colorCode30],
+        ValueListenableBuilder(
+          valueListenable: viewModel.valid,
+          builder:(context, value, child) => ElevatedButton(
+            onPressed: () => viewModel.doIntent(OnCompleteCodeVerifyAction()),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(16),
+              backgroundColor: viewModel.valid.value
+                  ? AppColors.blue
+                  : AppColors.black[AppColors.colorCode30],
+            ),
+            child: Text(viewModel.locale!.confirm),
           ),
-          child: Text(viewModel.locale!.confirm),
         ),
         const SizedBox(height: 16),
         Row(

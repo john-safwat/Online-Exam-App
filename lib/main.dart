@@ -19,7 +19,7 @@ import 'core/theme/app_theme.dart';
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  configureDependencies();
+  await configureDependencies();
   await getIt<AppInitializer>().init();
   FlutterNativeSplash.remove();
   runApp(
@@ -56,9 +56,10 @@ class MyApp extends StatelessWidget {
         Routes.otpVerifyRoute: (context) => const OtpVerifyView(),
         Routes.resetPasswordViewRoute: (context) => const ResetPasswordView()
       },
-      initialRoute: appConfigProvider.token.isEmpty
-          ? Routes.loginRoute
-          : Routes.homeRoute,
+      initialRoute: Routes.homeRoute,
+      // initialRoute: appConfigProvider.token.isEmpty
+      //     ? Routes.loginRoute
+      //     : Routes.homeRoute,
     );
   }
 }

@@ -27,7 +27,7 @@ class _OtpVerifyViewState extends BaseState<OtpVerifyView, OtpVerifyViewModel> {
     super.build(context);
     return BlocProvider(
       create: (context) => viewModel,
-      child: BlocConsumer<OtpVerifyViewModel, OtpVerifyViewState>(
+      child: BlocListener<OtpVerifyViewModel, OtpVerifyViewState>(
         listener: (context, state) {
           if (state is OtpVerifyLoadingState ||
               state is OtpResendLoadingState) {
@@ -78,7 +78,7 @@ class _OtpVerifyViewState extends BaseState<OtpVerifyView, OtpVerifyViewModel> {
             FocusScope.of(context).nextFocus();
           }
         },
-        builder: (context, state) => Scaffold(
+        child: Scaffold(
           appBar: AppBar(
             title: Text(viewModel.locale!.forgetPassword),
           ),
