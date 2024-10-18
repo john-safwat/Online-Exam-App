@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/core/base/base_view.dart';
-import 'package:online_exam_app/core/constants/routes.dart';
 import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/core/utils/app_dialogs.dart';
 import 'package:online_exam_app/presentation/reset_password/reset_password_contract.dart';
@@ -32,7 +31,7 @@ class _ResetPasswordViewState
             Navigator.pop(context);
           }
           if (state is NavigateToLoginScreenState) {
-            Navigator.pushReplacementNamed(context, Routes.loginRoute);
+            Navigator.pop(context);
           }
           if (state is ResetPasswordFailState) {
             AppDialogs.showFailDialog(

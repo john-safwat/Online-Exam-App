@@ -16,11 +16,8 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
   final ForgetPasswordUseCase _forgetPasswordUseCase;
   late Timer timer;
   int time = 600;
-  String validationTitle = "";
 
   List<String> opts = List.filled(6, "");
-
-  bool valid = false;
 
   OtpVerifyViewModel(
       this._verifyResetPasswordUseCase, this._forgetPasswordUseCase)
@@ -31,6 +28,9 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
   _initTimer() {
     timer = Timer.periodic(const Duration(seconds: 1), _updateTimer);
   }
+
+  ValueNotifier<String> timerMessage = ValueNotifier<String>("10:00");
+  ValueNotifier<bool> valid = ValueNotifier<bool>(false);
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String otpMessage = "";
@@ -84,8 +84,7 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
     if (seconds.length == 1) {
       seconds = "0$seconds";
     }
-    validationTitle = "${locale!.validFor} $minutes:$seconds";
-    emit(UpdateTimerState());
+    timerMessage.value =  "${locale!.validFor} $minutes:$seconds";
     _checkInputFormValidation();
   }
 
@@ -94,7 +93,7 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
   }
 
   void _otpVerify() async {
-    if (valid) {
+    if (valid.value) {
       emit(OtpVerifyLoadingState());
       otpMessage = opts.join();
       var response = await _verifyResetPasswordUseCase(resetCode: otpMessage);
@@ -155,14 +154,13 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
         opts[3].isEmpty ||
         opts[4].isEmpty ||
         opts[5].isEmpty) {
-      valid = false;
+      valid.value = false;
     } else if (time == 0) {
-      valid = false;
+      valid.value = false;
     } else if (!formKey.currentState!.validate()) {
-      valid = false;
+      valid.value = false;
     } else {
-      valid = true;
+      valid.value = true;
     }
-    emit(UpdateValidationState());
   }
 }

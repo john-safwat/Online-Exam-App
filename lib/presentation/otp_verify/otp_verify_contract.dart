@@ -10,7 +10,6 @@ class HideLoadingState extends OtpVerifyViewState {}
 
 class NavigateToResetPasswordScreenState extends OtpVerifyViewState {}
 
-class UpdateTimerState extends OtpVerifyViewState {}
 
 class OtpSuccessState extends OtpVerifyViewState {}
 
