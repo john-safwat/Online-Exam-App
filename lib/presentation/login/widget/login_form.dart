@@ -30,33 +30,37 @@ class LoginForm extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) => viewModel.passwordValidation(value ?? ""),
-            keyboardType: TextInputType.visiblePassword,
-            controller: viewModel.passwordController,
-            obscureText: viewModel.passwordVisible,
-            decoration: InputDecoration(
-              suffixIcon: InkWell(
-                onTap: () =>
-                    viewModel.doIntent(ChangePasswordVisibilityAction()),
-                child: Icon(viewModel.passwordVisible
-                    ? Icons.visibility_off
-                    : Icons.visibility),
+          ValueListenableBuilder(
+            valueListenable: viewModel.passwordVisible,
+            builder: (context, value, child) => TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value) => viewModel.passwordValidation(value ?? ""),
+              keyboardType: TextInputType.visiblePassword,
+              controller: viewModel.passwordController,
+              obscureText: value,
+              decoration: InputDecoration(
+                suffixIcon: InkWell(
+                  onTap: () =>
+                      viewModel.doIntent(ChangePasswordVisibilityAction()),
+                  child: Icon(value ? Icons.visibility_off : Icons.visibility),
+                ),
+                label: Text(viewModel.locale!.password),
+                hintText: viewModel.locale!.enterPassword,
               ),
-              label: Text(viewModel.locale!.password),
-              hintText: viewModel.locale!.enterPassword,
             ),
           ),
           const SizedBox(height: 16),
           Row(
             children: [
-              Checkbox(
-                value: viewModel.isRememberMeChecked,
-                onChanged: (value) {
-                  viewModel.doIntent(RememberMeButtonAction());
-                },
-                activeColor: AppColors.blue,
+              ValueListenableBuilder(
+                valueListenable: viewModel.isRememberMeChecked,
+                builder: (context, value, child) => Checkbox(
+                  value: value,
+                  onChanged: (value) {
+                    viewModel.doIntent(RememberMeButtonAction());
+                  },
+                  activeColor: AppColors.blue,
+                ),
               ),
               Text(viewModel.locale!.rememberMe),
               const Spacer(),
@@ -68,14 +72,17 @@ class LoginForm extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 32),
-          ElevatedButton(
-              onPressed: () => viewModel.doIntent(LoginAction()),
-              style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(16),
-                  backgroundColor: viewModel.valid
-                      ? AppColors.blue
-                      : AppColors.black[AppColors.colorCode30]),
-              child: Text(viewModel.locale!.login)),
+          ValueListenableBuilder(
+            valueListenable: viewModel.valid,
+            builder: (context, value, child) => ElevatedButton(
+                onPressed: () => viewModel.doIntent(LoginAction()),
+                style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(16),
+                    backgroundColor: value
+                        ? AppColors.blue
+                        : AppColors.black[AppColors.colorCode30]),
+                child: Text(viewModel.locale!.login)),
+          ),
           const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

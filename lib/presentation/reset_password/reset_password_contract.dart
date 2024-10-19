@@ -2,13 +2,11 @@ sealed class ResetPasswordViewState {}
 
 class InitialResetPasswordViewState extends ResetPasswordViewState {}
 
-class ResetPasswordViewLoadingState extends ResetPasswordViewState {}
-
 class HideLoadingState extends ResetPasswordViewState {}
 
 class NavigateToLoginScreenState extends ResetPasswordViewState {}
 
-class UpdateValidationState extends ResetPasswordViewState {}
+class ResetPasswordViewLoadingState extends ResetPasswordViewState {}
 
 class ResetPasswordSuccessState extends ResetPasswordViewState {}
 
@@ -17,8 +15,6 @@ class ResetPasswordFailState extends ResetPasswordViewState {
 
   ResetPasswordFailState(this.message);
 }
-
-class ChangePasswordVisibilityState extends ResetPasswordViewState {}
 
 sealed class ResetPasswordViewAction {}
 

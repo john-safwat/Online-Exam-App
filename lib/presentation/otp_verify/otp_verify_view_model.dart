@@ -84,7 +84,7 @@ class OtpVerifyViewModel extends BaseViewModel<OtpVerifyViewState> {
     if (seconds.length == 1) {
       seconds = "0$seconds";
     }
-    timerMessage.value =  "${locale!.validFor} $minutes:$seconds";
+    timerMessage.value = "${locale!.validFor} $minutes:$seconds";
     _checkInputFormValidation();
   }
 

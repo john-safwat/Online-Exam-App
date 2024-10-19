@@ -21,7 +21,7 @@ class _ResetPasswordViewState
     super.build(context);
     return BlocProvider(
       create: (context) => viewModel,
-      child: BlocConsumer<ResetPasswordViewModel, ResetPasswordViewState>(
+      child: BlocListener<ResetPasswordViewModel, ResetPasswordViewState>(
         listener: (context, state) {
           if (state is ResetPasswordViewLoadingState) {
             AppDialogs.showLoading(
@@ -51,7 +51,7 @@ class _ResetPasswordViewState
             );
           }
         },
-        builder: (context, state) => Scaffold(
+        child: Scaffold(
           appBar: AppBar(
             title: Text(viewModel.locale!.forgetPassword),
           ),

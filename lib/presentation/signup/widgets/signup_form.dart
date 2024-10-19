@@ -80,47 +80,51 @@ class SignupForm extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: TextFormField(
-                  textInputAction: TextInputAction.next,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) =>
-                      viewModel.passwordValidation(value ?? ""),
-                  keyboardType: TextInputType.visiblePassword,
-                  controller: viewModel.passwordController,
-                  obscureText: viewModel.passwordVisible,
-                  decoration: InputDecoration(
-                    suffixIcon: InkWell(
-                      onTap: () =>
-                          viewModel.doIntent(ChangePasswordVisibilityAction()),
-                      child: Icon(viewModel.passwordVisible
-                          ? Icons.visibility_off
-                          : Icons.visibility),
+                child: ValueListenableBuilder(
+                  valueListenable: viewModel.passwordVisible,
+                  builder: (context, value, child) => TextFormField(
+                    textInputAction: TextInputAction.next,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) =>
+                        viewModel.passwordValidation(value ?? ""),
+                    keyboardType: TextInputType.visiblePassword,
+                    controller: viewModel.passwordController,
+                    obscureText: value,
+                    decoration: InputDecoration(
+                      suffixIcon: InkWell(
+                        onTap: () => viewModel
+                            .doIntent(ChangePasswordVisibilityAction()),
+                        child: Icon(
+                            value ? Icons.visibility_off : Icons.visibility),
+                      ),
+                      label: Text(viewModel.locale!.password),
+                      hintText: viewModel.locale!.enterPassword,
                     ),
-                    label: Text(viewModel.locale!.password),
-                    hintText: viewModel.locale!.enterPassword,
                   ),
                 ),
               ),
               const SizedBox(width: 24),
               Expanded(
-                child: TextFormField(
-                  textInputAction: TextInputAction.next,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) =>
-                      viewModel.passwordConfirmationValidation(value ?? ""),
-                  keyboardType: TextInputType.visiblePassword,
-                  controller: viewModel.confirmPasswordController,
-                  obscureText: viewModel.passwordConfirmationVisible,
-                  decoration: InputDecoration(
-                    suffixIcon: InkWell(
-                      onTap: () => viewModel.doIntent(
-                          ChangePasswordConfirmationVisibilityAction()),
-                      child: Icon(viewModel.passwordConfirmationVisible
-                          ? Icons.visibility_off
-                          : Icons.visibility),
+                child: ValueListenableBuilder(
+                  valueListenable: viewModel.passwordConfirmationVisible,
+                  builder: (context, value, child) => TextFormField(
+                    textInputAction: TextInputAction.next,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) =>
+                        viewModel.passwordConfirmationValidation(value ?? ""),
+                    keyboardType: TextInputType.visiblePassword,
+                    controller: viewModel.confirmPasswordController,
+                    obscureText: value,
+                    decoration: InputDecoration(
+                      suffixIcon: InkWell(
+                        onTap: () => viewModel.doIntent(
+                            ChangePasswordConfirmationVisibilityAction()),
+                        child: Icon(
+                            value ? Icons.visibility_off : Icons.visibility),
+                      ),
+                      label: Text(viewModel.locale!.rePassword),
+                      hintText: viewModel.locale!.rePassword,
                     ),
-                    label: Text(viewModel.locale!.rePassword),
-                    hintText: viewModel.locale!.rePassword,
                   ),
                 ),
               ),
@@ -139,16 +143,19 @@ class SignupForm extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          ElevatedButton(
-              onPressed: () => viewModel.doIntent(SignupAction()),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: viewModel.valid
-                      ? AppColors.blue
-                      : AppColors.black[AppColors.colorCode30]),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(viewModel.locale!.signup),
-              )),
+          ValueListenableBuilder(
+            valueListenable: viewModel.valid,
+            builder: (context, value, child) => ElevatedButton(
+                onPressed: () => viewModel.doIntent(SignupAction()),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: value
+                        ? AppColors.blue
+                        : AppColors.black[AppColors.colorCode30]),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(viewModel.locale!.signup),
+                )),
+          ),
           const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

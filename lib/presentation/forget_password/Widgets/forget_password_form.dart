@@ -52,14 +52,17 @@ class ForgetPasswordForm extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 32),
-            ElevatedButton(
-                onPressed: () => viewModel.doIntent(ForgetPasswordAction()),
-                style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    backgroundColor: viewModel.valid
-                        ? AppColors.blue
-                        : AppColors.black[AppColors.colorCode30]),
-                child: Text(viewModel.locale!.sendOtp)),
+            ValueListenableBuilder(
+              valueListenable: viewModel.valid,
+              builder: (context, value, child) => ElevatedButton(
+                  onPressed: () => viewModel.doIntent(ForgetPasswordAction()),
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(16),
+                      backgroundColor: value
+                          ? AppColors.blue
+                          : AppColors.black[AppColors.colorCode30]),
+                  child: Text(viewModel.locale!.sendOtp)),
+            ),
           ],
         ));
   }

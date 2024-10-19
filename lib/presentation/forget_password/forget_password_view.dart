@@ -22,7 +22,7 @@ class _ForgetPasswordViewState
     super.build(context);
     return BlocProvider(
       create: (context) => viewModel,
-      child: BlocConsumer<ForgetPasswordViewModel, ForgetPasswordViewState>(
+      child: BlocListener<ForgetPasswordViewModel, ForgetPasswordViewState>(
         listener: (context, state) {
           if (state is ForgetPasswordLoadingState) {
             AppDialogs.showLoading(
@@ -59,7 +59,7 @@ class _ForgetPasswordViewState
             Navigator.pushReplacementNamed(context, Routes.otpVerifyRoute);
           }
         },
-        builder: (context, state) => Scaffold(
+        child: Scaffold(
           appBar: AppBar(
             title: Text(viewModel.locale!.forgetPassword),
           ),

@@ -26,55 +26,62 @@ class ResetPasswordForm extends StatelessWidget {
                   .copyWith(fontSize: 18),
             ),
             const SizedBox(height: 24),
-            TextFormField(
-              textInputAction: TextInputAction.next,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (value) => viewModel.passwordValidation(value ?? ""),
-              keyboardType: TextInputType.visiblePassword,
-              controller: viewModel.passwordController,
-              obscureText: viewModel.passwordVisible,
-              decoration: InputDecoration(
-                suffixIcon: InkWell(
-                  onTap: () =>
-                      viewModel.doIntent(ChangePasswordVisibilityAction()),
-                  child: Icon(viewModel.passwordVisible
-                      ? Icons.visibility_off
-                      : Icons.visibility),
+            ValueListenableBuilder(
+              valueListenable: viewModel.passwordVisible,
+              builder: (context, value, child) => TextFormField(
+                textInputAction: TextInputAction.next,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) => viewModel.passwordValidation(value ?? ""),
+                keyboardType: TextInputType.visiblePassword,
+                controller: viewModel.passwordController,
+                obscureText: value,
+                decoration: InputDecoration(
+                  suffixIcon: InkWell(
+                    onTap: () =>
+                        viewModel.doIntent(ChangePasswordVisibilityAction()),
+                    child:
+                        Icon(value ? Icons.visibility_off : Icons.visibility),
+                  ),
+                  label: Text(viewModel.locale!.enterNewPassword),
+                  hintText: viewModel.locale!.enterNewPassword,
                 ),
-                label: Text(viewModel.locale!.enterNewPassword),
-                hintText: viewModel.locale!.enterNewPassword,
               ),
             ),
             const SizedBox(height: 24),
-            TextFormField(
-              textInputAction: TextInputAction.next,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (value) =>
-                  viewModel.passwordConfirmationValidation(value ?? ""),
-              keyboardType: TextInputType.visiblePassword,
-              controller: viewModel.confirmPasswordController,
-              obscureText: viewModel.passwordConfirmationVisible,
-              decoration: InputDecoration(
-                suffixIcon: InkWell(
-                  onTap: () => viewModel
-                      .doIntent(ChangePasswordConfirmVisibilityAction()),
-                  child: Icon(viewModel.passwordConfirmationVisible
-                      ? Icons.visibility_off
-                      : Icons.visibility),
+            ValueListenableBuilder(
+              valueListenable: viewModel.passwordConfirmationVisible,
+              builder: (context, value, child) => TextFormField(
+                textInputAction: TextInputAction.next,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) =>
+                    viewModel.passwordConfirmationValidation(value ?? ""),
+                keyboardType: TextInputType.visiblePassword,
+                controller: viewModel.confirmPasswordController,
+                obscureText: value,
+                decoration: InputDecoration(
+                  suffixIcon: InkWell(
+                    onTap: () => viewModel
+                        .doIntent(ChangePasswordConfirmVisibilityAction()),
+                    child:
+                        Icon(value ? Icons.visibility_off : Icons.visibility),
+                  ),
+                  label: Text(viewModel.locale!.rePassword),
+                  hintText: viewModel.locale!.rePassword,
                 ),
-                label: Text(viewModel.locale!.rePassword),
-                hintText: viewModel.locale!.rePassword,
               ),
             ),
             const SizedBox(height: 32),
-            ElevatedButton(
-                onPressed: () => viewModel.doIntent(ResetPasswordAction()),
-                style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    backgroundColor: viewModel.valid
-                        ? AppColors.blue
-                        : AppColors.black[AppColors.colorCode30]),
-                child: Text(viewModel.locale!.confirm)),
+            ValueListenableBuilder(
+              valueListenable: viewModel.valid,
+              builder: (context, value, child) => ElevatedButton(
+                  onPressed: () => viewModel.doIntent(ResetPasswordAction()),
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(16),
+                      backgroundColor: value
+                          ? AppColors.blue
+                          : AppColors.black[AppColors.colorCode30]),
+                  child: Text(viewModel.locale!.confirm)),
+            ),
           ],
         ));
   }

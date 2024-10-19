@@ -15,7 +15,7 @@ class ForgetPasswordViewModel extends BaseViewModel<ForgetPasswordViewState> {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
-  bool valid = false;
+  ValueNotifier<bool> valid = ValueNotifier(false);
 
   String? emailValidation(String input) {
     if (input.isEmpty) {
@@ -68,13 +68,12 @@ class ForgetPasswordViewModel extends BaseViewModel<ForgetPasswordViewState> {
 
   void _updateValidationState() {
     if (emailController.text.isEmpty) {
-      valid = false;
+      valid.value = false;
     } else if (!formKey.currentState!.validate()) {
-      valid = false;
+      valid.value = false;
     } else {
-      valid = true;
+      valid.value = true;
     }
-    emit(UpdateValidationState());
   }
 
   void _navigateToOtpScreen() {

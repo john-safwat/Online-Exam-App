@@ -11,7 +11,8 @@ import 'package:online_exam_app/domain/entities/verify_reset_code/verify_reset_c
 abstract class AuthRepository {
   Future<Results<RegistrationResponse>> signup(RegistrationUser user);
 
-  Future<Results<AuthenticationResponse>> signIn(AuthenticationRequest auth);
+  Future<Results<AuthenticationResponse>> signIn(
+      AuthenticationRequest auth, bool saveUser);
 
   Future<Results<ForgetPasswordResponse>> forgetPassword(String email);
 

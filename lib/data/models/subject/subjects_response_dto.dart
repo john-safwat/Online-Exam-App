@@ -13,7 +13,7 @@ class SubjectsResponseDto {
   @JsonKey(name: "subjects")
   final List<SubjectsDto>? subjects;
 
-  SubjectsResponseDto ({
+  SubjectsResponseDto({
     this.message,
     this.metadata,
     this.subjects,
@@ -27,5 +27,3 @@ class SubjectsResponseDto {
     return _$SubjectsResponseDtoToJson(this);
   }
 }
-
-

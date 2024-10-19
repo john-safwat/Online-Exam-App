@@ -18,8 +18,6 @@ class InvalidEmailState extends ForgetPasswordViewState {}
 
 class NavigateToOtpScreenState extends ForgetPasswordViewState {}
 
-class UpdateValidationState extends ForgetPasswordViewState {}
-
 sealed class ForgetPasswordViewAction {}
 
 class FormDataChangedAction extends ForgetPasswordViewAction {}

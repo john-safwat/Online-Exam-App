@@ -5,16 +5,15 @@ import 'package:online_exam_app/core/providers/language_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @lazySingleton
-@injectable
 class AppInitializer {
   LanguageProvider languageProvider;
   AppConfigProvider appConfigProvider;
-  late SharedPreferences preferences;
+  SharedPreferences preferences;
 
-  AppInitializer(this.languageProvider, this.appConfigProvider);
+  AppInitializer(
+      this.languageProvider, this.appConfigProvider, this.preferences);
 
-  Future<void> init() async {
-    preferences = await SharedPreferences.getInstance();
+  init() {
     _initialLocale();
     _initialUserData();
   }
@@ -25,7 +24,7 @@ class AppInitializer {
     languageProvider.changeLocale(locale);
   }
 
-  bool _initialUserData() {
+  _initialUserData() {
     var token = preferences.getString(Constants.tokenKey) ?? "";
     appConfigProvider.token = token;
     return appConfigProvider.token.isEmpty;

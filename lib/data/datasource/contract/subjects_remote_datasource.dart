@@ -3,5 +3,5 @@ import 'package:online_exam_app/domain/entities/subject/pagination_info.dart';
 import 'package:online_exam_app/domain/entities/subject/subjects.dart';
 
 abstract class SubjectsRemoteDatasource {
-  Future<Results<(List<Subject?>? , PaginationInfo?)>>  getSubjects(String token);
+  Future<Results<(List<Subject?>?, PaginationInfo?)>> getSubjects(String token);
 }
