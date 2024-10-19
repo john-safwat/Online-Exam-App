@@ -23,9 +23,9 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
       TextEditingController();
   final TextEditingController phoneController = TextEditingController();
 
-  bool valid = false;
-  bool passwordVisible = true;
-  bool passwordConfirmationVisible = true;
+  ValueNotifier<bool> valid = ValueNotifier(false);
+  ValueNotifier<bool> passwordVisible = ValueNotifier(true);
+  ValueNotifier<bool> passwordConfirmationVisible = ValueNotifier(true);
 
   void doIntent(SignupViewAction action) {
     switch (action) {
@@ -124,13 +124,12 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
         passwordController.text.isEmpty ||
         confirmPasswordController.text.isEmpty ||
         phoneController.text.isEmpty) {
-      valid = false;
+      valid.value = false;
     } else if (!formKey.currentState!.validate()) {
-      valid = false;
+      valid.value = false;
     } else {
-      valid = true;
+      valid.value = true;
     }
-    emit(UpdateValidationState());
   }
 
   void _signup() async {
@@ -171,13 +170,11 @@ class SignupViewModel extends BaseViewModel<SignupViewState> {
   }
 
   void _changePasswordVisibility() {
-    passwordVisible = !passwordVisible;
-    emit(ChangePasswordVisibilityState());
+    passwordVisible.value = !passwordVisible.value;
   }
 
   void _changePasswordConfirmationVisibility() {
-    passwordConfirmationVisible = !passwordConfirmationVisible;
-    emit(ChangePasswordVisibilityState());
+    passwordConfirmationVisible.value = !passwordConfirmationVisible.value;
   }
 
   void _navigateToLoginScreen() {

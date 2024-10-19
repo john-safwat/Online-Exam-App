@@ -19,9 +19,9 @@ class ResetPasswordViewModel extends BaseViewModel<ResetPasswordViewState> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
-  bool valid = false;
-  bool passwordVisible = true;
-  bool passwordConfirmationVisible = true;
+  ValueNotifier<bool> valid = ValueNotifier(false);
+  ValueNotifier<bool> passwordVisible = ValueNotifier(true);
+  ValueNotifier<bool> passwordConfirmationVisible = ValueNotifier(true);
 
   void doIntent(ResetPasswordViewAction action) {
     switch (action) {
@@ -30,9 +30,13 @@ class ResetPasswordViewModel extends BaseViewModel<ResetPasswordViewState> {
           _navigateToLoginScreen();
         }
       case ResetPasswordAction():
-        _resetPassword();
+        {
+          _resetPassword();
+        }
       case FormDataChangedAction():
-        _updateValidationState();
+        {
+          _updateValidationState();
+        }
       case ChangePasswordVisibilityAction():
         {
           _changePasswordVisibility();
@@ -70,13 +74,12 @@ class ResetPasswordViewModel extends BaseViewModel<ResetPasswordViewState> {
   void _updateValidationState() {
     if (passwordController.text.isEmpty ||
         confirmPasswordController.text.isEmpty) {
-      valid = false;
+      valid.value = false;
     } else if (!formKey.currentState!.validate()) {
-      valid = false;
+      valid.value = false;
     } else {
-      valid = true;
+      valid.value = true;
     }
-    emit(UpdateValidationState());
   }
 
   void _resetPassword() async {
@@ -101,12 +104,10 @@ class ResetPasswordViewModel extends BaseViewModel<ResetPasswordViewState> {
   }
 
   void _changePasswordVisibility() {
-    passwordVisible = !passwordVisible;
-    emit(ChangePasswordVisibilityState());
+    passwordVisible.value = !passwordVisible.value;
   }
 
   void _changePasswordConfirmationVisibility() {
-    passwordConfirmationVisible = !passwordConfirmationVisible;
-    emit(ChangePasswordVisibilityState());
+    passwordConfirmationVisible.value = !passwordConfirmationVisible.value;
   }
 }

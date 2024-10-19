@@ -58,7 +58,7 @@ class OtpForm extends StatelessWidget {
         const SizedBox(height: 32),
         ValueListenableBuilder(
           valueListenable: viewModel.valid,
-          builder:(context, value, child) => ElevatedButton(
+          builder: (context, value, child) => ElevatedButton(
             onPressed: () => viewModel.doIntent(OnCompleteCodeVerifyAction()),
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(16),

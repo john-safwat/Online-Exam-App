@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:online_exam_app/domain/entities/subject/subjects.dart';
 
 part 'subjects_dto.g.dart';
+
 @collection
 @JsonSerializable()
 class SubjectsDto {
@@ -16,7 +17,7 @@ class SubjectsDto {
   @JsonKey(name: "createdAt")
   final String? createdAt;
 
-  SubjectsDto ({
+  SubjectsDto({
     this.subjectId,
     this.name,
     this.icon,
@@ -31,12 +32,12 @@ class SubjectsDto {
     return _$SubjectsDtoToJson(this);
   }
 
-  Subject toDomain(){
+  Subject toDomain() {
     return Subject(
-        id: subjectId,
-        name: name,
-        icon: icon,
-        createdAt: createdAt,
+      id: subjectId,
+      name: name,
+      icon: icon,
+      createdAt: createdAt,
     );
   }
 }

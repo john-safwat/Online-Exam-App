@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LanguageProvider extends ChangeNotifier {
   // set the default local
   String _currentLocale = Constants.englishLocaleKey;
+  SharedPreferences sharedPreferences;
+  LanguageProvider(this.sharedPreferences);
 
   // function to change the local with new local and set it in
   Future<void> changeLocale(String newLocale) async {
@@ -14,11 +16,8 @@ class LanguageProvider extends ChangeNotifier {
     if (newLocale == _currentLocale) {
       return;
     }
-
-    // reed the shared preferences to read the old value of the theme
-    SharedPreferences prefs = await SharedPreferences.getInstance();
     _currentLocale = newLocale;
-    prefs.setString(Constants.localeKey, _currentLocale);
+    sharedPreferences.setString(Constants.localeKey, _currentLocale);
 
     // notify all listeners on the theme values
     notifyListeners();

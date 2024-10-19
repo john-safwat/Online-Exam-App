@@ -16,8 +16,6 @@ sealed class SignupViewState {}
 
 class InitialSignupViewState extends SignupViewState {}
 
-class UpdateValidationState extends SignupViewState {}
-
 class SignupLoadingState extends SignupViewState {}
 
 class HideLoadingState extends SignupViewState {}
@@ -33,8 +31,6 @@ class SignupFailState extends SignupViewState {
 }
 
 class BadRequestState extends SignupViewState {}
-
-class ChangePasswordVisibilityState extends SignupViewState {}
 
 class EmailAlreadyExistState extends SignupViewState {}
 

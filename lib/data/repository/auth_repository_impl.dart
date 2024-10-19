@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/data/datasource/contract/auth_local_datasource.dart';
 import 'package:online_exam_app/data/datasource/contract/auth_remote_datasource.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_request.dart';
@@ -14,8 +15,9 @@ import 'package:online_exam_app/domain/repository/auth_repository.dart';
 @Injectable(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDatasource _remoteDatasource;
+  final AuthLocalDatasource _authLocalDatasource;
 
-  const AuthRepositoryImpl(this._remoteDatasource);
+  const AuthRepositoryImpl(this._remoteDatasource, this._authLocalDatasource);
 
   @override
   Future<Results<RegistrationResponse>> signup(RegistrationUser user) async {
@@ -25,8 +27,13 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Results<AuthenticationResponse>> signIn(
-      AuthenticationRequest auth) async {
+      AuthenticationRequest auth, bool saveUser) async {
     var response = await _remoteDatasource.signIn(auth);
+    if (saveUser) {
+      if (response is Success<AuthenticationResponse>) {
+        await _authLocalDatasource.storeToken(response.data!.token ?? "");
+      }
+    }
     return response;
   }
 

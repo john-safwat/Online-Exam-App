@@ -20,7 +20,7 @@ void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await configureDependencies();
-  await getIt<AppInitializer>().init();
+  getIt<AppInitializer>().init();
   FlutterNativeSplash.remove();
   runApp(
     MultiProvider(
@@ -56,10 +56,9 @@ class MyApp extends StatelessWidget {
         Routes.otpVerifyRoute: (context) => const OtpVerifyView(),
         Routes.resetPasswordViewRoute: (context) => const ResetPasswordView()
       },
-      initialRoute: Routes.homeRoute,
-      // initialRoute: appConfigProvider.token.isEmpty
-      //     ? Routes.loginRoute
-      //     : Routes.homeRoute,
+      initialRoute: appConfigProvider.token.isEmpty
+          ? Routes.loginRoute
+          : Routes.homeRoute,
     );
   }
 }

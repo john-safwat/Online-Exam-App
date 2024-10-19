@@ -21,7 +21,7 @@ class _LoginViewState extends BaseState<LoginView, LoginViewModel> {
     super.build(context);
     return BlocProvider(
       create: (context) => viewModel,
-      child: BlocConsumer<LoginViewModel, LoginViewState>(
+      child: BlocListener<LoginViewModel, LoginViewState>(
         listener: (context, state) {
           if (state is LoginLoadingState) {
             AppDialogs.showLoading(
@@ -63,7 +63,7 @@ class _LoginViewState extends BaseState<LoginView, LoginViewModel> {
             Navigator.pushNamed(context, Routes.forgetPasswordRoute);
           }
         },
-        builder: (context, state) => Scaffold(
+        child: Scaffold(
           appBar: AppBar(
             title: Text(viewModel.locale!.login),
           ),

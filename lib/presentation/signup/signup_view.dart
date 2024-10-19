@@ -20,7 +20,7 @@ class _SignupViewState extends BaseState<SignupView, SignupViewModel> {
     super.build(context);
     return BlocProvider(
       create: (context) => viewModel,
-      child: BlocConsumer<SignupViewModel, SignupViewState>(
+      child: BlocListener<SignupViewModel, SignupViewState>(
         listener: (context, state) {
           if (state is SignupLoadingState) {
             AppDialogs.showLoading(
@@ -70,7 +70,7 @@ class _SignupViewState extends BaseState<SignupView, SignupViewModel> {
             Navigator.pop(context);
           }
         },
-        builder: (context, state) => Scaffold(
+        child: Scaffold(
           appBar: AppBar(
             title: Text(viewModel.locale!.signup),
           ),
