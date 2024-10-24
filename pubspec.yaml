@@ -21,6 +21,7 @@ version: 1.0.0+1
 environment:
   sdk: ^3.5.3
 
+isar_version: &isar_version 3.1.0+1 # define the version to be used
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
 # consider running `flutter pub upgrade --major-versions`. Alternatively,
@@ -30,21 +31,54 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  flutter_localizations:
+    sdk: flutter
+  intl:
+  bloc:
+  flutter_bloc:
+  shared_preferences:
+  provider:
+  injectable:
+  get_it:
+  icons_launcher:
+  flutter_native_splash:
+  retrofit:
+  logger:
+  json_annotation:
+  dio:
+  lottie:
+  isar:
+    hosted:
+      name: isar
+      url: https://pub.isar-community.dev/
+    version: ^3.0.0
+  isar_flutter_libs:
+    hosted:
+      name: isar_flutter_libs
+      url: https://pub.isar-community.dev/
+    version: ^3.0.0
+  path_provider:
   cupertino_icons: ^1.0.8
   dialogs:
     git:
       url: https://github.com/john-safwat/Elevate-Online-Exam-App.git
       path: app_packages/dialogs
+  pretty_dio_logger: ^1.4.0
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  # add the generator to your dev_dependencies
+  injectable_generator:
+  build_runner:
+  isar_generator:
+    hosted:
+      name: isar_generator
+      url: https://pub.isar-community.dev/
+    version: ^3.0.0
+  retrofit_generator: '>=8.0.0 <10.0.0' # for Dart 3.3 use ^9.0.0
+  json_serializable: ^6.8.0
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -58,14 +92,13 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+  generate: true
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/animations/
+    - assets/images/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
