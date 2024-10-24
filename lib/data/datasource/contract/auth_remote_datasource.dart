@@ -1,3 +1,4 @@
+import 'package:online_exam_app/data/models/user_info/user_info_response_dto.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_response.dart';
@@ -6,6 +7,7 @@ import 'package:online_exam_app/domain/entities/registration/registration_respon
 import 'package:online_exam_app/domain/entities/registration/registration_user.dart';
 import 'package:online_exam_app/domain/entities/reset_password/reset_password_request.dart';
 import 'package:online_exam_app/domain/entities/reset_password/reset_password_response.dart';
+import 'package:online_exam_app/domain/entities/user/user.dart';
 import 'package:online_exam_app/domain/entities/verify_reset_code/verify_reset_code_response.dart';
 
 abstract class AuthRemoteDatasource {
@@ -19,4 +21,6 @@ abstract class AuthRemoteDatasource {
 
   Future<Results<ResetPasswordResponse>> resetPassword(
       ResetPasswordRequest request);
+
+  Future<Results<User?>> getUserInfo(String token);
 }

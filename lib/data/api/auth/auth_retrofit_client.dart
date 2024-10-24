@@ -11,6 +11,7 @@ import 'package:online_exam_app/data/models/authentication/verify_reset_code/req
 import 'package:online_exam_app/data/models/authentication/verify_reset_code/response/verify_reset_code_response_dto.dart';
 import 'package:online_exam_app/data/models/registration/request/registration_user_dto.dart';
 import 'package:online_exam_app/data/models/registration/response/registration_response_dto.dart';
+import 'package:online_exam_app/data/models/user_info/user_info_response_dto.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'auth_retrofit_client.g.dart';
@@ -39,4 +40,7 @@ abstract class AuthRetrofitClient {
   @PUT(ApiConstants.resetPasswordRoute)
   Future<ResetPasswordResponseDto> resetPassword(
       @Body() ResetPasswordRequestDto request);
+
+  @GET(ApiConstants.profileDataRoute)
+  Future<UserInfoResponseDto> getUserInfo(@Header("token") String token);
 }

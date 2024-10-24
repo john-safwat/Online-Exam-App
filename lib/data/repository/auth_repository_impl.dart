@@ -9,6 +9,7 @@ import 'package:online_exam_app/domain/entities/registration/registration_respon
 import 'package:online_exam_app/domain/entities/registration/registration_user.dart';
 import 'package:online_exam_app/domain/entities/reset_password/reset_password_request.dart';
 import 'package:online_exam_app/domain/entities/reset_password/reset_password_response.dart';
+import 'package:online_exam_app/domain/entities/user/user.dart';
 import 'package:online_exam_app/domain/entities/verify_reset_code/verify_reset_code_response.dart';
 import 'package:online_exam_app/domain/repository/auth_repository.dart';
 
@@ -56,4 +57,7 @@ class AuthRepositoryImpl implements AuthRepository {
     var response = await _remoteDatasource.resetPassword(request);
     return response;
   }
+
+  @override
+  Future<Results<User?>> getUserInfo(String token) async => await _remoteDatasource.getUserInfo(token);
 }
