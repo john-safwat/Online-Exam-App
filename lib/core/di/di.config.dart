@@ -18,7 +18,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i9;
 import 'package:shared_preferences/shared_preferences.dart' as _i10;
 
 import '../../data/api/auth/auth_retrofit_client.dart' as _i15;
-import '../../data/api/dio_provider.dart' as _i37;
+import '../../data/api/dio_provider.dart' as _i39;
 import '../../data/api/subjects/subjects_retrofit_client.dart' as _i12;
 import '../../data/core/api_execution.dart' as _i3;
 import '../../data/datasource/contract/auth_local_datasource.dart' as _i13;
@@ -28,7 +28,7 @@ import '../../data/datasource/impl/auth_local_datasource_impl.dart' as _i14;
 import '../../data/datasource/impl/auth_remote_datasource_impl.dart' as _i23;
 import '../../data/datasource/impl/subjects_remote_datasource_impl.dart'
     as _i18;
-import '../../data/local_database/isar_module.dart' as _i38;
+import '../../data/local_database/isar_module.dart' as _i40;
 import '../../data/local_database/subjects/subjects_local_database.dart'
     as _i11;
 import '../../data/repository/auth_repository_impl.dart' as _i25;
@@ -37,22 +37,25 @@ import '../../domain/repository/auth_repository.dart' as _i24;
 import '../../domain/repository/subjects_repository.dart' as _i19;
 import '../../domain/use_case/forget_password_use_case.dart' as _i26;
 import '../../domain/use_case/get_subject_list_use_case.dart' as _i28;
-import '../../domain/use_case/login_user_use_case.dart' as _i29;
-import '../../domain/use_case/reset_password_use_case.dart' as _i31;
-import '../../domain/use_case/signup_user_use_case.dart' as _i33;
-import '../../domain/use_case/verify_reset_code_use_case.dart' as _i35;
+import '../../domain/use_case/get_user_info_use_case.dart' as _i29;
+import '../../domain/use_case/login_user_use_case.dart' as _i30;
+import '../../domain/use_case/reset_password_use_case.dart' as _i33;
+import '../../domain/use_case/signup_user_use_case.dart' as _i35;
+import '../../domain/use_case/verify_reset_code_use_case.dart' as _i37;
 import '../../presentation/forget_password/forget_password_view_model.dart'
     as _i27;
-import '../../presentation/login/login_view_model.dart' as _i30;
+import '../../presentation/login/login_view_model.dart' as _i31;
 import '../../presentation/main_layout/main_view_model.dart' as _i8;
-import '../../presentation/otp_verify/otp_verify_view_model.dart' as _i36;
-import '../../presentation/reset_password/reset_password_view_model.dart'
+import '../../presentation/main_layout/tabs/profile/profile_view_model.dart'
     as _i32;
-import '../../presentation/signup/signup_view_model.dart' as _i34;
+import '../../presentation/otp_verify/otp_verify_view_model.dart' as _i38;
+import '../../presentation/reset_password/reset_password_view_model.dart'
+    as _i34;
+import '../../presentation/signup/signup_view_model.dart' as _i36;
 import '../providers/app_config_provider.dart' as _i4;
 import '../providers/language_provider.dart' as _i16;
 import '../utils/app_initializer.dart' as _i21;
-import '../utils/shared_prefrences_provider.dart' as _i39;
+import '../utils/shared_prefrences_provider.dart' as _i41;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -121,30 +124,34 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i27.ForgetPasswordViewModel(gh<_i26.ForgetPasswordUseCase>()));
     gh.factory<_i28.GetSubjectListUseCase>(
         () => _i28.GetSubjectListUseCase(gh<_i19.SubjectsRepository>()));
-    gh.factory<_i29.LoginUserUseCase>(
-        () => _i29.LoginUserUseCase(gh<_i24.AuthRepository>()));
-    gh.factory<_i30.LoginViewModel>(
-        () => _i30.LoginViewModel(gh<_i29.LoginUserUseCase>()));
-    gh.factory<_i31.ResetPasswordUseCase>(
-        () => _i31.ResetPasswordUseCase(gh<_i24.AuthRepository>()));
-    gh.factory<_i32.ResetPasswordViewModel>(
-        () => _i32.ResetPasswordViewModel(gh<_i31.ResetPasswordUseCase>()));
-    gh.factory<_i33.SignupUserUseCase>(
-        () => _i33.SignupUserUseCase(gh<_i24.AuthRepository>()));
-    gh.factory<_i34.SignupViewModel>(
-        () => _i34.SignupViewModel(gh<_i33.SignupUserUseCase>()));
-    gh.factory<_i35.VerifyResetPasswordUseCase>(
-        () => _i35.VerifyResetPasswordUseCase(gh<_i24.AuthRepository>()));
-    gh.factory<_i36.OtpVerifyViewModel>(() => _i36.OtpVerifyViewModel(
-          gh<_i35.VerifyResetPasswordUseCase>(),
+    gh.factory<_i29.GetUserInfoUseCase>(
+        () => _i29.GetUserInfoUseCase(gh<_i24.AuthRepository>()));
+    gh.factory<_i30.LoginUserUseCase>(
+        () => _i30.LoginUserUseCase(gh<_i24.AuthRepository>()));
+    gh.factory<_i31.LoginViewModel>(
+        () => _i31.LoginViewModel(gh<_i30.LoginUserUseCase>()));
+    gh.factory<_i32.ProfileViewModel>(
+        () => _i32.ProfileViewModel(gh<_i29.GetUserInfoUseCase>()));
+    gh.factory<_i33.ResetPasswordUseCase>(
+        () => _i33.ResetPasswordUseCase(gh<_i24.AuthRepository>()));
+    gh.factory<_i34.ResetPasswordViewModel>(
+        () => _i34.ResetPasswordViewModel(gh<_i33.ResetPasswordUseCase>()));
+    gh.factory<_i35.SignupUserUseCase>(
+        () => _i35.SignupUserUseCase(gh<_i24.AuthRepository>()));
+    gh.factory<_i36.SignupViewModel>(
+        () => _i36.SignupViewModel(gh<_i35.SignupUserUseCase>()));
+    gh.factory<_i37.VerifyResetPasswordUseCase>(
+        () => _i37.VerifyResetPasswordUseCase(gh<_i24.AuthRepository>()));
+    gh.factory<_i38.OtpVerifyViewModel>(() => _i38.OtpVerifyViewModel(
+          gh<_i37.VerifyResetPasswordUseCase>(),
           gh<_i26.ForgetPasswordUseCase>(),
         ));
     return this;
   }
 }
 
-class _$NetworkModule extends _i37.NetworkModule {}
+class _$NetworkModule extends _i39.NetworkModule {}
 
-class _$IsarModule extends _i38.IsarModule {}
+class _$IsarModule extends _i40.IsarModule {}
 
-class _$SharedPreferencesProvider extends _i39.SharedPreferencesProvider {}
+class _$SharedPreferencesProvider extends _i41.SharedPreferencesProvider {}

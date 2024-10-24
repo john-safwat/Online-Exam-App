@@ -17,6 +17,7 @@ import 'package:online_exam_app/domain/entities/registration/registration_respon
 import 'package:online_exam_app/domain/entities/registration/registration_user.dart';
 import 'package:online_exam_app/domain/entities/reset_password/reset_password_request.dart';
 import 'package:online_exam_app/domain/entities/reset_password/reset_password_response.dart';
+import 'package:online_exam_app/domain/entities/user/user.dart';
 import 'package:online_exam_app/domain/entities/verify_reset_code/verify_reset_code_response.dart';
 
 @Injectable(as: AuthRemoteDatasource)
@@ -79,6 +80,15 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
           ResetPasswordRequestDto(
               email: request.email, newPassword: request.newPassword));
       return response.toDomain();
+    });
+    return response;
+  }
+
+  @override
+  Future<Results<User?>> getUserInfo(String token) async {
+    var response = await _apiExecution.execute<User?>(() async {
+      var response = await _authRetrofitClient.getUserInfo(token);
+      return response.user?.toDomain();
     });
     return response;
   }
