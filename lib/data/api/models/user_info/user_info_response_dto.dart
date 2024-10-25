@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_exam_app/data/api/models/user_info/user_dto.dart';
-import 'package:online_exam_app/domain/entities/user/user.dart';
 
 part 'user_info_response_dto.g.dart';
 
@@ -11,7 +10,7 @@ class UserInfoResponseDto {
   @JsonKey(name: "user")
   final UserDto? user;
 
-  UserInfoResponseDto ({
+  UserInfoResponseDto({
     this.message,
     this.user,
   });
@@ -24,4 +23,3 @@ class UserInfoResponseDto {
     return _$UserInfoResponseDtoToJson(this);
   }
 }
-

@@ -72,8 +72,8 @@
   "editProfile": "Edit Profile",
   "change": "Change",
   "profileUpdateSuccessfully": "Profile Updated Successfully",
-  "changePassword" : "Change Password",
-  "currentPassword" : "Current Password",
-  "newPassword" : "New Password",
-  "newPasswordAgain" : "New Password Confirmation"
+  "changePassword": "Change Password",
+  "currentPassword": "Current Password",
+  "newPassword": "New Password",
+  "newPasswordAgain": "New Password Confirmation"
 }

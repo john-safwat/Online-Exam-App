@@ -11,7 +11,7 @@ class ChangePasswordResponseDto {
   @JsonKey(name: "code")
   final int? code;
 
-  ChangePasswordResponseDto ({
+  ChangePasswordResponseDto({
     this.message,
     this.token,
     this.code,
@@ -25,5 +25,3 @@ class ChangePasswordResponseDto {
     return _$ChangePasswordResponseDtoToJson(this);
   }
 }
-
-

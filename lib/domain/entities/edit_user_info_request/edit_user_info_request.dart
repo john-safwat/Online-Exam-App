@@ -1,4 +1,3 @@
-
 class EditUserInfoRequest {
   final String? username;
   final String? firstName;
@@ -6,7 +5,7 @@ class EditUserInfoRequest {
   final String? email;
   final String? phone;
 
-  EditUserInfoRequest ({
+  EditUserInfoRequest({
     this.username,
     this.firstName,
     this.lastName,
@@ -14,5 +13,3 @@ class EditUserInfoRequest {
     this.phone,
   });
 }
-
-

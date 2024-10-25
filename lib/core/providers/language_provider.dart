@@ -8,6 +8,7 @@ class LanguageProvider extends ChangeNotifier {
   // set the default local
   String _currentLocale = Constants.englishLocaleKey;
   SharedPreferences sharedPreferences;
+
   LanguageProvider(this.sharedPreferences);
 
   // function to change the local with new local and set it in

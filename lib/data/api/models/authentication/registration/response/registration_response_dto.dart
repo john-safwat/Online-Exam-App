@@ -18,11 +18,12 @@ class RegistrationResponseDto {
   @JsonKey(name: "code")
   num? code;
   @JsonKey(name: "user")
-  UserDto?user;
+  UserDto? user;
 
   Map<String, dynamic> toJson() => _$RegistrationResponseDtoToJson(this);
 
   RegistrationResponse toDomain() {
-    return RegistrationResponse(message: message, token: token, code: code  , user: user?.toDomain());
+    return RegistrationResponse(
+        message: message, token: token, code: code, user: user?.toDomain());
   }
 }

@@ -66,7 +66,6 @@ class _ProfileViewState extends BaseState<ProfileView, ProfileViewModel> {
               }
             },
             builder: (context, state) {
-              print(state);
               if (state is ProfileDataLoadingState) {
                 return Center(
                   child: Lottie.asset(AnimationsAssets.profileAnimation),

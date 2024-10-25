@@ -1,7 +1,8 @@
-
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_exam_app/domain/entities/user/user.dart';
+
 part 'user_dto.g.dart';
+
 @JsonSerializable()
 class UserDto {
   @JsonKey(name: "_id")
@@ -29,7 +30,7 @@ class UserDto {
   @JsonKey(name: "resetCodeVerified")
   final bool? resetCodeVerified;
 
-  UserDto ({
+  UserDto({
     this.id,
     this.username,
     this.firstName,
@@ -52,21 +53,20 @@ class UserDto {
     return _$UserDtoToJson(this);
   }
 
-  User toDomain(){
+  User toDomain() {
     return User(
-      id : id,
-      username : username,
-      firstName : firstName,
-      lastName : lastName,
-      email : email,
-      phone : phone,
-      role : role,
-      isVerified : isVerified,
-      createdAt : createdAt,
-      passwordResetCode : passwordResetCode,
-      passwordResetExpires : passwordResetExpires,
-      resetCodeVerified : resetCodeVerified,
-
+      id: id,
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      role: role,
+      isVerified: isVerified,
+      createdAt: createdAt,
+      passwordResetCode: passwordResetCode,
+      passwordResetExpires: passwordResetExpires,
+      resetCodeVerified: resetCodeVerified,
     );
   }
 }
