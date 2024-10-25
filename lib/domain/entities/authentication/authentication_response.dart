@@ -5,5 +5,6 @@ class AuthenticationResponse {
   final String? token;
   final num? code;
   final User? user;
-  AuthenticationResponse({this.message, this.token, this.code , this.user});
+
+  AuthenticationResponse({this.message, this.token, this.code, this.user});
 }

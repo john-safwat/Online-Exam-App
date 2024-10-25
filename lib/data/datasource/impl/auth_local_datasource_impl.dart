@@ -25,7 +25,7 @@ class AuthLocalDatasourceImpl implements AuthLocalDatasource {
 
   @override
   Future<void> storeUser(User? user) async {
-    if(user != null){
+    if (user != null) {
       await usersLocalDatabase.addUser(LocalUser.fromDomain(user));
     }
   }

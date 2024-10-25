@@ -1,4 +1,3 @@
-import 'package:online_exam_app/data/api/models/authentication/edit_info/request/edit_user_info_request_dto.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_response.dart';
@@ -26,6 +25,10 @@ abstract class AuthRepository {
       ResetPasswordRequest request);
 
   Future<Results<User?>> getUserInfo(String token);
-  Future<Results<User?>> updateUserInfo(String token, EditUserInfoRequest request);
-  Future<Results<String?>> changePassword(String token , ChangePasswordRequest request);
+
+  Future<Results<User?>> updateUserInfo(
+      String token, EditUserInfoRequest request);
+
+  Future<Results<String?>> changePassword(
+      String token, ChangePasswordRequest request);
 }

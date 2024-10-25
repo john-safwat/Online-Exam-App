@@ -1,4 +1,3 @@
-import 'package:isar/isar.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_exam_app/domain/entities/subject/subjects.dart';
 

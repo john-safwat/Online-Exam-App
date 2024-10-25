@@ -1,7 +1,4 @@
-
-
 class User {
-
   final String? id;
   final String? username;
 
@@ -25,22 +22,20 @@ class User {
 
   final bool? resetCodeVerified;
 
-  String? token ;
+  String? token;
 
-  User ({
-    this.id,
-    this.username,
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.phone,
-    this.role,
-    this.isVerified,
-    this.createdAt,
-    this.passwordResetCode,
-    this.passwordResetExpires,
-    this.resetCodeVerified,
-    this.token
-  });
-
+  User(
+      {this.id,
+      this.username,
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.phone,
+      this.role,
+      this.isVerified,
+      this.createdAt,
+      this.passwordResetCode,
+      this.passwordResetExpires,
+      this.resetCodeVerified,
+      this.token});
 }

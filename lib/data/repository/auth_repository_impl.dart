@@ -1,5 +1,4 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/data/api/models/authentication/edit_info/request/edit_user_info_request_dto.dart';
 import 'package:online_exam_app/data/datasource/contract/auth_local_datasource.dart';
 import 'package:online_exam_app/data/datasource/contract/auth_remote_datasource.dart';
 import 'package:online_exam_app/domain/core/results.dart';
@@ -73,10 +72,11 @@ class AuthRepositoryImpl implements AuthRepository {
       await _remoteDatasource.updateUserInfo(token, request);
 
   @override
-  Future<Results<String?>> changePassword(String token, ChangePasswordRequest request) async{
+  Future<Results<String?>> changePassword(
+      String token, ChangePasswordRequest request) async {
     var response = await _remoteDatasource.changePassword(token, request);
-    if(response is Success<String?>){
-      if(response.data!=null){
+    if (response is Success<String?>) {
+      if (response.data != null) {
         await _authLocalDatasource.storeToken(response.data!);
       }
     }

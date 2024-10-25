@@ -76,8 +76,9 @@ class UserForm extends StatelessWidget {
             autovalidateMode: AutovalidateMode.onUserInteraction,
             keyboardType: TextInputType.visiblePassword,
             obscureText: true,
+            obscuringCharacter: "*",
             readOnly: true,
-            initialValue: "----------",
+            initialValue: "------------------",
             decoration: InputDecoration(
               suffixIcon: InkWell(
                 onTap: () {

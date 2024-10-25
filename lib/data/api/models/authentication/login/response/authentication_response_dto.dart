@@ -13,8 +13,7 @@ class AuthenticationResponseDto {
   @JsonKey(name: "code")
   final num? code;
   @JsonKey(name: "user")
-  UserDto?user;
-
+  UserDto? user;
 
   AuthenticationResponseDto({this.message, this.token, this.code});
 
@@ -26,6 +25,6 @@ class AuthenticationResponseDto {
     return _$AuthenticationResponseDtoToJson(this);
   }
 
-  AuthenticationResponse toDomain() =>
-      AuthenticationResponse(message: message, code: code, token: token , user: user?.toDomain());
+  AuthenticationResponse toDomain() => AuthenticationResponse(
+      message: message, code: code, token: token, user: user?.toDomain());
 }
