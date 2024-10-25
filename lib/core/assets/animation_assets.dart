@@ -6,4 +6,5 @@ class AnimationsAssets {
   static const String examLoadingAnimation = "$_baseRoute/exams_loading.json";
   static const String resultsAnimation = "$_baseRoute/results_loading.json";
   static const String profileAnimation = "$_baseRoute/person_loading.json";
+  static const String notFoundAnimation = "$_baseRoute/not_found.json";
 }

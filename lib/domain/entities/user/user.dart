@@ -25,6 +25,8 @@ class User {
 
   final bool? resetCodeVerified;
 
+  String? token ;
+
   User ({
     this.id,
     this.username,
@@ -38,6 +40,7 @@ class User {
     this.passwordResetCode,
     this.passwordResetExpires,
     this.resetCodeVerified,
+    this.token
   });
 
 }

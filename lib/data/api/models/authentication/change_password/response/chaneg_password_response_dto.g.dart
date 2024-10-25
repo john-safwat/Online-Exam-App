@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'registration_response_dto.dart';
+part of 'chaneg_password_response_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-RegistrationResponseDto _$RegistrationResponseDtoFromJson(
+ChangePasswordResponseDto _$ChangePasswordResponseDtoFromJson(
         Map<String, dynamic> json) =>
-    RegistrationResponseDto(
+    ChangePasswordResponseDto(
       message: json['message'] as String?,
       token: json['token'] as String?,
-      code: json['code'] as num?,
+      code: (json['code'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$RegistrationResponseDtoToJson(
-        RegistrationResponseDto instance) =>
+Map<String, dynamic> _$ChangePasswordResponseDtoToJson(
+        ChangePasswordResponseDto instance) =>
     <String, dynamic>{
       'message': instance.message,
       'token': instance.token,

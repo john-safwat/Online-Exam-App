@@ -68,5 +68,12 @@
   "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح",
   "confirm": "تأكيد",
   "enterNewPassword": "أدخل كلمة المرور الجديدة",
-  "validFor": "صالح لمدة : "
+  "validFor": "صالح لمدة : ",
+  "editProfile": "تعديل الملف الشخصي",
+  "change": "تغيير",
+  "profileUpdateSuccessfully": "تم تحديث الملف الشخصي بنجاح",
+  "changePassword": "تغيير كلمة المرور",
+  "currentPassword": "كلمة المرور الحالية",
+  "newPassword": "كلمة المرور الجديدة",
+  "newPasswordAgain": "كلمة المرور الجديدة مرة واحدة"
 }

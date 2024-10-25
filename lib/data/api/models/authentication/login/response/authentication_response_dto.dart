@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:online_exam_app/data/api/models/user_info/user_dto.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_response.dart';
 
 part 'authentication_response_dto.g.dart';
@@ -11,6 +12,9 @@ class AuthenticationResponseDto {
   final String? token;
   @JsonKey(name: "code")
   final num? code;
+  @JsonKey(name: "user")
+  UserDto?user;
+
 
   AuthenticationResponseDto({this.message, this.token, this.code});
 
@@ -23,5 +27,5 @@ class AuthenticationResponseDto {
   }
 
   AuthenticationResponse toDomain() =>
-      AuthenticationResponse(message: message, code: code, token: token);
+      AuthenticationResponse(message: message, code: code, token: token , user: user?.toDomain());
 }

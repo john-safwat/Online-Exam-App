@@ -2,16 +2,20 @@ import 'dart:async';
 
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/data/api/auth/auth_retrofit_client.dart';
+import 'package:online_exam_app/data/api/models/authentication/change_password/request/change_password_request_dto.dart';
+import 'package:online_exam_app/data/api/models/authentication/edit_info/request/edit_user_info_request_dto.dart';
+import 'package:online_exam_app/data/api/models/authentication/forget_password/request/forget_password_request_dto.dart';
+import 'package:online_exam_app/data/api/models/authentication/login/request/authentication_request_dto.dart';
+import 'package:online_exam_app/data/api/models/authentication/registration/request/registration_user_dto.dart';
+import 'package:online_exam_app/data/api/models/authentication/reset_password/request/reset_password_request_dto.dart';
+import 'package:online_exam_app/data/api/models/authentication/verify_reset_code/request/verify_reset_code_request_dto.dart';
 import 'package:online_exam_app/data/core/api_execution.dart';
 import 'package:online_exam_app/data/datasource/contract/auth_remote_datasource.dart';
-import 'package:online_exam_app/data/models/authentication/forget_password/request/forget_password_request_dto.dart';
-import 'package:online_exam_app/data/models/authentication/login/request/authentication_request_dto.dart';
-import 'package:online_exam_app/data/models/authentication/reset_password/request/reset_password_request_dto.dart';
-import 'package:online_exam_app/data/models/authentication/verify_reset_code/request/verify_reset_code_request_dto.dart';
-import 'package:online_exam_app/data/models/registration/request/registration_user_dto.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_response.dart';
+import 'package:online_exam_app/domain/entities/change_password/change_password_request.dart';
+import 'package:online_exam_app/domain/entities/edit_user_info_request/edit_user_info_request.dart';
 import 'package:online_exam_app/domain/entities/forgetPassword/forget_password_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_user.dart';
@@ -89,6 +93,28 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     var response = await _apiExecution.execute<User?>(() async {
       var response = await _authRetrofitClient.getUserInfo(token);
       return response.user?.toDomain();
+    });
+    return response;
+  }
+
+  @override
+  Future<Results<User?>> updateUserInfo(
+      String token, EditUserInfoRequest request) async {
+    var response = await _apiExecution.execute<User?>(() async {
+      var response = await _authRetrofitClient.updateUserInfo(
+          token, EditUserInfoRequestDto.fromDomain(request));
+      return response.user?.toDomain();
+    });
+    return response;
+  }
+
+  @override
+  Future<Results<String?>> changePassword(
+      String token, ChangePasswordRequest request) async {
+    var response = await _apiExecution.execute<String?>(() async {
+      var response = await _authRetrofitClient.changePassword(
+          token, ChangePasswordRequestDto.fromDomain(request));
+      return response.token;
     });
     return response;
   }

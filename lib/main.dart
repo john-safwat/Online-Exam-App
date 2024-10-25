@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:online_exam_app/core/providers/app_config_provider.dart';
 import 'package:online_exam_app/core/providers/language_provider.dart';
 import 'package:online_exam_app/core/utils/app_initializer.dart';
+import 'package:online_exam_app/presentation/change_password/change_password_view.dart';
 import 'package:online_exam_app/presentation/forget_password/forget_password_view.dart';
 import 'package:online_exam_app/presentation/login/login_view.dart';
 import 'package:online_exam_app/presentation/main_layout/main_view.dart';
@@ -54,7 +55,8 @@ class MyApp extends StatelessWidget {
         Routes.signupRoute: (context) => const SignupView(),
         Routes.forgetPasswordRoute: (context) => const ForgetPasswordView(),
         Routes.otpVerifyRoute: (context) => const OtpVerifyView(),
-        Routes.resetPasswordViewRoute: (context) => const ResetPasswordView()
+        Routes.resetPasswordViewRoute: (context) => const ResetPasswordView(),
+        Routes.changePasswordViewRoute: (context) => const ChangePasswordView()
       },
       initialRoute: appConfigProvider.token.isEmpty
           ? Routes.loginRoute
