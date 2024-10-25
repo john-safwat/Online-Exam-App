@@ -10,8 +10,8 @@ abstract class NetworkModule {
   Dio provideDio() {
     final dio = Dio();
     dio.options = BaseOptions(
-      connectTimeout: const Duration(seconds: 60),
-      receiveTimeout: const Duration(seconds: 60),
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 10),
       baseUrl: ApiConstants.baseUrl,
     );
     dio.interceptors.add(getIt<PrettyDioLogger>());

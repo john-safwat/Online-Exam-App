@@ -68,5 +68,12 @@
   "passwordChangedSuccessfully": "Password Changed Successfully",
   "confirm": "Confirm",
   "enterNewPassword": "Enter New Password",
-  "validFor": "Valid For : "
+  "validFor": "Valid For : ",
+  "editProfile": "Edit Profile",
+  "change": "Change",
+  "profileUpdateSuccessfully": "Profile Updated Successfully",
+  "changePassword" : "Change Password",
+  "currentPassword" : "Current Password",
+  "newPassword" : "New Password",
+  "newPasswordAgain" : "New Password Confirmation"
 }

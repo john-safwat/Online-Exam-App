@@ -1,9 +1,12 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/data/api/models/authentication/edit_info/request/edit_user_info_request_dto.dart';
 import 'package:online_exam_app/data/datasource/contract/auth_local_datasource.dart';
 import 'package:online_exam_app/data/datasource/contract/auth_remote_datasource.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_request.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_response.dart';
+import 'package:online_exam_app/domain/entities/change_password/change_password_request.dart';
+import 'package:online_exam_app/domain/entities/edit_user_info_request/edit_user_info_request.dart';
 import 'package:online_exam_app/domain/entities/forgetPassword/forget_password_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_response.dart';
 import 'package:online_exam_app/domain/entities/registration/registration_user.dart';
@@ -33,6 +36,8 @@ class AuthRepositoryImpl implements AuthRepository {
     if (saveUser) {
       if (response is Success<AuthenticationResponse>) {
         await _authLocalDatasource.storeToken(response.data!.token ?? "");
+        response.data!.user!.token = response.data!.token ?? "";
+        await _authLocalDatasource.storeUser(response.data!.user!);
       }
     }
     return response;
@@ -59,5 +64,22 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Results<User?>> getUserInfo(String token) async => await _remoteDatasource.getUserInfo(token);
+  Future<Results<User?>> getUserInfo(String token) async =>
+      await _remoteDatasource.getUserInfo(token);
+
+  @override
+  Future<Results<User?>> updateUserInfo(
+          String token, EditUserInfoRequest request) async =>
+      await _remoteDatasource.updateUserInfo(token, request);
+
+  @override
+  Future<Results<String?>> changePassword(String token, ChangePasswordRequest request) async{
+    var response = await _remoteDatasource.changePassword(token, request);
+    if(response is Success<String?>){
+      if(response.data!=null){
+        await _authLocalDatasource.storeToken(response.data!);
+      }
+    }
+    return response;
+  }
 }

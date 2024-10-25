@@ -5,4 +5,5 @@ class Routes {
   static const String forgetPasswordRoute = "/forgetPassword";
   static const String otpVerifyRoute = "/otpVerify";
   static const String resetPasswordViewRoute = "/resetPassword";
+  static const String changePasswordViewRoute = "/changePassword";
 }
