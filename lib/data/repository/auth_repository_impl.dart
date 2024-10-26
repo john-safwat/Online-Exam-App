@@ -82,4 +82,9 @@ class AuthRepositoryImpl implements AuthRepository {
     }
     return response;
   }
+
+  @override
+  Future<void> deleteToken() async {
+    await _authLocalDatasource.deleteToken();
+  }
 }

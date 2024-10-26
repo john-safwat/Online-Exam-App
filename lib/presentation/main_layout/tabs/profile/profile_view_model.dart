@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/core/base/base_view_model.dart';
@@ -8,14 +9,15 @@ import 'package:online_exam_app/domain/entities/edit_user_info_request/edit_user
 import 'package:online_exam_app/domain/entities/user/user.dart';
 import 'package:online_exam_app/domain/use_case/get_user_info_use_case.dart';
 import 'package:online_exam_app/domain/use_case/update_user_info_use_case.dart';
+import 'package:online_exam_app/presentation/main_layout/main_view_model.dart';
 import 'package:online_exam_app/presentation/main_layout/tabs/profile/profile_contract.dart';
 
 @injectable
 class ProfileViewModel extends BaseViewModel<ProfileViewState> {
   GetUserInfoUseCase getUserInfoUseCase;
   UpdateUserInfoUseCase updateUserInfoUseCase;
-
-  ProfileViewModel(this.getUserInfoUseCase, this.updateUserInfoUseCase)
+  MainViewModel mainViewModel;
+  ProfileViewModel(this.getUserInfoUseCase, this.updateUserInfoUseCase , this.mainViewModel)
       : super(InitialProfileViewState());
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -75,6 +77,7 @@ class ProfileViewModel extends BaseViewModel<ProfileViewState> {
         {
           emit(ProfileDataLoadingFailState(
               mapExceptionToMessage(response.exception)));
+          mainViewModel.validateOnException(response.exception);
         }
     }
   }
