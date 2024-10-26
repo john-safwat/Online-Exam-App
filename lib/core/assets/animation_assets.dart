@@ -7,4 +7,5 @@ class AnimationsAssets {
   static const String resultsAnimation = "$_baseRoute/results_loading.json";
   static const String profileAnimation = "$_baseRoute/person_loading.json";
   static const String notFoundAnimation = "$_baseRoute/not_found.json";
+  static const String logoutAnimation = "$_baseRoute/logout.json";
 }

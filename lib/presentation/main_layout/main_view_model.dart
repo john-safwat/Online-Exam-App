@@ -1,11 +1,15 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/core/base/base_view_model.dart';
+import 'package:online_exam_app/domain/use_case/delete_token_use_case.dart';
 import 'package:online_exam_app/presentation/main_layout/main_contract.dart';
 
-@injectable
+@singleton
 class MainViewModel extends BaseViewModel<MainViewStates> {
-  MainViewModel() : super(InitializeMainViewState());
+  DeleteTokenUseCase deleteTokenUseCase;
+
+  MainViewModel(this.deleteTokenUseCase) : super(InitializeMainViewState());
 
   int selectedIndex = 0;
   PageController pageController = PageController();
@@ -19,6 +23,10 @@ class MainViewModel extends BaseViewModel<MainViewStates> {
       case ChangeSelectedIndexAction():
         {
           _updateSelectedIndex(action.index);
+        }
+      case LogoutAction():
+        {
+          _logout();
         }
     }
   }
@@ -39,5 +47,22 @@ class MainViewModel extends BaseViewModel<MainViewStates> {
     selectedIndex = index;
     pageController.jumpToPage(selectedIndex);
     emit(PageChangedState());
+  }
+
+  void validateOnException(Exception exception) {
+    if (exception is DioException) {
+      if (exception.type == DioExceptionType.badResponse) {
+        if (exception.response?.data["message"] ==
+            "invalid token .. login again") {
+          appConfigProvider!.token = "";
+          emit(InvalidTokenState());
+        }
+      }
+    }
+  }
+
+  void _logout() async {
+    await deleteTokenUseCase();
+    emit(NavigateToLoginState());
   }
 }

@@ -8,8 +8,13 @@ class ChangeSelectedIndexAction extends MainViewAction {
   ChangeSelectedIndexAction(this.index);
 }
 
+class LogoutAction extends MainViewAction {}
+
 sealed class MainViewStates {}
 
 class InitializeMainViewState extends MainViewStates {}
 
 class PageChangedState extends MainViewStates {}
+
+class InvalidTokenState extends MainViewStates {}
+class NavigateToLoginState extends MainViewStates {}

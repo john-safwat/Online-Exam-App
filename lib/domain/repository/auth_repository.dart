@@ -31,4 +31,5 @@ abstract class AuthRepository {
 
   Future<Results<String?>> changePassword(
       String token, ChangePasswordRequest request);
+  Future<void> deleteToken();
 }

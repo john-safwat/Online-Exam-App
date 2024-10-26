@@ -75,5 +75,6 @@
   "changePassword": "تغيير كلمة المرور",
   "currentPassword": "كلمة المرور الحالية",
   "newPassword": "كلمة المرور الجديدة",
-  "newPasswordAgain": "كلمة المرور الجديدة مرة واحدة"
+  "newPasswordAgain": "كلمة المرور الجديدة مرة واحدة",
+  "yourTokenIsInvalid": "انتهت صلاحية الجلسة الخاصة بك. الرجاء تسجيل الدخول مرة واحدة."
 }

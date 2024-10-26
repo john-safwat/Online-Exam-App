@@ -5,5 +5,5 @@ abstract class AuthLocalDatasource {
 
   Future<void> storeUser(User? user);
 
-  Future<void> deleteToken(String token);
+  Future<void> deleteToken();
 }
