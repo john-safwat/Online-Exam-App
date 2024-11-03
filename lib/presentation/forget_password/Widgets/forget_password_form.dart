@@ -5,6 +5,7 @@ import 'package:online_exam_app/core/theme/app_theme.dart';
 import 'package:online_exam_app/presentation/forget_password/forget_password_contract.dart';
 import 'package:online_exam_app/presentation/forget_password/forget_password_view_model.dart';
 
+// ignore: must_be_immutable
 class ForgetPasswordForm extends StatelessWidget {
   late ForgetPasswordViewModel viewModel;
 

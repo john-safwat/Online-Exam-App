@@ -5,6 +5,7 @@ import 'package:online_exam_app/core/theme/app_theme.dart';
 import 'package:online_exam_app/presentation/reset_password/reset_password_contract.dart';
 import 'package:online_exam_app/presentation/reset_password/reset_password_view_model.dart';
 
+// ignore: must_be_immutable
 class ResetPasswordForm extends StatelessWidget {
   late ResetPasswordViewModel viewModel;
 

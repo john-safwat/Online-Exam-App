@@ -6,7 +6,7 @@ import 'package:online_exam_app/presentation/otp_verify/otp_verify_contract.dart
 import 'package:online_exam_app/presentation/otp_verify/otp_verify_view_model.dart';
 
 class OtpForm extends StatelessWidget {
-  OtpForm({super.key});
+  const OtpForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +30,18 @@ class OtpForm extends StatelessWidget {
         Form(
           onChanged: () => viewModel.doIntent(FormDataChangedAction()),
           key: viewModel.formKey,
-          child: Row(
+          child: const Row(
             children: [
               OtpFormField(0),
-              const SizedBox(width: 8),
+              SizedBox(width: 8),
               OtpFormField(1),
-              const SizedBox(width: 8),
+              SizedBox(width: 8),
               OtpFormField(2),
-              const SizedBox(width: 8),
+              SizedBox(width: 8),
               OtpFormField(3),
-              const SizedBox(width: 8),
+              SizedBox(width: 8),
               OtpFormField(4),
-              const SizedBox(width: 8),
+              SizedBox(width: 8),
               OtpFormField(5),
             ],
           ),

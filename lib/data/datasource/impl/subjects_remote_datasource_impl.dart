@@ -15,11 +15,11 @@ class SubjectsRemoteDatasourceImpl implements SubjectsRemoteDatasource {
 
   @override
   Future<Results<(List<Subject?>?, PaginationInfo?)>> getSubjects(
-      String token) async {
+      String token , int pageNumber) async {
     var response =
         await _apiExecution.execute<(List<Subject?>?, PaginationInfo?)>(
       () async {
-        var response = await _retrofitClient.getSubjects(token);
+        var response = await _retrofitClient.getSubjects(token , pageNumber);
         var subjects = response.subjects
             ?.map(
               (e) => e.toDomain(),

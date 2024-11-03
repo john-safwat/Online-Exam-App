@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/core/constants/constants.dart';
 import 'package:online_exam_app/data/datasource/contract/auth_local_datasource.dart';
-import 'package:online_exam_app/data/local_database/models/user/local_user.dart';
+import 'package:online_exam_app/data/local_database/models/user/local_user_dto.dart';
 import 'package:online_exam_app/data/local_database/users/users_local_database.dart';
 import 'package:online_exam_app/domain/entities/user/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,7 +26,7 @@ class AuthLocalDatasourceImpl implements AuthLocalDatasource {
   @override
   Future<void> storeUser(User? user) async {
     if (user != null) {
-      await usersLocalDatabase.addUser(LocalUser.fromDomain(user));
+      await usersLocalDatabase.addUser(LocalUserDto.fromDomain(user));
     }
   }
 }

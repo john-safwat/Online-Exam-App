@@ -11,6 +11,6 @@ class GetSubjectListUseCase {
   GetSubjectListUseCase(this.repository);
 
   Future<Results<(List<Subject?>?, PaginationInfo?)>> call(
-          String token) async =>
-      await repository.getSubjects(token);
+          String token , int pageNumber) async =>
+      await repository.getSubjects(token , pageNumber);
 }
