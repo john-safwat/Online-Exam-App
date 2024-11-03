@@ -5,9 +5,9 @@ import 'package:online_exam_app/presentation/otp_verify/otp_verify_contract.dart
 import 'package:online_exam_app/presentation/otp_verify/otp_verify_view_model.dart';
 
 class OtpFormField extends StatelessWidget {
-  int index;
+  final int index;
 
-  OtpFormField(this.index, {super.key});
+  const OtpFormField(this.index, {super.key});
 
   @override
   Widget build(BuildContext context) {

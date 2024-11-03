@@ -4,7 +4,7 @@ import 'package:online_exam_app/core/assets/app_colors.dart';
 import 'package:online_exam_app/presentation/login/login_contract.dart';
 import 'package:online_exam_app/presentation/login/login_view_model.dart';
 
-@immutable
+// ignore: must_be_immutable
 class LoginForm extends StatelessWidget {
   late LoginViewModel viewModel;
 

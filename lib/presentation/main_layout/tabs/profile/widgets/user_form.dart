@@ -4,6 +4,7 @@ import 'package:online_exam_app/core/assets/app_colors.dart';
 import 'package:online_exam_app/presentation/main_layout/tabs/profile/profile_contract.dart';
 import 'package:online_exam_app/presentation/main_layout/tabs/profile/profile_view_model.dart';
 
+// ignore: must_be_immutable
 class UserForm extends StatelessWidget {
   ProfileViewModel viewModel;
 

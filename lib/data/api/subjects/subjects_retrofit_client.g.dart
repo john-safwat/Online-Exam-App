@@ -24,9 +24,16 @@ class _SubjectsRetrofitClient implements SubjectsRetrofitClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<SubjectsResponseDto> getSubjects(String token) async {
+  Future<SubjectsResponseDto> getSubjects(
+    String token,
+    int pageNumber, [
+    int perPage = 40,
+  ]) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': pageNumber,
+      r'limit': perPage,
+    };
     final _headers = <String, dynamic>{r'token': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;

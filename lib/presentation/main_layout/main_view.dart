@@ -55,7 +55,7 @@ class _MainViewState extends BaseState<MainView, MainViewModel> {
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.all(16),
                       ),
-                      child: Text(viewModel.locale!.tryAgain),
+                      child: Text(viewModel.locale!.login),
                     ),
                   ],
                 ),

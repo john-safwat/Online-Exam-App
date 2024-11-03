@@ -13,5 +13,7 @@ abstract class SubjectsRetrofitClient {
   factory SubjectsRetrofitClient(Dio dio) = _SubjectsRetrofitClient;
 
   @GET(ApiConstants.subjectRoute)
-  Future<SubjectsResponseDto> getSubjects(@Header("token") String token);
+  Future<SubjectsResponseDto> getSubjects(
+      @Header("token") String token, @Query("page") int pageNumber,
+      [@Query("limit") int perPage = 40]);
 }

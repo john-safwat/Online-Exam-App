@@ -82,7 +82,7 @@ class _OtpVerifyViewState extends BaseState<OtpVerifyView, OtpVerifyViewModel> {
           appBar: AppBar(
             title: Text(viewModel.locale!.forgetPassword),
           ),
-          body: OtpForm(),
+          body: const OtpForm(),
         ),
       ),
     );

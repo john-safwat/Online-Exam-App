@@ -26,8 +26,8 @@ class _ProfileViewState extends BaseState<ProfileView, ProfileViewModel> {
 
   @override
   void dispose() {
-    super.dispose();
     viewModel.doIntent(ClearAction());
+    super.dispose();
   }
 
   @override

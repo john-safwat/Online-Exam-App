@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
-import 'package:online_exam_app/data/local_database/models/user/local_user.dart';
+import 'package:online_exam_app/data/local_database/models/user/local_user_dto.dart';
 
 @singleton
 class UsersLocalDatabase {
@@ -8,16 +8,16 @@ class UsersLocalDatabase {
 
   UsersLocalDatabase(this.isar);
 
-  Future<void> addUser(LocalUser user) async {
+  Future<void> addUser(LocalUserDto user) async {
     await isar.writeTxn(() async {
-      await isar.localUsers.put(user);
+      await isar.localUserDtos.put(user);
     });
   }
 
-  Future<LocalUser?> getUser(String token) async {
+  Future<LocalUserDto?> getUser(String token) async {
     var response = await isar.writeTxn(() async {
       var response =
-          await isar.localUsers.filter().tokenEqualTo(token).findFirst();
+          await isar.localUserDtos.filter().tokenEqualTo(token).findFirst();
       return response;
     });
     return response;

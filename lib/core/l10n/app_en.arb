@@ -76,5 +76,7 @@
   "currentPassword": "Current Password",
   "newPassword": "New Password",
   "newPasswordAgain": "New Password Confirmation",
-  "yourTokenIsInvalid" : "Your token is invalid please login again"
+  "yourTokenIsInvalid" : "Your token is invalid please login again",
+  "survey" : "Survey",
+  "search" : "Search"
 }
