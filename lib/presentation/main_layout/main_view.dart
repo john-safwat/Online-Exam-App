@@ -27,6 +27,11 @@ class _MainViewState extends BaseState<MainView, MainViewModel> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    viewModel.pageController.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     super.build(context);
     return BlocProvider(
@@ -38,7 +43,7 @@ class _MainViewState extends BaseState<MainView, MainViewModel> {
           }
         },
         builder: (context, state) {
-          if (state is InvalidTokenState) {
+          if (state is InvalidTokenState || state is NavigateToLoginState) {
             return Scaffold(
               body: Padding(
                 padding: const EdgeInsets.all(16),

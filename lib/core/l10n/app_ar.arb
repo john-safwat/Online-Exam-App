@@ -78,5 +78,6 @@
   "newPasswordAgain": "كلمة المرور الجديدة مرة واحدة",
   "yourTokenIsInvalid": "انتهت صلاحية الجلسة الخاصة بك. الرجاء تسجيل الدخول مرة واحدة.",
   "survey" : "التقييم",
-  "search" : "بحث"
+  "search" : "بحث",
+  "browseByCategory" : "تصفح حسب الفئة"
 }

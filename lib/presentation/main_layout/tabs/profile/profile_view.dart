@@ -6,6 +6,8 @@ import 'package:online_exam_app/core/base/base_view.dart';
 import 'package:online_exam_app/core/constants/routes.dart';
 import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/core/utils/app_dialogs.dart';
+import 'package:online_exam_app/core/widgets/server_error_widget.dart';
+import 'package:online_exam_app/presentation/main_layout/main_view_model.dart';
 import 'package:online_exam_app/presentation/main_layout/tabs/profile/profile_contract.dart';
 import 'package:online_exam_app/presentation/main_layout/tabs/profile/profile_view_model.dart';
 import 'package:online_exam_app/presentation/main_layout/tabs/profile/widgets/user_form.dart';
@@ -21,6 +23,7 @@ class _ProfileViewState extends BaseState<ProfileView, ProfileViewModel> {
   @override
   void initState() {
     super.initState();
+    viewModel.mainViewModel = BlocProvider.of<MainViewModel>(context , listen: false);
     viewModel.doIntent(LoadDataAction());
   }
 
@@ -71,31 +74,14 @@ class _ProfileViewState extends BaseState<ProfileView, ProfileViewModel> {
                   child: Lottie.asset(AnimationsAssets.profileAnimation),
                 );
               } else if (state is ProfileDataLoadingFailState) {
-                return Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Lottie.asset(AnimationsAssets.notFoundAnimation),
-                      Text(
-                        state.message,
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          viewModel.doIntent(LoadDataAction());
-                        },
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.all(16),
-                        ),
-                        child: Text(viewModel.locale!.tryAgain),
-                      ),
-                    ],
-                  ),
+                return ServerErrorWidget(
+                  state.message,
+                  viewModel.locale!.tryAgain,
+                      () {
+                    viewModel.doIntent(
+                      LoadDataAction(),
+                    );
+                  },
                 );
               } else {
                 return UserForm(viewModel);

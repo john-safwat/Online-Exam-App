@@ -1,5 +1,5 @@
 sealed class ExploreViewActions {}
-
+class LoadDataAction extends ExploreViewActions {}
 
 sealed class ExploreViewStates {}
 class InitialExploreViewState extends ExploreViewStates {}

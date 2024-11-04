@@ -5,7 +5,7 @@ import 'package:online_exam_app/core/base/base_view_model.dart';
 import 'package:online_exam_app/domain/use_case/delete_token_use_case.dart';
 import 'package:online_exam_app/presentation/main_layout/main_contract.dart';
 
-@singleton
+@injectable
 class MainViewModel extends BaseViewModel<MainViewStates> {
   DeleteTokenUseCase deleteTokenUseCase;
 
