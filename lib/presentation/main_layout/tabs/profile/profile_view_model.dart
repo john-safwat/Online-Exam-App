@@ -15,8 +15,8 @@ import 'package:online_exam_app/presentation/main_layout/tabs/profile/profile_co
 class ProfileViewModel extends BaseViewModel<ProfileViewState> {
   GetUserInfoUseCase getUserInfoUseCase;
   UpdateUserInfoUseCase updateUserInfoUseCase;
-  MainViewModel mainViewModel;
-  ProfileViewModel(this.getUserInfoUseCase, this.updateUserInfoUseCase , this.mainViewModel)
+  late MainViewModel mainViewModel;
+  ProfileViewModel(this.getUserInfoUseCase, this.updateUserInfoUseCase)
       : super(InitialProfileViewState());
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();

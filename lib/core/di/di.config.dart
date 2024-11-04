@@ -157,7 +157,7 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i35.LoginUserUseCase(gh<_i26.AuthRepository>()));
     gh.factory<_i36.LoginViewModel>(
         () => _i36.LoginViewModel(gh<_i35.LoginUserUseCase>()));
-    gh.singleton<_i37.MainViewModel>(
+    gh.factory<_i37.MainViewModel>(
         () => _i37.MainViewModel(gh<_i30.DeleteTokenUseCase>()));
     gh.factory<_i38.ResetPasswordUseCase>(
         () => _i38.ResetPasswordUseCase(gh<_i26.AuthRepository>()));
@@ -180,7 +180,6 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i46.ProfileViewModel>(() => _i46.ProfileViewModel(
           gh<_i34.GetUserInfoUseCase>(),
           gh<_i42.UpdateUserInfoUseCase>(),
-          gh<_i37.MainViewModel>(),
         ));
     return this;
   }

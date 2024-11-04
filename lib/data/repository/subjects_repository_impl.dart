@@ -1,4 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/data/datasource/contract/subjects_local_datasource.dart';
 import 'package:online_exam_app/data/datasource/contract/subjects_remote_datasource.dart';
@@ -40,6 +41,15 @@ class SubjectsRepositoryImpl implements SubjectsRepository {
           }
         case Failure<(List<Subject?>?, PaginationInfo?)>():
           {
+            if(response.exception is DioException){
+              var exception = response.exception as DioException;
+              if (exception.type == DioExceptionType.badResponse) {
+                if (exception.response?.data["message"] ==
+                    "invalid token .. login again") {
+                  return response;
+                }
+              }
+            }
             var localResponse = await _getDataFromLocalDatasource();
             if (localResponse is Success<List<Subject?>>) {
               return Success((localResponse.data, null));
