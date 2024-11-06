@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.3
+  sdk: ^3.5.4
 
 isar_version: &isar_version 3.1.0+1 # define the version to be used
 # Dependencies specify other packages that your package needs in order to work.
@@ -43,7 +43,7 @@ dependencies:
   icons_launcher:
   flutter_native_splash:
   retrofit:
-  logger:
+  logger: ^2.4.0
   json_annotation:
   dio:
   lottie:
@@ -67,7 +67,6 @@ dependencies:
   connectivity_plus:
   cached_network_image:
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -86,7 +85,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

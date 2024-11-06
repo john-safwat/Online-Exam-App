@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:online_exam_app/data/api/models/subject/metadata_dto.dart';
+import 'package:online_exam_app/data/api/models/metadata/metadata_dto.dart';
 import 'package:online_exam_app/data/api/models/subject/subjects_dto.dart';
 
 part 'subjects_response_dto.g.dart';

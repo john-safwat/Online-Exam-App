@@ -79,5 +79,7 @@
   "yourTokenIsInvalid": "انتهت صلاحية الجلسة الخاصة بك. الرجاء تسجيل الدخول مرة واحدة.",
   "survey" : "التقييم",
   "search" : "بحث",
-  "browseByCategory" : "تصفح حسب الفئة"
+  "browseByCategory" : "تصفح حسب الفئة",
+  "question" : "السؤال",
+  "minutes" : "دقائق"
 }

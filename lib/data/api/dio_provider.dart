@@ -14,10 +14,12 @@ abstract class NetworkModule {
       receiveTimeout: const Duration(seconds: 10),
       baseUrl: ApiConstants.baseUrl,
     );
-    dio.interceptors.add(getIt<PrettyDioLogger>());
+    dio.interceptors.add(providerInterceptor());
     return dio;
   }
 
+
+  @lazySingleton
   PrettyDioLogger providerInterceptor() {
     return PrettyDioLogger(
         error: true,

@@ -79,5 +79,7 @@
   "yourTokenIsInvalid" : "Your token is invalid please login again",
   "survey" : "Survey",
   "search" : "Search",
-  "browseByCategory" : "Browse by subject"
+  "browseByCategory" : "Browse by subject",
+  "question" : "Question",
+  "minutes" : "minutes"
 }
