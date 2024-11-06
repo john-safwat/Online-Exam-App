@@ -9,4 +9,5 @@ class ApiConstants {
   static const String profileDataRoute = "auth/profileData";
   static const String editProfileRoute = "auth/editProfile";
   static const String changePasswordRoute = "auth/changePassword";
+  static const String examsRoute = "exams";
 }

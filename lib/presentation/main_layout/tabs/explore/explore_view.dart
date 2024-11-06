@@ -6,10 +6,12 @@ import 'package:online_exam_app/core/assets/app_colors.dart';
 import 'package:online_exam_app/core/base/base_view.dart';
 import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/core/widgets/server_error_widget.dart';
+import 'package:online_exam_app/domain/entities/subject/subjects.dart';
+import 'package:online_exam_app/presentation/exams_list/exams_list_view.dart';
 import 'package:online_exam_app/presentation/main_layout/main_view_model.dart';
 import 'package:online_exam_app/presentation/main_layout/tabs/explore/explore_contract.dart';
 import 'package:online_exam_app/presentation/main_layout/tabs/explore/explore_view_model.dart';
-import 'package:online_exam_app/presentation/main_layout/tabs/explore/widgets/wubject_widget.dart';
+import 'package:online_exam_app/presentation/main_layout/tabs/explore/widgets/subject_widget.dart';
 
 class ExploreView extends StatefulWidget {
   const ExploreView({super.key});
@@ -50,6 +52,7 @@ class _ExploreViewState extends BaseState<ExploreView, ExploreViewModel> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: TextFormField(
+              onChanged: (value) => viewModel.doIntent(SearchAction(value)),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(24),
@@ -69,6 +72,7 @@ class _ExploreViewState extends BaseState<ExploreView, ExploreViewModel> {
             child: BlocConsumer<ExploreViewModel, ExploreViewStates>(
               builder: (context, state) {
                 switch (state) {
+                  case NavigateToExamsListState():
                   case LoadSubjectsSuccessState():
                     {
                       return Column(
@@ -88,9 +92,15 @@ class _ExploreViewState extends BaseState<ExploreView, ExploreViewModel> {
                               controller: viewModel.scrollController,
                               padding: const EdgeInsets.all(16),
                               itemBuilder: (context, index) {
-                                if (index < (viewModel.subjects.length)) {
+                                if (index <
+                                    (viewModel.displayedSubjects.length)) {
                                   return SubjectWidget(
-                                      viewModel.subjects[index]!);
+                                    viewModel.displayedSubjects[index]!,
+                                    (Subject subject) {
+                                      viewModel.doIntent(
+                                          OnSubjectPressAction(subject));
+                                    },
+                                  );
                                 } else {
                                   return const Padding(
                                     padding: EdgeInsets.all(24),
@@ -103,7 +113,7 @@ class _ExploreViewState extends BaseState<ExploreView, ExploreViewModel> {
                                   const SizedBox(
                                 height: 16,
                               ),
-                              itemCount: viewModel.subjects.length +
+                              itemCount: viewModel.displayedSubjects.length +
                                   (viewModel.pageNumber <=
                                           (viewModel.maxPage ?? 1)
                                       ? 1
@@ -135,7 +145,16 @@ class _ExploreViewState extends BaseState<ExploreView, ExploreViewModel> {
                     }
                 }
               },
-              listener: (context, state) {},
+              listener: (context, state) {
+                if (state is NavigateToExamsListState) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExamsListView(state.subject),
+                    ),
+                  );
+                }
+              },
             ),
           ),
         ],

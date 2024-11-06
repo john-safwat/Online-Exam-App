@@ -21,7 +21,8 @@ class ExploreViewModel extends BaseViewModel<ExploreViewStates> {
   }
 
   int pageNumber = 1;
-  List<Subject?> subjects = [];
+  List<Subject?> allSubjects = [];
+  List<Subject?> displayedSubjects = [];
   int? maxPage;
 
   ScrollController scrollController = ScrollController();
@@ -37,7 +38,9 @@ class ExploreViewModel extends BaseViewModel<ExploreViewStates> {
         {
           pageNumber++;
           maxPage = response.data?.$2?.numberOfPages ?? 1;
-          subjects.addAll(response.data!.$1!);
+          allSubjects.addAll(response.data!.$1!);
+          displayedSubjects = [];
+          displayedSubjects.addAll(allSubjects);
           emit(LoadSubjectsSuccessState());
         }
       case Failure<(List<Subject?>?, PaginationInfo?)>():
@@ -57,6 +60,14 @@ class ExploreViewModel extends BaseViewModel<ExploreViewStates> {
             _loadMoreSubjects();
           }
         }
+      case SearchAction():
+        {
+          _search(action.searchText);
+        }
+      case OnSubjectPressAction():
+        {
+          _navigateToExamsList(action.subject);
+        }
     }
   }
 
@@ -67,5 +78,19 @@ class ExploreViewModel extends BaseViewModel<ExploreViewStates> {
         _loadMoreSubjects();
       }
     }
+  }
+
+  void _search(String searchText) async {
+    displayedSubjects = allSubjects
+        .where(
+          (element) =>
+              element!.name!.toLowerCase().contains(searchText.toLowerCase()),
+        )
+        .toList();
+    emit(LoadSubjectsSuccessState());
+  }
+
+  void _navigateToExamsList(Subject subject) {
+    emit(NavigateToExamsListState(subject));
   }
 }
