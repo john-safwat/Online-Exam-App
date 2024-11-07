@@ -23,7 +23,8 @@ class _ProfileViewState extends BaseState<ProfileView, ProfileViewModel> {
   @override
   void initState() {
     super.initState();
-    viewModel.mainViewModel = BlocProvider.of<MainViewModel>(context , listen: false);
+    viewModel.mainViewModel =
+        BlocProvider.of<MainViewModel>(context, listen: false);
     viewModel.doIntent(LoadDataAction());
   }
 
@@ -77,7 +78,7 @@ class _ProfileViewState extends BaseState<ProfileView, ProfileViewModel> {
                 return ServerErrorWidget(
                   state.message,
                   viewModel.locale!.tryAgain,
-                      () {
+                  () {
                     viewModel.doIntent(
                       LoadDataAction(),
                     );

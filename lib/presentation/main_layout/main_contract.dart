@@ -17,4 +17,5 @@ class InitializeMainViewState extends MainViewStates {}
 class PageChangedState extends MainViewStates {}
 
 class InvalidTokenState extends MainViewStates {}
+
 class NavigateToLoginState extends MainViewStates {}

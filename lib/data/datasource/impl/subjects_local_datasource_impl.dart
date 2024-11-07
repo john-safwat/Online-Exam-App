@@ -41,10 +41,11 @@ class SubjectsLocalDatasourceImpl implements SubjectsLocalDatasource {
 
   @override
   Future<Results<bool>> checkOnCacheValidation() async {
-    var response = await _apiExecution.execute(()async{
+    var response = await _apiExecution.execute(() async {
       DateTime nowDate = DateTime.now();
       int? getDateTime = _sharedPreferences.getInt(Constants.validTimeKey);
-      DateTime validDate = DateTime.fromMillisecondsSinceEpoch(getDateTime??0);
+      DateTime validDate =
+          DateTime.fromMillisecondsSinceEpoch(getDateTime ?? 0);
       int difference = nowDate.difference(validDate).inDays;
       return difference <= 3;
     });
@@ -63,9 +64,13 @@ class SubjectsLocalDatasourceImpl implements SubjectsLocalDatasource {
 
   @override
   Future<Results<List<Subject?>>> getAllSubjects() async {
-    var response= await _apiExecution.execute(()async{
+    var response = await _apiExecution.execute(() async {
       var response = await _localDatabase.getAllSubjects();
-      return response.map((e) => e.toDomain(),).toList();
+      return response
+          .map(
+            (e) => e.toDomain(),
+          )
+          .toList();
     });
     return response;
   }

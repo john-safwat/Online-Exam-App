@@ -31,6 +31,7 @@ class _MainViewState extends BaseState<MainView, MainViewModel> {
     super.dispose();
     viewModel.pageController.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -51,8 +52,13 @@ class _MainViewState extends BaseState<MainView, MainViewModel> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Lottie.asset(AnimationsAssets.logoutAnimation),
-                    Text(viewModel.locale!.yourTokenIsInvalid , style: Theme.of(context).textTheme.titleMedium,),
-                    const SizedBox(height: 16,),
+                    Text(
+                      viewModel.locale!.yourTokenIsInvalid,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
                     ElevatedButton(
                       onPressed: () {
                         viewModel.doIntent(LogoutAction());

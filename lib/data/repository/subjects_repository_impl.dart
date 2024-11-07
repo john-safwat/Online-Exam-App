@@ -16,7 +16,6 @@ class SubjectsRepositoryImpl implements SubjectsRepository {
 
   SubjectsRepositoryImpl(this._remoteDatasource, this._localDatasource);
 
-
   /// Retrieves a list of subjects and pagination info.
   ///
   /// - Parameters:
@@ -41,7 +40,7 @@ class SubjectsRepositoryImpl implements SubjectsRepository {
           }
         case Failure<(List<Subject?>?, PaginationInfo?)>():
           {
-            if(response.exception is DioException){
+            if (response.exception is DioException) {
               var exception = response.exception as DioException;
               if (exception.type == DioExceptionType.badResponse) {
                 if (exception.response?.data["message"] ==

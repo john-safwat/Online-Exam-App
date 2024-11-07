@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:lottie/lottie.dart';
 import 'package:online_exam_app/core/assets/animation_assets.dart';
 import 'package:online_exam_app/core/assets/app_colors.dart';
 import 'package:online_exam_app/core/base/base_view.dart';
 import 'package:online_exam_app/core/di/di.dart';
+import 'package:online_exam_app/core/widgets/animation_widget_builder.dart';
 import 'package:online_exam_app/core/widgets/server_error_widget.dart';
 import 'package:online_exam_app/domain/entities/subject/subjects.dart';
 import 'package:online_exam_app/presentation/exams_list/exams_list_view.dart';
@@ -88,36 +90,46 @@ class _ExploreViewState extends BaseState<ExploreView, ExploreViewModel> {
                             ),
                           ),
                           Expanded(
-                            child: ListView.separated(
-                              controller: viewModel.scrollController,
-                              padding: const EdgeInsets.all(16),
-                              itemBuilder: (context, index) {
-                                if (index <
-                                    (viewModel.displayedSubjects.length)) {
-                                  return SubjectWidget(
-                                    viewModel.displayedSubjects[index]!,
-                                    (Subject subject) {
-                                      viewModel.doIntent(
-                                          OnSubjectPressAction(subject));
-                                    },
-                                  );
-                                } else {
-                                  return const Padding(
-                                    padding: EdgeInsets.all(24),
-                                    child: Center(
-                                        child: CircularProgressIndicator()),
-                                  );
-                                }
-                              },
-                              separatorBuilder: (context, index) =>
-                                  const SizedBox(
-                                height: 16,
+                            child: AnimationLimiter(
+                              child: ListView.separated(
+                                controller: viewModel.scrollController,
+                                padding: const EdgeInsets.all(16),
+                                itemBuilder: (context, index) {
+                                  if (index <
+                                      (viewModel.displayedSubjects.length)) {
+                                    return AnimationWidgetBuilder(
+                                      index,
+                                      0,
+                                      SubjectWidget(
+                                        viewModel.displayedSubjects[index]!,
+                                        (Subject subject) {
+                                          viewModel.doIntent(
+                                              OnSubjectPressAction(subject));
+                                        },
+                                      ),
+                                    );
+                                  } else {
+                                    return AnimationWidgetBuilder(
+                                      index,
+                                      0,
+                                      const Padding(
+                                        padding: EdgeInsets.all(24),
+                                        child: Center(
+                                            child: CircularProgressIndicator()),
+                                      ),
+                                    );
+                                  }
+                                },
+                                separatorBuilder: (context, index) =>
+                                    const SizedBox(
+                                  height: 16,
+                                ),
+                                itemCount: viewModel.displayedSubjects.length +
+                                    (viewModel.pageNumber <=
+                                            (viewModel.maxPage ?? 1)
+                                        ? 1
+                                        : 0),
                               ),
-                              itemCount: viewModel.displayedSubjects.length +
-                                  (viewModel.pageNumber <=
-                                          (viewModel.maxPage ?? 1)
-                                      ? 1
-                                      : 0),
                             ),
                           ),
                         ],

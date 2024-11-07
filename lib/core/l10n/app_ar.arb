@@ -77,9 +77,15 @@
   "newPassword": "كلمة المرور الجديدة",
   "newPasswordAgain": "كلمة المرور الجديدة مرة واحدة",
   "yourTokenIsInvalid": "انتهت صلاحية الجلسة الخاصة بك. الرجاء تسجيل الدخول مرة واحدة.",
-  "survey" : "التقييم",
-  "search" : "بحث",
-  "browseByCategory" : "تصفح حسب الفئة",
-  "question" : "السؤال",
-  "minutes" : "دقائق"
+  "survey": "التقييم",
+  "search": "بحث",
+  "browseByCategory": "تصفح حسب الفئة",
+  "question": "السؤال",
+  "minutes": "دقائق",
+  "startExam": "بدء الامتحان",
+  "exam": "الامتحان",
+  "ofTitle": "من",
+  "next": "التالي",
+  "back" : "السابق",
+  "finish": "انهاء"
 }

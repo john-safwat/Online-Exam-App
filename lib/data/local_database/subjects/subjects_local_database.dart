@@ -29,5 +29,4 @@ class SubjectsLocalDatabase {
       await isar.localSubjectsDtos.clear();
     });
   }
-
 }

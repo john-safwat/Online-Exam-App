@@ -16,6 +16,7 @@ class ProfileViewModel extends BaseViewModel<ProfileViewState> {
   GetUserInfoUseCase getUserInfoUseCase;
   UpdateUserInfoUseCase updateUserInfoUseCase;
   late MainViewModel mainViewModel;
+
   ProfileViewModel(this.getUserInfoUseCase, this.updateUserInfoUseCase)
       : super(InitialProfileViewState());
 

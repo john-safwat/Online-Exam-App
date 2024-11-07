@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         Routes.forgetPasswordRoute: (context) => const ForgetPasswordView(),
         Routes.otpVerifyRoute: (context) => const OtpVerifyView(),
         Routes.resetPasswordViewRoute: (context) => const ResetPasswordView(),
-        Routes.changePasswordViewRoute: (context) => const ChangePasswordView()
+        Routes.changePasswordViewRoute: (context) => const ChangePasswordView(),
       },
       initialRoute: appConfigProvider.token.isEmpty
           ? Routes.loginRoute

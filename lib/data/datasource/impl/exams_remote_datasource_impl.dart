@@ -4,6 +4,7 @@ import 'package:online_exam_app/data/core/api_execution.dart';
 import 'package:online_exam_app/data/datasource/contract/exams_remote_datasource.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/exam/exam.dart';
+import 'package:online_exam_app/domain/entities/exam/question.dart';
 import 'package:online_exam_app/domain/entities/subject/pagination_info.dart';
 
 @Injectable(as: ExamsRemoteDatasource)
@@ -26,6 +27,20 @@ class ExamsRemoteDatasourceImpl implements ExamsRemoteDatasource {
           )
           .toList();
       return (examsList, response.metadata?.toDomain());
+    });
+    return response;
+  }
+
+  @override
+  Future<Results<List<Question?>?>> getExamQuestions(
+      String token, String examId) async {
+    var response = await _apiExecution.execute(() async {
+      var response = await _retrofitClient.getExamDetails(token, examId);
+      return response.questions
+          ?.map(
+            (e) => e.toDomain(),
+          )
+          .toList();
     });
     return response;
   }

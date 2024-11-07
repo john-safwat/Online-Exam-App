@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/data/datasource/contract/exams_remote_datasource.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/exam/exam.dart';
+import 'package:online_exam_app/domain/entities/exam/question.dart';
 import 'package:online_exam_app/domain/entities/subject/pagination_info.dart';
 import 'package:online_exam_app/domain/repository/exams_repository.dart';
 
@@ -18,4 +19,9 @@ class ExamsRepositoryImpl implements ExamsRepository {
         await _remoteDatasource.getExams(token, subjectId, pageNumber);
     return response;
   }
+
+  @override
+  Future<Results<List<Question?>?>> getExamQuestions(
+          String token, String examId) async =>
+      await _remoteDatasource.getExamQuestions(token, examId);
 }
