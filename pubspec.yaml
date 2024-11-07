@@ -66,6 +66,8 @@ dependencies:
   pretty_dio_logger:
   connectivity_plus:
   cached_network_image:
+  flutter_staggered_animations:
+  animate_do:
 
 dev_dependencies:
   flutter_test:

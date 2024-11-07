@@ -13,7 +13,6 @@ class ChangePasswordAction extends ChangePasswordViewAction {}
 
 class NavigateToHomeScreeAction extends ChangePasswordViewAction {}
 
-
 //--------------------------------------------------------
 sealed class ChangePasswordViewState {}
 

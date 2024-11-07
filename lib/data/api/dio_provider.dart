@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/data/api/api_constants.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -17,7 +16,6 @@ abstract class NetworkModule {
     dio.interceptors.add(providerInterceptor());
     return dio;
   }
-
 
   @lazySingleton
   PrettyDioLogger providerInterceptor() {

@@ -76,10 +76,16 @@
   "currentPassword": "Current Password",
   "newPassword": "New Password",
   "newPasswordAgain": "New Password Confirmation",
-  "yourTokenIsInvalid" : "Your token is invalid please login again",
-  "survey" : "Survey",
-  "search" : "Search",
-  "browseByCategory" : "Browse by subject",
-  "question" : "Question",
-  "minutes" : "minutes"
+  "yourTokenIsInvalid": "Your token is invalid please login again",
+  "survey": "Survey",
+  "search": "Search",
+  "browseByCategory": "Browse by subject",
+  "question": "Question",
+  "minutes": "minutes",
+  "startExam": "Start Exam",
+  "exam": "Exam",
+  "ofTitle": "of",
+  "next": "Next",
+  "back" : "Back",
+  "finish": "Finish"
 }

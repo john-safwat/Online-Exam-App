@@ -9,16 +9,17 @@ class ExamWidget extends StatelessWidget {
   final Subject subject;
   final String questionTitle;
   final String minutesTitle;
+  final Function onPress;
 
-  const ExamWidget(
-      this.exam, this.subject, this.questionTitle, this.minutesTitle,
+  const ExamWidget(this.exam, this.subject, this.questionTitle,
+      this.minutesTitle, this.onPress,
       {super.key});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // todo to be implemented
+        onPress(exam);
       },
       child: Container(
         padding: const EdgeInsets.all(16),

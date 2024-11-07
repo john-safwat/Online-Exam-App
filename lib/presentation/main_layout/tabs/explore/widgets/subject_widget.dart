@@ -6,27 +6,27 @@ import 'package:online_exam_app/domain/entities/subject/subjects.dart';
 class SubjectWidget extends StatelessWidget {
   final Subject subject;
   final Function onPress;
-  const SubjectWidget(this.subject,this.onPress, {super.key});
+
+  const SubjectWidget(this.subject, this.onPress, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         onPress(subject);
       },
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.black[AppColors.colorCode10]!,
-              blurRadius: 8,
-              offset: const Offset(0, 0),
-            )
-          ]
-        ),
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.black[AppColors.colorCode10]!,
+                blurRadius: 8,
+                offset: const Offset(0, 0),
+              )
+            ]),
         child: Row(
           children: [
             CachedNetworkImage(

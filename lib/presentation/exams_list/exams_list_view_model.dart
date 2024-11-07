@@ -15,7 +15,7 @@ class ExamsListViewModel extends BaseViewModel<ExamsListViewStates> {
   GetExamsListBySubjectUseCase getExamsListBySubjectUseCase;
 
   ExamsListViewModel(this.getExamsListBySubjectUseCase)
-      : super(InitialExamsListState()){
+      : super(InitialExamsListState()) {
     controller.addListener(_listenOnScroll);
   }
 
@@ -32,6 +32,14 @@ class ExamsListViewModel extends BaseViewModel<ExamsListViewStates> {
       case LoadDataAction():
         {
           _loadData();
+        }
+      case ShowBottomSheetAction():
+        {
+          _showBottomSheet(action.exam);
+        }
+      case OnStartExamPress():
+        {
+          _navigateToExamScreen(action.exam);
         }
     }
   }
@@ -51,6 +59,7 @@ class ExamsListViewModel extends BaseViewModel<ExamsListViewStates> {
           examsList.addAll(response.data!.$1!);
           emit(LoadDataLoadingSuccessState());
         }
+
       case Failure<(List<Exam?>?, PaginationInfo?)>():
         {
           emit(LoadDataLoadingFailState(
@@ -60,13 +69,18 @@ class ExamsListViewModel extends BaseViewModel<ExamsListViewStates> {
   }
 
   void _listenOnScroll() {
-    if (controller.position.pixels ==
-        controller.position.maxScrollExtent) {
+    if (controller.position.pixels == controller.position.maxScrollExtent) {
       if (pageNumber <= (maxPageNumber ?? 1)) {
         _loadData();
       }
     }
   }
 
+  void _showBottomSheet(Exam exam) {
+    emit(ShowBottomSheetState(exam));
+  }
 
+  void _navigateToExamScreen(Exam exam) {
+    emit(NavigateToExamScreenState(exam));
+  }
 }
