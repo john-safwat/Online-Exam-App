@@ -87,5 +87,12 @@
   "ofTitle": "من",
   "next": "التالي",
   "back" : "السابق",
-  "finish": "انهاء"
+  "finish": "انهاء",
+  "examTimedOut": "انتهت مدة الامتحان.",
+  "examFinished": "انتهي الامتحان بنجاح",
+  "correct" : "صحيح",
+  "incorrect" : "غير صحيح",
+  "yourAnswers" : "الاجابات الخاصة بك",
+  "showResults" : "اظهار النتايج",
+  "startAgain" : "بدء مرة جديدة"
 }

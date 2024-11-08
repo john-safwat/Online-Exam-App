@@ -1,3 +1,4 @@
+
 class AnimationsAssets {
   static const String _baseRoute = "assets/animations";
   static const String checkAnimation = "$_baseRoute/check.json";
@@ -9,4 +10,5 @@ class AnimationsAssets {
   static const String notFoundAnimation = "$_baseRoute/not_found.json";
   static const String logoutAnimation = "$_baseRoute/logout.json";
   static const String emptyAnimation = "$_baseRoute/empty.json";
+  static const String timeoutAnimation = "$_baseRoute/timeout.json";
 }

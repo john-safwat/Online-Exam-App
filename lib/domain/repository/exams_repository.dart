@@ -9,4 +9,5 @@ abstract class ExamsRepository {
 
   Future<Results<List<Question?>?>> getExamQuestions(
       String token, String examId);
+  Future<Results<void>> addExam(Exam exam, List<Question?> questions);
 }

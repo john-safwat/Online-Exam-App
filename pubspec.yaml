@@ -61,13 +61,15 @@ dependencies:
   cupertino_icons: ^1.0.8
   dialogs:
     git:
-      url: https://github.com/john-safwat/Elevate-Online-Exam-App.git
+      url: https://github.com/john-safwat/My-Packages.git
       path: app_packages/dialogs
   pretty_dio_logger:
   connectivity_plus:
   cached_network_image:
   flutter_staggered_animations:
   animate_do:
+  flutter_animation_progress_bar:
+  percent_indicator:
 
 dev_dependencies:
   flutter_test:
@@ -87,7 +89,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+  flutter_lints: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
