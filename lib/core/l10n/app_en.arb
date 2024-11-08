@@ -87,5 +87,12 @@
   "ofTitle": "of",
   "next": "Next",
   "back" : "Back",
-  "finish": "Finish"
+  "finish": "Finish",
+  "examTimedOut": "Exam Timed Out",
+  "examFinished": "Exam Finished Successfully",
+  "correct" : "Correct",
+  "incorrect" : "Incorrect",
+  "yourAnswers" : "Your Answers",
+  "showResults" : "Show results",
+  "startAgain" : "Start again"
 }

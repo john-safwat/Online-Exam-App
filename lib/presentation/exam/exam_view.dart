@@ -1,3 +1,4 @@
+import 'package:dialogs/app_dialog_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -5,12 +6,14 @@ import 'package:online_exam_app/core/assets/animation_assets.dart';
 import 'package:online_exam_app/core/assets/app_colors.dart';
 import 'package:online_exam_app/core/base/base_view.dart';
 import 'package:online_exam_app/core/di/di.dart';
-import 'package:online_exam_app/core/widgets/animation_widget_builder.dart';
+import 'package:online_exam_app/core/utils/app_dialogs.dart';
 import 'package:online_exam_app/core/widgets/server_error_widget.dart';
 import 'package:online_exam_app/domain/entities/exam/exam.dart';
 import 'package:online_exam_app/presentation/exam/exam_contract.dart';
 import 'package:online_exam_app/presentation/exam/exam_view_model.dart';
 import 'package:online_exam_app/presentation/exam/widgets/exam_questions.dart';
+import 'package:online_exam_app/presentation/exam/widgets/exam_results.dart';
+import 'package:online_exam_app/presentation/main_layout/main_view_model.dart';
 
 class ExamView extends StatefulWidget {
   final Exam exam;
@@ -50,7 +53,7 @@ class _ExamViewState extends BaseState<ExamView, ExamViewModel> {
                           ? AppColors.red
                           : AppColors.green,
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Text(
                       value,
                       style: TextStyle(
@@ -67,7 +70,36 @@ class _ExamViewState extends BaseState<ExamView, ExamViewModel> {
           ],
         ),
         body: BlocConsumer<ExamViewModel, ExamViewState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state is ExamTimeoutState) {
+              AppDialogUtils.showDialogOnScreen(
+                  context: context,
+                  message: viewModel.locale!.examTimedOut,
+                  imagePath: AnimationsAssets.timeoutAnimation,
+                  posActionTitle: viewModel.locale!.ok,
+                  posAction: () {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  });
+            }
+            if (state is ExamCheckingState) {
+              AppDialogs.showLoading(
+                  message: viewModel.locale!.loading, context: context);
+            }
+            if (state is ExamCheckingFailState) {
+              Navigator.pop(context);
+              AppDialogs.showFailDialog(
+                  message: state.message,
+                  context: context,
+                  posActionTitle: viewModel.locale!.tryAgain,
+                  posAction: () {
+                    viewModel.doIntent(OnPressFinishAction());
+                  });
+            }
+            if(state is ExamCheckingSuccessState){
+              Navigator.pop(context);
+            }
+          },
           builder: (context, state) {
             switch (state) {
               case InitialExamState():
@@ -77,16 +109,19 @@ class _ExamViewState extends BaseState<ExamView, ExamViewModel> {
                     child: Lottie.asset(AnimationsAssets.examLoadingAnimation),
                   );
                 }
+              case ExamCheckingSuccessState():{
+                return ExamResults(viewModel);
+              }
               case RefreshState():
+              case ExamTimeoutState():
+              case ExamCheckingState():
+              case ExamCheckingFailState():
               case ExamQuestionsLoadingSuccessState():
                 {
                   return ValueListenableBuilder(
                     valueListenable: viewModel.questionIndex,
-                    builder: (context, value, child) => AnimationWidgetBuilder(
-                      value,
-                      (0),
-                      ExamQuestions(viewModel, value),
-                    ),
+                    builder: (context, value, child) =>
+                        ExamQuestions(viewModel, value),
                   );
                 }
               case ExamQuestionsLoadingFailState():

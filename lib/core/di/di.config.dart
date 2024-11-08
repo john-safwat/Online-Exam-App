@@ -19,64 +19,68 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i10;
 import 'package:shared_preferences/shared_preferences.dart' as _i11;
 
 import '../../data/api/auth/auth_retrofit_client.dart' as _i19;
-import '../../data/api/dio_provider.dart' as _i57;
+import '../../data/api/dio_provider.dart' as _i61;
 import '../../data/api/exams/exams_retrofit_client.dart' as _i7;
 import '../../data/api/subjects/subjects_retrofit_client.dart' as _i15;
 import '../../data/core/api_execution.dart' as _i3;
 import '../../data/datasource/contract/auth_local_datasource.dart' as _i17;
-import '../../data/datasource/contract/auth_remote_datasource.dart' as _i32;
-import '../../data/datasource/contract/exams_remote_datasource.dart' as _i20;
+import '../../data/datasource/contract/auth_remote_datasource.dart' as _i36;
+import '../../data/datasource/contract/exams_local_datasouce.dart' as _i21;
+import '../../data/datasource/contract/exams_remote_datasource.dart' as _i23;
 import '../../data/datasource/contract/subjects_local_datasource.dart' as _i13;
-import '../../data/datasource/contract/subjects_remote_datasource.dart' as _i27;
+import '../../data/datasource/contract/subjects_remote_datasource.dart' as _i30;
 import '../../data/datasource/impl/auth_local_datasource_impl.dart' as _i18;
-import '../../data/datasource/impl/auth_remote_datasource_impl.dart' as _i33;
-import '../../data/datasource/impl/exams_remote_datasource_impl.dart' as _i21;
+import '../../data/datasource/impl/auth_remote_datasource_impl.dart' as _i37;
+import '../../data/datasource/impl/exams_local_datasource_impl.dart' as _i22;
+import '../../data/datasource/impl/exams_remote_datasource_impl.dart' as _i24;
 import '../../data/datasource/impl/subjects_local_datasource_impl.dart' as _i14;
 import '../../data/datasource/impl/subjects_remote_datasource_impl.dart'
-    as _i28;
-import '../../data/local_database/isar_module.dart' as _i58;
+    as _i31;
+import '../../data/local_database/exams/exams_local_database.dart' as _i20;
+import '../../data/local_database/isar_module.dart' as _i62;
 import '../../data/local_database/subjects/subjects_local_database.dart'
     as _i12;
 import '../../data/local_database/users/users_local_database.dart' as _i16;
-import '../../data/repository/auth_repository_impl.dart' as _i35;
-import '../../data/repository/exams_repository_impl.dart' as _i23;
-import '../../data/repository/subjects_repository_impl.dart' as _i30;
-import '../../domain/repository/auth_repository.dart' as _i34;
-import '../../domain/repository/exams_repository.dart' as _i22;
-import '../../domain/repository/subjects_repository.dart' as _i29;
-import '../../domain/use_case/change_password_use_case.dart' as _i36;
-import '../../domain/use_case/delete_token_use_case.dart' as _i38;
-import '../../domain/use_case/forget_password_use_case.dart' as _i41;
-import '../../domain/use_case/get_exam_questions_use_case.dart' as _i24;
-import '../../domain/use_case/get_exams_list_by_subject_use_case.dart' as _i25;
-import '../../domain/use_case/get_subject_list_use_case.dart' as _i43;
-import '../../domain/use_case/get_user_info_use_case.dart' as _i44;
-import '../../domain/use_case/login_user_use_case.dart' as _i45;
-import '../../domain/use_case/reset_password_use_case.dart' as _i48;
-import '../../domain/use_case/signup_user_use_case.dart' as _i50;
-import '../../domain/use_case/update_user_info_use_case.dart' as _i52;
-import '../../domain/use_case/verify_reset_code_use_case.dart' as _i53;
+import '../../data/repository/auth_repository_impl.dart' as _i39;
+import '../../data/repository/exams_repository_impl.dart' as _i26;
+import '../../data/repository/subjects_repository_impl.dart' as _i33;
+import '../../domain/repository/auth_repository.dart' as _i38;
+import '../../domain/repository/exams_repository.dart' as _i25;
+import '../../domain/repository/subjects_repository.dart' as _i32;
+import '../../domain/use_case/change_password_use_case.dart' as _i40;
+import '../../domain/use_case/delete_token_use_case.dart' as _i42;
+import '../../domain/use_case/forget_password_use_case.dart' as _i45;
+import '../../domain/use_case/get_exam_questions_use_case.dart' as _i27;
+import '../../domain/use_case/get_exams_list_by_subject_use_case.dart' as _i28;
+import '../../domain/use_case/get_subject_list_use_case.dart' as _i47;
+import '../../domain/use_case/get_user_info_use_case.dart' as _i48;
+import '../../domain/use_case/login_user_use_case.dart' as _i49;
+import '../../domain/use_case/reset_password_use_case.dart' as _i52;
+import '../../domain/use_case/signup_user_use_case.dart' as _i54;
+import '../../domain/use_case/submit_exam_use_case.dart' as _i34;
+import '../../domain/use_case/update_user_info_use_case.dart' as _i56;
+import '../../domain/use_case/verify_reset_code_use_case.dart' as _i57;
 import '../../presentation/change_password/change_password_view_model.dart'
-    as _i37;
-import '../../presentation/exam/exam_view_model.dart' as _i39;
-import '../../presentation/exams_list/exams_list_view_model.dart' as _i40;
+    as _i41;
+import '../../presentation/exam/exam_view_model.dart' as _i43;
+import '../../presentation/exams_list/exams_list_view_model.dart' as _i44;
 import '../../presentation/forget_password/forget_password_view_model.dart'
-    as _i42;
-import '../../presentation/login/login_view_model.dart' as _i46;
-import '../../presentation/main_layout/main_view_model.dart' as _i47;
+    as _i46;
+import '../../presentation/login/login_view_model.dart' as _i50;
+import '../../presentation/main_layout/main_view_model.dart' as _i51;
 import '../../presentation/main_layout/tabs/explore/explore_view_model.dart'
-    as _i54;
+    as _i58;
 import '../../presentation/main_layout/tabs/profile/profile_view_model.dart'
-    as _i56;
-import '../../presentation/otp_verify/otp_verify_view_model.dart' as _i55;
+    as _i60;
+import '../../presentation/otp_verify/otp_verify_view_model.dart' as _i59;
 import '../../presentation/reset_password/reset_password_view_model.dart'
-    as _i49;
-import '../../presentation/signup/signup_view_model.dart' as _i51;
+    as _i53;
+import '../../presentation/signup/signup_view_model.dart' as _i55;
 import '../providers/app_config_provider.dart' as _i4;
-import '../providers/language_provider.dart' as _i26;
-import '../utils/app_initializer.dart' as _i31;
-import '../utils/logger_module.dart' as _i59;
-import '../utils/shared_preferences_module.dart' as _i60;
+import '../providers/language_provider.dart' as _i29;
+import '../utils/app_initializer.dart' as _i35;
+import '../utils/logger_module.dart' as _i63;
+import '../utils/shared_preferences_module.dart' as _i64;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -132,94 +136,106 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.singleton<_i19.AuthRetrofitClient>(
         () => _i19.AuthRetrofitClient(gh<_i5.Dio>()));
-    gh.factory<_i20.ExamsRemoteDatasource>(() => _i21.ExamsRemoteDatasourceImpl(
+    gh.singleton<_i20.ExamsLocalDatabase>(
+        () => _i20.ExamsLocalDatabase(gh<_i8.Isar>()));
+    gh.factory<_i21.ExamsLocalDatasource>(() => _i22.ExamsLocalDatasourceImpl(
+          gh<_i20.ExamsLocalDatabase>(),
+          gh<_i3.ApiExecution>(),
+        ));
+    gh.factory<_i23.ExamsRemoteDatasource>(() => _i24.ExamsRemoteDatasourceImpl(
           gh<_i7.ExamsRetrofitClient>(),
           gh<_i3.ApiExecution>(),
         ));
-    gh.factory<_i22.ExamsRepository>(
-        () => _i23.ExamsRepositoryImpl(gh<_i20.ExamsRemoteDatasource>()));
-    gh.factory<_i24.GetExamQuestionsUseCase>(
-        () => _i24.GetExamQuestionsUseCase(gh<_i22.ExamsRepository>()));
-    gh.factory<_i25.GetExamsListBySubjectUseCase>(
-        () => _i25.GetExamsListBySubjectUseCase(gh<_i22.ExamsRepository>()));
-    gh.singleton<_i26.LanguageProvider>(
-        () => _i26.LanguageProvider(gh<_i11.SharedPreferences>()));
-    gh.factory<_i27.SubjectsRemoteDatasource>(
-        () => _i28.SubjectsRemoteDatasourceImpl(
+    gh.factory<_i25.ExamsRepository>(() => _i26.ExamsRepositoryImpl(
+          gh<_i23.ExamsRemoteDatasource>(),
+          gh<_i21.ExamsLocalDatasource>(),
+        ));
+    gh.factory<_i27.GetExamQuestionsUseCase>(
+        () => _i27.GetExamQuestionsUseCase(gh<_i25.ExamsRepository>()));
+    gh.factory<_i28.GetExamsListBySubjectUseCase>(
+        () => _i28.GetExamsListBySubjectUseCase(gh<_i25.ExamsRepository>()));
+    gh.singleton<_i29.LanguageProvider>(
+        () => _i29.LanguageProvider(gh<_i11.SharedPreferences>()));
+    gh.factory<_i30.SubjectsRemoteDatasource>(
+        () => _i31.SubjectsRemoteDatasourceImpl(
               gh<_i15.SubjectsRetrofitClient>(),
               gh<_i3.ApiExecution>(),
             ));
-    gh.factory<_i29.SubjectsRepository>(() => _i30.SubjectsRepositoryImpl(
-          gh<_i27.SubjectsRemoteDatasource>(),
+    gh.factory<_i32.SubjectsRepository>(() => _i33.SubjectsRepositoryImpl(
+          gh<_i30.SubjectsRemoteDatasource>(),
           gh<_i13.SubjectsLocalDatasource>(),
         ));
-    gh.lazySingleton<_i31.AppInitializer>(() => _i31.AppInitializer(
-          gh<_i26.LanguageProvider>(),
+    gh.factory<_i34.SubmitExamUseCase>(
+        () => _i34.SubmitExamUseCase(gh<_i25.ExamsRepository>()));
+    gh.lazySingleton<_i35.AppInitializer>(() => _i35.AppInitializer(
+          gh<_i29.LanguageProvider>(),
           gh<_i4.AppConfigProvider>(),
           gh<_i11.SharedPreferences>(),
         ));
-    gh.factory<_i32.AuthRemoteDatasource>(() => _i33.AuthRemoteDatasourceImpl(
+    gh.factory<_i36.AuthRemoteDatasource>(() => _i37.AuthRemoteDatasourceImpl(
           gh<_i19.AuthRetrofitClient>(),
           gh<_i3.ApiExecution>(),
         ));
-    gh.factory<_i34.AuthRepository>(() => _i35.AuthRepositoryImpl(
-          gh<_i32.AuthRemoteDatasource>(),
+    gh.factory<_i38.AuthRepository>(() => _i39.AuthRepositoryImpl(
+          gh<_i36.AuthRemoteDatasource>(),
           gh<_i17.AuthLocalDatasource>(),
         ));
-    gh.factory<_i36.ChangePasswordUseCase>(
-        () => _i36.ChangePasswordUseCase(gh<_i34.AuthRepository>()));
-    gh.factory<_i37.ChangePasswordViewModel>(
-        () => _i37.ChangePasswordViewModel(gh<_i36.ChangePasswordUseCase>()));
-    gh.factory<_i38.DeleteTokenUseCase>(
-        () => _i38.DeleteTokenUseCase(gh<_i34.AuthRepository>()));
-    gh.factory<_i39.ExamViewModel>(
-        () => _i39.ExamViewModel(gh<_i24.GetExamQuestionsUseCase>()));
-    gh.factory<_i40.ExamsListViewModel>(
-        () => _i40.ExamsListViewModel(gh<_i25.GetExamsListBySubjectUseCase>()));
-    gh.factory<_i41.ForgetPasswordUseCase>(
-        () => _i41.ForgetPasswordUseCase(gh<_i34.AuthRepository>()));
-    gh.factory<_i42.ForgetPasswordViewModel>(
-        () => _i42.ForgetPasswordViewModel(gh<_i41.ForgetPasswordUseCase>()));
-    gh.factory<_i43.GetSubjectListUseCase>(
-        () => _i43.GetSubjectListUseCase(gh<_i29.SubjectsRepository>()));
-    gh.factory<_i44.GetUserInfoUseCase>(
-        () => _i44.GetUserInfoUseCase(gh<_i34.AuthRepository>()));
-    gh.factory<_i45.LoginUserUseCase>(
-        () => _i45.LoginUserUseCase(gh<_i34.AuthRepository>()));
-    gh.factory<_i46.LoginViewModel>(
-        () => _i46.LoginViewModel(gh<_i45.LoginUserUseCase>()));
-    gh.factory<_i47.MainViewModel>(
-        () => _i47.MainViewModel(gh<_i38.DeleteTokenUseCase>()));
-    gh.factory<_i48.ResetPasswordUseCase>(
-        () => _i48.ResetPasswordUseCase(gh<_i34.AuthRepository>()));
-    gh.factory<_i49.ResetPasswordViewModel>(
-        () => _i49.ResetPasswordViewModel(gh<_i48.ResetPasswordUseCase>()));
-    gh.factory<_i50.SignupUserUseCase>(
-        () => _i50.SignupUserUseCase(gh<_i34.AuthRepository>()));
-    gh.factory<_i51.SignupViewModel>(
-        () => _i51.SignupViewModel(gh<_i50.SignupUserUseCase>()));
-    gh.factory<_i52.UpdateUserInfoUseCase>(
-        () => _i52.UpdateUserInfoUseCase(gh<_i34.AuthRepository>()));
-    gh.factory<_i53.VerifyResetPasswordUseCase>(
-        () => _i53.VerifyResetPasswordUseCase(gh<_i34.AuthRepository>()));
-    gh.factory<_i54.ExploreViewModel>(
-        () => _i54.ExploreViewModel(gh<_i43.GetSubjectListUseCase>()));
-    gh.factory<_i55.OtpVerifyViewModel>(() => _i55.OtpVerifyViewModel(
-          gh<_i53.VerifyResetPasswordUseCase>(),
-          gh<_i41.ForgetPasswordUseCase>(),
+    gh.factory<_i40.ChangePasswordUseCase>(
+        () => _i40.ChangePasswordUseCase(gh<_i38.AuthRepository>()));
+    gh.factory<_i41.ChangePasswordViewModel>(
+        () => _i41.ChangePasswordViewModel(gh<_i40.ChangePasswordUseCase>()));
+    gh.factory<_i42.DeleteTokenUseCase>(
+        () => _i42.DeleteTokenUseCase(gh<_i38.AuthRepository>()));
+    gh.factory<_i43.ExamViewModel>(() => _i43.ExamViewModel(
+          gh<_i27.GetExamQuestionsUseCase>(),
+          gh<_i34.SubmitExamUseCase>(),
         ));
-    gh.factory<_i56.ProfileViewModel>(() => _i56.ProfileViewModel(
-          gh<_i44.GetUserInfoUseCase>(),
-          gh<_i52.UpdateUserInfoUseCase>(),
+    gh.factory<_i44.ExamsListViewModel>(
+        () => _i44.ExamsListViewModel(gh<_i28.GetExamsListBySubjectUseCase>()));
+    gh.factory<_i45.ForgetPasswordUseCase>(
+        () => _i45.ForgetPasswordUseCase(gh<_i38.AuthRepository>()));
+    gh.factory<_i46.ForgetPasswordViewModel>(
+        () => _i46.ForgetPasswordViewModel(gh<_i45.ForgetPasswordUseCase>()));
+    gh.factory<_i47.GetSubjectListUseCase>(
+        () => _i47.GetSubjectListUseCase(gh<_i32.SubjectsRepository>()));
+    gh.factory<_i48.GetUserInfoUseCase>(
+        () => _i48.GetUserInfoUseCase(gh<_i38.AuthRepository>()));
+    gh.factory<_i49.LoginUserUseCase>(
+        () => _i49.LoginUserUseCase(gh<_i38.AuthRepository>()));
+    gh.factory<_i50.LoginViewModel>(
+        () => _i50.LoginViewModel(gh<_i49.LoginUserUseCase>()));
+    gh.factory<_i51.MainViewModel>(
+        () => _i51.MainViewModel(gh<_i42.DeleteTokenUseCase>()));
+    gh.factory<_i52.ResetPasswordUseCase>(
+        () => _i52.ResetPasswordUseCase(gh<_i38.AuthRepository>()));
+    gh.factory<_i53.ResetPasswordViewModel>(
+        () => _i53.ResetPasswordViewModel(gh<_i52.ResetPasswordUseCase>()));
+    gh.factory<_i54.SignupUserUseCase>(
+        () => _i54.SignupUserUseCase(gh<_i38.AuthRepository>()));
+    gh.factory<_i55.SignupViewModel>(
+        () => _i55.SignupViewModel(gh<_i54.SignupUserUseCase>()));
+    gh.factory<_i56.UpdateUserInfoUseCase>(
+        () => _i56.UpdateUserInfoUseCase(gh<_i38.AuthRepository>()));
+    gh.factory<_i57.VerifyResetPasswordUseCase>(
+        () => _i57.VerifyResetPasswordUseCase(gh<_i38.AuthRepository>()));
+    gh.factory<_i58.ExploreViewModel>(
+        () => _i58.ExploreViewModel(gh<_i47.GetSubjectListUseCase>()));
+    gh.factory<_i59.OtpVerifyViewModel>(() => _i59.OtpVerifyViewModel(
+          gh<_i57.VerifyResetPasswordUseCase>(),
+          gh<_i45.ForgetPasswordUseCase>(),
+        ));
+    gh.factory<_i60.ProfileViewModel>(() => _i60.ProfileViewModel(
+          gh<_i48.GetUserInfoUseCase>(),
+          gh<_i56.UpdateUserInfoUseCase>(),
         ));
     return this;
   }
 }
 
-class _$NetworkModule extends _i57.NetworkModule {}
+class _$NetworkModule extends _i61.NetworkModule {}
 
-class _$IsarModule extends _i58.IsarModule {}
+class _$IsarModule extends _i62.IsarModule {}
 
-class _$LoggerModule extends _i59.LoggerModule {}
+class _$LoggerModule extends _i63.LoggerModule {}
 
-class _$SharedPreferencesModule extends _i60.SharedPreferencesModule {}
+class _$SharedPreferencesModule extends _i64.SharedPreferencesModule {}
