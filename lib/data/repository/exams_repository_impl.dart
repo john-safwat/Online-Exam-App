@@ -32,4 +32,10 @@ class ExamsRepositoryImpl implements ExamsRepository {
     var response = await _localDatasource.addExam(exam, questions);
     return response;
   }
+
+  @override
+  Future<Results<List<Exam>>> getExamsList() async {
+    var response = await _localDatasource.getExamsList();
+    return response;
+  }
 }

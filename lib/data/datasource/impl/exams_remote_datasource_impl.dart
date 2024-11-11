@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/data/api/exams/exams_retrofit_client.dart';
-import 'package:online_exam_app/data/core/api_execution.dart';
+import 'package:online_exam_app/data/core/datasource_execution.dart';
 import 'package:online_exam_app/data/datasource/contract/exams_remote_datasource.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/exam/exam.dart';
@@ -10,7 +10,7 @@ import 'package:online_exam_app/domain/entities/subject/pagination_info.dart';
 @Injectable(as: ExamsRemoteDatasource)
 class ExamsRemoteDatasourceImpl implements ExamsRemoteDatasource {
   final ExamsRetrofitClient _retrofitClient;
-  final ApiExecution _apiExecution;
+  final DataSourceExecution _apiExecution;
 
   ExamsRemoteDatasourceImpl(this._retrofitClient, this._apiExecution);
 

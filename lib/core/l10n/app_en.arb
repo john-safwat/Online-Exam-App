@@ -94,5 +94,6 @@
   "incorrect" : "Incorrect",
   "yourAnswers" : "Your Answers",
   "showResults" : "Show results",
-  "startAgain" : "Start again"
+  "startAgain" : "Start again",
+  "answers": "Answers"
 }

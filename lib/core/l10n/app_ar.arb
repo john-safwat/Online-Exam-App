@@ -94,5 +94,6 @@
   "incorrect" : "غير صحيح",
   "yourAnswers" : "الاجابات الخاصة بك",
   "showResults" : "اظهار النتايج",
-  "startAgain" : "بدء مرة جديدة"
+  "startAgain" : "بدء مرة جديدة",
+  "answers": "الاجابات"
 }

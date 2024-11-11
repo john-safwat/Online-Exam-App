@@ -9,11 +9,11 @@ import 'package:online_exam_app/core/di/di.dart';
 import 'package:online_exam_app/core/utils/app_dialogs.dart';
 import 'package:online_exam_app/core/widgets/server_error_widget.dart';
 import 'package:online_exam_app/domain/entities/exam/exam.dart';
+import 'package:online_exam_app/presentation/answers/answers_view.dart';
 import 'package:online_exam_app/presentation/exam/exam_contract.dart';
 import 'package:online_exam_app/presentation/exam/exam_view_model.dart';
 import 'package:online_exam_app/presentation/exam/widgets/exam_questions.dart';
 import 'package:online_exam_app/presentation/exam/widgets/exam_results.dart';
-import 'package:online_exam_app/presentation/main_layout/main_view_model.dart';
 
 class ExamView extends StatefulWidget {
   final Exam exam;
@@ -96,8 +96,18 @@ class _ExamViewState extends BaseState<ExamView, ExamViewModel> {
                     viewModel.doIntent(OnPressFinishAction());
                   });
             }
-            if(state is ExamCheckingSuccessState){
+            if (state is ExamCheckingSuccessState) {
               Navigator.pop(context);
+            }
+            if (state is NavigateToAnswersScreenState) {
+              Navigator.pop(context);
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AnswersView(state.exam),
+                ),
+              );
             }
           },
           builder: (context, state) {
@@ -109,13 +119,15 @@ class _ExamViewState extends BaseState<ExamView, ExamViewModel> {
                     child: Lottie.asset(AnimationsAssets.examLoadingAnimation),
                   );
                 }
-              case ExamCheckingSuccessState():{
-                return ExamResults(viewModel);
-              }
+              case ExamCheckingSuccessState():
+                {
+                  return ExamResults(viewModel);
+                }
               case RefreshState():
               case ExamTimeoutState():
               case ExamCheckingState():
               case ExamCheckingFailState():
+              case NavigateToAnswersScreenState():
               case ExamQuestionsLoadingSuccessState():
                 {
                   return ValueListenableBuilder(

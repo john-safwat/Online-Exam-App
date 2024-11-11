@@ -91,7 +91,9 @@ class ExamResults extends StatelessWidget {
         ),
         const SizedBox(height: 32),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            viewModel.doIntent(NavigateToAnswersScreenAction());
+          },
           style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(16),
               backgroundColor: AppColors.blue),

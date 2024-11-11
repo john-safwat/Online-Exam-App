@@ -9,7 +9,7 @@ import 'package:online_exam_app/data/api/models/authentication/login/request/aut
 import 'package:online_exam_app/data/api/models/authentication/registration/request/registration_user_dto.dart';
 import 'package:online_exam_app/data/api/models/authentication/reset_password/request/reset_password_request_dto.dart';
 import 'package:online_exam_app/data/api/models/authentication/verify_reset_code/request/verify_reset_code_request_dto.dart';
-import 'package:online_exam_app/data/core/api_execution.dart';
+import 'package:online_exam_app/data/core/datasource_execution.dart';
 import 'package:online_exam_app/data/datasource/contract/auth_remote_datasource.dart';
 import 'package:online_exam_app/domain/core/results.dart';
 import 'package:online_exam_app/domain/entities/authentication/authentication_request.dart';
@@ -27,7 +27,7 @@ import 'package:online_exam_app/domain/entities/verify_reset_code/verify_reset_c
 @Injectable(as: AuthRemoteDatasource)
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   final AuthRetrofitClient _authRetrofitClient;
-  final ApiExecution _apiExecution;
+  final DataSourceExecution _apiExecution;
 
   const AuthRemoteDatasourceImpl(this._authRetrofitClient, this._apiExecution);
 

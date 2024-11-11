@@ -43,4 +43,16 @@ class LocalExamDto {
             )
             .toList(),
       );
+
+  Exam toDomain() => Exam(
+      id : id,
+      title : title,
+      duration : duration,
+      subject : subject,
+      numberOfQuestions : numberOfQuestions,
+      active : active,
+      createdAt : createdAt,
+      localId: examId,
+      questions : questions?.map((e) => e?.toDomain(),).toList(),
+  );
 }

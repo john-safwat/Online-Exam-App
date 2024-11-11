@@ -4,8 +4,8 @@ import 'package:online_exam_app/data/local_database/models/exam/local_exam_dto.d
 
 @singleton
 class ExamsLocalDatabase {
-
   Isar isar;
+
   ExamsLocalDatabase(this.isar);
 
   Future<void> addExam(LocalExamDto exam) async {
@@ -14,4 +14,11 @@ class ExamsLocalDatabase {
     });
   }
 
+  Future<List<LocalExamDto>> getAllExams() async {
+    var response = await isar.writeTxn(() async {
+      var response = await isar.localExamDtos.where().findAll();
+      return response;
+    });
+    return response;
+  }
 }

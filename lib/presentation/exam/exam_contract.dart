@@ -1,4 +1,5 @@
 import 'package:online_exam_app/domain/entities/exam/answer.dart';
+import 'package:online_exam_app/domain/entities/exam/exam.dart';
 
 sealed class ExamViewAction {}
 
@@ -16,6 +17,9 @@ class OnPressBackAction extends ExamViewAction {}
 
 class OnPressFinishAction extends ExamViewAction {}
 class StartAgainAction extends ExamViewAction {}
+
+class NavigateToAnswersScreenAction extends ExamViewAction {}
+
 
 ///------------------[states]-------------------------
 sealed class ExamViewState {}
@@ -45,3 +49,8 @@ class ExamCheckingFailState extends ExamViewState {
 
   ExamCheckingFailState(this.message);
 }
+class NavigateToAnswersScreenState extends ExamViewState {
+  Exam exam;
+  NavigateToAnswersScreenState(this.exam);
+}
+

@@ -4,4 +4,5 @@ import 'package:online_exam_app/domain/entities/exam/question.dart';
 
 abstract class ExamsLocalDatasource {
   Future<Results<void>> addExam(Exam exam, List<Question?> questions);
+  Future<Results<List<Exam>>> getExamsList();
 }
