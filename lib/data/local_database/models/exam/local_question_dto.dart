@@ -37,4 +37,20 @@ class LocalQuestionDto {
         createdAt: question?.createdAt,
         selectedAnswer: LocalAnswerDto.fromDomain(question?.selectedAnswer),
       );
+
+  Question toDomain() {
+    return Question(
+      answers: answers
+          ?.map(
+            (e) => e!.toDomain(),
+          )
+          .toList(),
+      type: type,
+      id: id,
+      question: question,
+      correct: correct,
+      createdAt: createdAt,
+      selectedAnswer: selectedAnswer?.toDomain(),
+    );
+  }
 }

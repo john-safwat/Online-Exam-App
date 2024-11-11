@@ -70,6 +70,9 @@ class ExamViewModel extends BaseViewModel<ExamViewState> {
         {
           _startAgain();
         }
+      case NavigateToAnswersScreenAction():{
+        _navigateToAnswersScreen();
+      }
     }
   }
 
@@ -104,6 +107,7 @@ class ExamViewModel extends BaseViewModel<ExamViewState> {
             questions = response.data!;
             questionCount = questions.length;
             time = exam.duration! * 60;
+            exam.questions = questions;
             timer = Timer.periodic(
               const Duration(seconds: 1),
               _updateTimer,
@@ -230,5 +234,11 @@ class ExamViewModel extends BaseViewModel<ExamViewState> {
       () => _playAnimations(),
     );
     emit(ExamQuestionsLoadingSuccessState());
+  }
+
+  void _navigateToAnswersScreen() {
+    exam.questions = questions;
+    exam.correctAnswers = correctCount;
+    emit(NavigateToAnswersScreenState(exam));
   }
 }

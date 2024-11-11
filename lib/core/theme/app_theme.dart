@@ -82,6 +82,7 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.white,
         foregroundColor: AppColors.black,
+        surfaceTintColor: Colors.transparent,
         elevation: 0,
         titleTextStyle: TextStyle(
           fontSize: 20,

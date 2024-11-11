@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:online_exam_app/core/assets/animation_assets.dart';
+import 'package:online_exam_app/core/assets/app_colors.dart';
 import 'package:online_exam_app/core/base/base_view.dart';
 import 'package:online_exam_app/core/constants/routes.dart';
 import 'package:online_exam_app/core/di/di.dart';
@@ -35,6 +36,7 @@ class _MainViewState extends BaseState<MainView, MainViewModel> {
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    AppColors.blue[AppColors.colorCode10];
     return BlocProvider(
       create: (context) => viewModel,
       child: BlocConsumer<MainViewModel, MainViewStates>(

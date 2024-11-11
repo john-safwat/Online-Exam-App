@@ -15,6 +15,6 @@ class Question {
     this.id,
     this.question,
     this.correct,
-    this.createdAt,
+    this.createdAt, this.selectedAnswer,
   });
 }
